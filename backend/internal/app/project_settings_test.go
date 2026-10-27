@@ -26,6 +26,8 @@ func newProjectSettingsTestService(t *testing.T) (*Service, *gorm.DB) {
 		&model.CreationRun{}, &model.CreationSubmission{},
 		&model.CloudAgentResourceLease{}, &model.Tool{}, &model.WorkbenchTool{},
 		&model.Announcement{}, &model.AnnouncementImageDraft{},
+		// 资源引用快照会查询模板草稿封面，缺表会直接报 no such table。
+		&model.CanvasWorkflowTemplate{}, &model.CanvasWorkflowVersion{}, &model.CanvasWorkflowImport{}, &model.CanvasWorkflowCoverDraft{},
 	); err != nil {
 		t.Fatal(err)
 	}

@@ -1,0 +1,441 @@
+{
+  "id": "builtin-apparel-scene-shoot",
+  "slug": "apparel-scene-shoot",
+  "name": "服装产品一键拍摄场景图",
+  "description": "按参考画布复刻：10 个节点、8 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "apparel-scene-shoot",
+    "title": "服装产品一键拍摄场景图",
+    "nodes": [
+      {
+        "id": "apparel-scene-shoot-node-001",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 701.5968100000001,
+          "y": 241.517671
+        },
+        "width": 213.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655041",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021650.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1621.0
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-002",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 701.5968100000001,
+          "y": 593.5176710000001
+        },
+        "width": 235.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655042",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021651.png",
+          "mimeType": "image/png",
+          "naturalWidth": 750.0,
+          "naturalHeight": 1020.0
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-003",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 701.5968100000001,
+          "y": 945.5176710000001
+        },
+        "width": 213.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655043",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021653.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1000.0,
+          "naturalHeight": 1500.0
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-004",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 114.47156300000006,
+          "y": 209.51767100000004
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655044",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021651-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1080.0
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-005",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1441.802863,
+          "y": 561.5176710000001
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655045",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021656.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1086.0,
+          "naturalHeight": 1448.0,
+          "prompt": "请以 @图片1 为场景母版，以 @图片2 为唯一产品来源，生成一张商业产品摄影图片。\n【@图片1：场景母版】\n完整保留 @图片1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图片1 只负责提供场景和摄影方式。\n不要复制 @图片1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图片2：产品唯一锚点】\n@图片2 是唯一的产品来源。\n必须准确保留 @图片2 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图片2 改成另一种产品。\n不要混入 @图片1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图片1 中的原产品替换成 @图片2 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图片1 原产品在该位置的朝向摆放。\n产品大小：按照 @图片1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图片1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "composerContent": "请以 @图片1 为场景母版，以 @图片2 为唯一产品来源，生成一张商业产品摄影图片。\n【@图片1：场景母版】\n完整保留 @图片1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图片1 只负责提供场景和摄影方式。\n不要复制 @图片1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图片2：产品唯一锚点】\n@图片2 是唯一的产品来源。\n必须准确保留 @图片2 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图片2 改成另一种产品。\n不要混入 @图片1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图片1 中的原产品替换成 @图片2 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图片1 原产品在该位置的朝向摆放。\n产品大小：按照 @图片1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图片1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "workflowOriginalPrompt": "请以 @图1 为场景母版，以 @图2 为唯一产品来源，生成一张商业产品摄影图片。\n【@图1：场景母版】\n完整保留 @图1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图1 只负责提供场景和摄影方式。\n不要复制 @图1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图2：产品唯一锚点】\n@图2 是唯一的产品来源。\n必须准确保留 @图2 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图2 改成另一种产品。\n不要混入 @图1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图1 中的原产品替换成 @图2 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图1 原产品在该位置的朝向摆放。\n产品大小：按照 @图1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "apparel-scene-shoot-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "apparel-scene-shoot-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-006",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1441.802863,
+          "y": 913.5176710000001
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655046",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021703.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1536.0,
+          "naturalHeight": 2048.0,
+          "prompt": "请以 @图片1 为场景母版，以 @图片2 为唯一产品来源，生成一张商业产品摄影图片。\n【@图片1：场景母版】\n完整保留 @图片1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图片1 只负责提供场景和摄影方式。\n不要复制 @图片1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图片2：产品唯一锚点】\n@图片2 是唯一的产品来源。\n必须准确保留 @图片2 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图片2 改成另一种产品。\n不要混入 @图片1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图片1 中的原产品替换成 @图片2 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图片1 原产品在该位置的朝向摆放。\n产品大小：按照 @图片1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图片1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "composerContent": "请以 @图片1 为场景母版，以 @图片2 为唯一产品来源，生成一张商业产品摄影图片。\n【@图片1：场景母版】\n完整保留 @图片1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图片1 只负责提供场景和摄影方式。\n不要复制 @图片1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图片2：产品唯一锚点】\n@图片2 是唯一的产品来源。\n必须准确保留 @图片2 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图片2 改成另一种产品。\n不要混入 @图片1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图片1 中的原产品替换成 @图片2 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图片1 原产品在该位置的朝向摆放。\n产品大小：按照 @图片1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图片1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "workflowOriginalPrompt": "请以 @图1 为场景母版，以 @图2 为唯一产品来源，生成一张商业产品摄影图片。\n【@图1：场景母版】\n完整保留 @图1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图1 只负责提供场景和摄影方式。\n不要复制 @图1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图2：产品唯一锚点】\n@图2 是唯一的产品来源。\n必须准确保留 @图2 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图2 改成另一种产品。\n不要混入 @图1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图1 中的原产品替换成 @图2 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图1 原产品在该位置的朝向摆放。\n产品大小：按照 @图1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "apparel-scene-shoot-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "apparel-scene-shoot-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-007",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1441.802863,
+          "y": 209.51767100000004
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655047",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021923.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1536.0,
+          "naturalHeight": 2048.0,
+          "prompt": "请以 @图片1 为场景母版，以 @图片2 @图片3 @图片4 为唯一产品来源，生成一张商业产品摄影图片。【@图片1：场景母版】\n完整保留 @图片1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图片1 只负责提供场景和摄影方式。\n不要复制 @图片1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图片2@图片3 @图片4 ：产品唯一锚点】\n@图片2@图片3 @图片4  是唯一的产品来源。\n必须准确保留 @图片2 @图片3 @图片4 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图片2 @图片3 @图片4 改成另一种产品。\n不要混入 @图片1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图片1 中的原产品替换成 @图片2 @图片3 @图片4 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图片1 原产品在该位置的朝向摆放。\n产品大小：按照 @图片1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图片1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "composerContent": "请以 @图片1 为场景母版，以 @图片2 @图片3 @图片4 为唯一产品来源，生成一张商业产品摄影图片。【@图片1：场景母版】\n完整保留 @图片1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图片1 只负责提供场景和摄影方式。\n不要复制 @图片1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图片2@图片3 @图片4 ：产品唯一锚点】\n@图片2@图片3 @图片4  是唯一的产品来源。\n必须准确保留 @图片2 @图片3 @图片4 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图片2 @图片3 @图片4 改成另一种产品。\n不要混入 @图片1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图片1 中的原产品替换成 @图片2 @图片3 @图片4 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图片1 原产品在该位置的朝向摆放。\n产品大小：按照 @图片1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图片1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "workflowOriginalPrompt": "请以 @图1 为场景母版，以 @图2 @图3 @图4 为唯一产品来源，生成一张商业产品摄影图片。【@图1：场景母版】\n完整保留 @图1 的画面比例、构图、主体位置、背景、道具、挂杆或桌面、光线方向、阴影关系、镜头视角、景深、色彩关系和留白布局。\n\n@图1 只负责提供场景和摄影方式。\n不要复制 @图1 中原产品的颜色、版型、图案、材质或品牌信息。\n\n【@图2@图3 @图4 ：产品唯一锚点】\n@图2@图3 @图4  是唯一的产品来源。\n必须准确保留 @图2 @图3 @图4 中真实可见的产品类别、廓形、长度、领型、袖型、开合方式、口袋、下摆、图案位置、图案密度、材质触感、厚薄、拼接、缝线、包边、衣摆形状和颜色。\n\n不要把 @图2 @图3 @图4 改成另一种产品。\n不要混入 @图1 原产品的任何设计。\n看不清的细节保持自然模糊，不要自行脑补。\n\n【替换规则】\n将 @图1 中的原产品替换成 @图2 @图3 @图4 中的产品。\n替换位置：{填写具体位置，例如画面中央挂杆最左侧、桌面中央、模特上半身}\n产品数量：{填写数量}\n产品朝向：按照 @图1 原产品在该位置的朝向摆放。\n产品大小：按照 @图1 原产品在画面中的比例摆放。\n除产品本身外，不改变场景中的道具、背景、镜头、构图和光线。\n\n如果 @图1 中存在衣架、挂钩、桌面接触或布料遮挡，请保持自然的穿插关系、接触阴影和遮挡关系。\n产品必须真实落地或真实悬挂，不能漂浮。\n\n【商业摄影质感】\n真实摄影效果，产品边缘清晰，材质纹理自然，褶皱符合重力和悬挂关系，接触阴影真实，光线方向统一，边缘与场景自然融合，避免明显的人工合成感。\n\n【负面词】\n不要改变画面构图，不要改变背景，不要改变道具位置，不要改变光线方向，不要改变镜头视角，不要改变画面比例，不要混合两件产品，不要生成多余产品，不要重复衣服，不要改变产品颜色，不要改变产品版型，不要增加或删除口袋、纽扣、拉链、图案和缝线，不要出现漂浮、穿模、边缘融化、褶皱错误、衣架变形、产品残缺、文字、水印、Logo乱码、畸形结构、低清晰度和明显 AI 感。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "apparel-scene-shoot-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "apparel-scene-shoot-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "apparel-scene-shoot-node-008",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "apparel-scene-shoot-node-009",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-008",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 114.47156300000006,
+          "y": 913.5176710000001
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655048",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021712.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1080.0
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-009",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 114.47156300000006,
+          "y": 561.5176710000001
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655049",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/apparel-scene-shoot/-09021927.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1080.0
+        }
+      },
+      {
+        "id": "apparel-scene-shoot-node-010",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 80.0,
+          "y": 80.0
+        },
+        "width": 418.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6dX2ZmzYarUNOSzHP6EtnZuK",
+            "nodeId": "node-2114970256861655050",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "替换成自己的产品"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "apparel-scene-shoot-edge-001",
+        "fromNodeId": "apparel-scene-shoot-node-002",
+        "toNodeId": "apparel-scene-shoot-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-002",
+        "fromNodeId": "apparel-scene-shoot-node-004",
+        "toNodeId": "apparel-scene-shoot-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-003",
+        "fromNodeId": "apparel-scene-shoot-node-003",
+        "toNodeId": "apparel-scene-shoot-node-006",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-004",
+        "fromNodeId": "apparel-scene-shoot-node-004",
+        "toNodeId": "apparel-scene-shoot-node-006",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-005",
+        "fromNodeId": "apparel-scene-shoot-node-001",
+        "toNodeId": "apparel-scene-shoot-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-006",
+        "fromNodeId": "apparel-scene-shoot-node-004",
+        "toNodeId": "apparel-scene-shoot-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-007",
+        "fromNodeId": "apparel-scene-shoot-node-008",
+        "toNodeId": "apparel-scene-shoot-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "apparel-scene-shoot-edge-008",
+        "fromNodeId": "apparel-scene-shoot-node-009",
+        "toNodeId": "apparel-scene-shoot-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

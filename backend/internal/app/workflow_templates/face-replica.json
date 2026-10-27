@@ -1,0 +1,273 @@
+{
+  "id": "builtin-face-replica",
+  "slug": "face-replica",
+  "name": "换脸复刻",
+  "description": "按参考画布复刻：7 个节点、2 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "face-replica",
+    "title": "换脸复刻",
+    "nodes": [
+      {
+        "id": "face-replica-node-001",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 106.0,
+          "y": 578.463488
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105474",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传原视频"
+        },
+        "parentId": "face-replica-node-007"
+      },
+      {
+        "id": "face-replica-node-002",
+        "type": "video",
+        "title": "解析参考视频.mp4",
+        "position": {
+          "x": 106.0,
+          "y": 696.604057
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105475",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/face-replica/-09101504.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/face-replica/-09101504.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        },
+        "parentId": "face-replica-node-007"
+      },
+      {
+        "id": "face-replica-node-003",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 686.938218,
+          "y": 220.980981
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105476",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/face-replica/-09101459.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1440.0,
+          "naturalHeight": 1920.0
+        },
+        "parentId": "face-replica-node-007"
+      },
+      {
+        "id": "face-replica-node-004",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 669.938218,
+          "y": 118.0
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105477",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传人物图"
+        },
+        "parentId": "face-replica-node-007"
+      },
+      {
+        "id": "face-replica-node-005",
+        "type": "video",
+        "title": "模特/商品替换",
+        "position": {
+          "x": 1328.061281,
+          "y": 706.89479
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105478",
+            "type": "video",
+            "taskType": "GESTURE_DANCE_REPLICA",
+            "modelCode": "SEEDANCE_2_0",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/face-replica/-_-09101515.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/face-replica/-_-09101515.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "model": "seedance-2.0",
+          "size": "9:16",
+          "count": "1",
+          "workflowGenerationWarning": "本地当前未提供与参考站同名的动作迁移协议；请在节点配置中选择已启用的视频工作流后再生成。",
+          "workflowInputs": [
+            {
+              "nodeId": "face-replica-node-002",
+              "kind": "video",
+              "slot": "reference_video"
+            },
+            {
+              "nodeId": "face-replica-node-003",
+              "kind": "image",
+              "slot": "replica_subject_image"
+            }
+          ]
+        },
+        "parentId": "face-replica-node-007"
+      },
+      {
+        "id": "face-replica-node-006",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1204.064858,
+          "y": 513.790494
+        },
+        "width": 584.0,
+        "height": 140.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105479",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "连接人物图和原视频\n到模特/商品替换视频节点"
+        },
+        "parentId": "face-replica-node-007"
+      },
+      {
+        "id": "face-replica-node-007",
+        "type": "frame",
+        "title": "分组 6 个节点",
+        "position": {
+          "x": 80.0,
+          "y": 80.0
+        },
+        "width": 1734.064858,
+        "height": 1172.89479,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 1734.064858,
+            "expandedHeight": 1172.89479
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "bsaAAzSSLxhqJe2CGpUzTIUC",
+            "nodeId": "node-2114968750800105480",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "face-replica-edge-001",
+        "fromNodeId": "face-replica-node-002",
+        "toNodeId": "face-replica-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "face-replica-edge-002",
+        "fromNodeId": "face-replica-node-003",
+        "toNodeId": "face-replica-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

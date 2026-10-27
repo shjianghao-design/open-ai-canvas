@@ -528,6 +528,9 @@ export function ImageContent({
         updateMediaNode?.(node.id, (current) => {
             const metadata = current.metadata;
             const needsMetadata = metadata?.naturalWidth !== naturalWidth || metadata?.naturalHeight !== naturalHeight;
+            if (metadata?.workflowLayoutLocked) {
+                return needsMetadata ? { ...current, metadata: { ...metadata, naturalWidth, naturalHeight } } : current;
+            }
             if (current.metadata?.freeResize || current.metadata?.manualSize || current.metadata?.locked) {
                 return needsMetadata ? { ...current, metadata: { ...metadata, naturalWidth, naturalHeight } } : current;
             }

@@ -487,5 +487,10 @@ func migrations() []tableMigration {
 		migrateTable[model.TaskTextDelta]("task_text_delta"),
 		migrateTable[model.TaskLog]("task_logs"),
 		migrateTable[model.Result]("results"),
+		// 工作流模板库：先模板，再版本快照与导入记录（后两者外键指向模板）。
+		migrateTable[model.CanvasWorkflowTemplate]("canvas_workflow_templates"),
+		migrateTable[model.CanvasWorkflowVersion]("canvas_workflow_versions"),
+		migrateTable[model.CanvasWorkflowImport]("canvas_workflow_imports"),
+		migrateTable[model.CanvasWorkflowCoverDraft]("canvas_workflow_cover_drafts"),
 	}
 }

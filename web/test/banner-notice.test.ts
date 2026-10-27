@@ -17,6 +17,14 @@ async function readSource(relativePath: string) {
     return Bun.file(new URL(relativePath, import.meta.url)).text();
 }
 
+/** 取出 Go 源码中某个 struct 的字段体，用于把断言限定在单个模型上。 */
+function goStructBody(source: string, name: string) {
+    const start = source.indexOf(`type ${name} struct {`);
+    if (start < 0) return "";
+    const end = source.indexOf("\n}", start);
+    return end < 0 ? source.slice(start) : source.slice(start, end);
+}
+
 /** 从 Go 的 `var X = map[string]struct{}{...}` 字面量里取出键集合。 */
 function goMapKeys(source: string, variable: string) {
     const start = source.indexOf(`var ${variable} = map[string]struct{}{`);
@@ -80,11 +88,7 @@ describe("emoji 图标素材库", () => {
     test("emoji 是普通文本：标题纯文本拼接函数必须原样保留它", async () => {
         // 防止未来有人给 run.text 做字符过滤，把 emoji 丢掉。
         const { bannerTitlePlainText } = await import("@/lib/announcements/banner-title");
-        const runs = [
-            { text: "🔥", fontSize: 20 },
-            { text: "限时", color: "#FFE58F" },
-            { text: "大促" },
-        ];
+        const runs = [{ text: "🔥", fontSize: 20 }, { text: "限时", color: "#FFE58F" }, { text: "大促" }];
         expect(bannerTitlePlainText(runs as never)).toBe("🔥限时大促");
     });
 });
@@ -101,13 +105,11 @@ describe("与后端白名单保持一致", () => {
     });
 
     test("后端不保存独立图标字段：emoji 必须内嵌在标题分段里", async () => {
-        const [goModel, goApp, goRepo] = await Promise.all([
-            readSource("../../backend/internal/model/models_project.go"),
-            readSource("../../backend/internal/app/announcement.go"),
-            readSource("../../backend/internal/repository/announcement.go"),
-        ]);
+        const [goModel, goApp, goRepo] = await Promise.all([readSource("../../backend/internal/model/models_project.go"), readSource("../../backend/internal/app/announcement.go"), readSource("../../backend/internal/repository/announcement.go")]);
         // 防止 icon 字段被加回来却没人维护白名单：图标的存储形态就是 TitleRuns 的文本。
-        expect(goModel).not.toMatch(/\bIcon\s+string/);
+        // 只针对公告/通知模型：models_project.go 同时承载画布工作流等无关模型，
+        // 后者的 icon 是前端图标名，与「emoji 内嵌标题分段」的约定无关。
+        expect(goStructBody(goModel, "BannerAnnouncement")).not.toMatch(/\bIcon\s+string/);
         expect(goApp).not.toContain("normalizeBannerIcon");
         expect(goRepo).not.toContain('"icon"');
     });

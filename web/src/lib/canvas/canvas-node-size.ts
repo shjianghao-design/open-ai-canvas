@@ -81,6 +81,9 @@ export function imageNodeSizeFromRatio(size: string, baseWidth = 720, baseHeight
 export function ensureMediaNodeMinimumSize(node: CanvasNodeData) {
     if (node.type !== CanvasNodeType.Image && node.type !== CanvasNodeType.Video) return node;
     const title = node.title === "New Generation" ? "图片" : node.title === "Video" ? "视频" : node.title;
+    // Reference workflow previews intentionally use a compact authored layout.
+    // Do not let decoded media dimensions rewrite positions/sizes on first open.
+    if (node.metadata?.workflowLayoutLocked) return title === node.title ? node : { ...node, title };
     if (node.type === CanvasNodeType.Image) {
         const metadata = node.metadata;
         // 手动尺寸、自由拉伸及锁定布局必须跨保存和重载保持不变。

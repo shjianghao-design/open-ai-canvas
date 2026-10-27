@@ -94,6 +94,14 @@ type AnnouncementImageDraft struct {
 	CreatedAt  time.Time `json:"createdAt" gorm:"index"`
 }
 
+// CanvasWorkflowCoverDraft tracks an uploaded cover until a workflow draft or
+// published version references it.
+type CanvasWorkflowCoverDraft struct {
+	ResourceID string    `json:"resourceId" gorm:"primaryKey;size:36"`
+	UserID     string    `json:"userId" gorm:"index;size:36"`
+	CreatedAt  time.Time `json:"createdAt" gorm:"index"`
+}
+
 type Asset struct {
 	ID               string             `json:"id" gorm:"primaryKey;size:80"`
 	UserID           string             `json:"userId" gorm:"index;size:36;index:idx_assets_user_updated,priority:1"`
@@ -394,6 +402,71 @@ type CanvasProject struct {
 	Revision    int64     `json:"revision" gorm:"not null;default:1"`
 	CreatedAt   time.Time `json:"createdAt"`
 	UpdatedAt   time.Time `json:"updatedAt" gorm:"index:idx_canvas_projects_user_updated,priority:2;index:idx_canvas_projects_user_project_updated,priority:3"`
+}
+
+// CanvasWorkflowTemplate is a versioned, publishable canvas graph.
+// It is separate from the short-drama WorkflowTemplateVersion progress model.
+// CanvasWorkflowTemplate 是工作流模板的主体身份与可写草稿。
+//
+// 双态模型：DraftJSON 是唯一可写区，前台永远读取 LatestVersionID 指向的只读快照。
+// 这样管理员编辑草稿不会影响线上，发布时才把草稿固化成新版本。
+type CanvasWorkflowTemplate struct {
+	ID                   string `json:"id" gorm:"primaryKey;size:80"`
+	Slug                 string `json:"slug" gorm:"uniqueIndex;size:100"`
+	Name                 string `json:"name" gorm:"size:240"`
+	Description          string `json:"description" gorm:"type:text"`
+	DraftDescription     string `json:"draftDescription" gorm:"type:text"`
+	DraftUsageGuide      string `json:"draftUsageGuide" gorm:"type:text"`
+	DraftCoverResourceID string `json:"draftCoverResourceId,omitempty" gorm:"index;size:36"`
+	Category             string `json:"category" gorm:"index;size:64"`
+	Icon                 string `json:"icon" gorm:"size:80"`
+	SortOrder            int    `json:"sortOrder" gorm:"index;not null;default:0"`
+	// Enabled 是总开关：关闭后前台列表与详情都不可见，已导入的用户画布不受影响。
+	Enabled bool `json:"enabled" gorm:"index;not null;default:true"`
+	// Published 表示是否发布过；未发布时前台不可见，仅供后台预览。
+	Published bool `json:"published" gorm:"index"`
+	Builtin   bool `json:"builtin" gorm:"index"`
+	// DraftJSON 是管理员可编辑的草稿；前台不读它。
+	DraftJSON string `json:"draftJson" gorm:"type:text"`
+	// LatestVersionID 指向当前线上版本；为空表示尚未发布。
+	LatestVersionID string `json:"latestVersionId" gorm:"size:80;index"`
+	// Version 是当前线上版本号缓存，仅用于列表展示，真相在 CanvasWorkflowVersion。
+	Version int `json:"version"`
+	// Revision 是乐观锁版本，每次写操作递增，防止后台并发覆盖。
+	Revision  int64     `json:"revision" gorm:"not null;default:1"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
+}
+
+// CanvasWorkflowVersion 是一次发布产生的只读快照。写入后不再修改，保证历史可回滚。
+type CanvasWorkflowVersion struct {
+	ID         string `json:"id" gorm:"primaryKey;size:80"`
+	TemplateID string `json:"templateId" gorm:"size:80;index;uniqueIndex:idx_cwv_template_version,priority:1"`
+	Version    int    `json:"version" gorm:"uniqueIndex:idx_cwv_template_version,priority:2"`
+	// Name 允许管理员给版本起有意义的名字；为空时前台显示 v{Version}。
+	Name string `json:"name" gorm:"size:160"`
+	// Notes 是发布说明，用于说明这次改了什么。
+	Notes           string    `json:"notes" gorm:"type:text"`
+	Description     string    `json:"description" gorm:"type:text"`
+	UsageGuide      string    `json:"usageGuide" gorm:"type:text"`
+	CoverResourceID string    `json:"coverResourceId,omitempty" gorm:"index;size:36"`
+	PayloadJSON     string    `json:"payloadJson" gorm:"type:text"`
+	NodeCount       int       `json:"nodeCount"`
+	CreatedBy       string    `json:"createdBy" gorm:"size:36;index"`
+	CreatedAt       time.Time `json:"createdAt"`
+}
+
+// CanvasWorkflowImport 记录一次模板导入，同时承担两个职责：
+// 1. 运营统计（总导入量、按版本分布）
+// 2. 版本提示（对比用户画布所用版本与模板当前线上版本）
+type CanvasWorkflowImport struct {
+	ID         string    `json:"id" gorm:"primaryKey;size:80"`
+	TemplateID string    `json:"templateId" gorm:"size:80;index;uniqueIndex:idx_cwi_canvas,priority:1"`
+	VersionID  string    `json:"versionId" gorm:"size:80;index"`
+	Version    int       `json:"version"`
+	UserID     string    `json:"userId" gorm:"size:36;index"`
+	CanvasID   string    `json:"canvasId" gorm:"size:80;uniqueIndex:idx_cwi_canvas,priority:2"`
+	CreatedAt  time.Time `json:"createdAt" gorm:"index"`
 }
 
 type CanvasShare struct {

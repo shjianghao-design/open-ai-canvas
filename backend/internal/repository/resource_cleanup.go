@@ -69,6 +69,9 @@ func (r *Repository) DeleteDetachedResources(resources []model.Resource, deletio
 		}{
 			{&model.Announcement{}, "image_resource_id IN ?"},
 			{&model.AnnouncementImageDraft{}, "resource_id IN ?"},
+			{&model.CanvasWorkflowCoverDraft{}, "resource_id IN ?"},
+			{&model.CanvasWorkflowTemplate{}, "draft_cover_resource_id IN ?"},
+			{&model.CanvasWorkflowVersion{}, "cover_resource_id IN ?"},
 			{&model.AssetRepresentation{}, "resource_id IN ?"},
 			{&model.VoiceProfile{}, "sample_resource_id IN ?"},
 			{&model.ShotArtifact{}, "resource_id IN ?"},

@@ -1,0 +1,1656 @@
+{
+  "id": "builtin-taobao-main-image",
+  "slug": "taobao-main-image",
+  "name": "淘宝主图",
+  "description": "按参考画布复刻：43 个节点、29 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "taobao-main-image",
+    "title": "淘宝主图",
+    "nodes": [
+      {
+        "id": "taobao-main-image-node-001",
+        "type": "image",
+        "title": "模特全身.png",
+        "position": {
+          "x": 153.0,
+          "y": 543.945761
+        },
+        "width": 144.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601218",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06201153.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1684.0,
+          "naturalHeight": 3738.0
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-002",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1342.324169,
+          "y": 656.1766010000001
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601219",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06201153.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "@图片1 模特穿上@图片2 服装配饰鞋子以@图片3 为背景，全身，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "composerContent": "@图片1 模特穿上@图片2 服装配饰鞋子以@图片3 为背景，全身，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "@图1 模特穿上@图2 服装配饰鞋子以@图3 为背景，全身，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-008",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-003",
+        "type": "image",
+        "title": "把服装鞋子鞋子提取出来平铺在白色背景里-2069677622705188865-1.png",
+        "position": {
+          "x": 182.6828989999999,
+          "y": 1085.0231290000002
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601220",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231608.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1086.0,
+          "naturalHeight": 1448.0
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-004",
+        "type": "image",
+        "title": "把上衣提取出来平铺在白色背景里-2069677801381548033-1.png",
+        "position": {
+          "x": 2684.001025,
+          "y": 1056.51926
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601221",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231602.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1254.0,
+          "naturalHeight": 1254.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-005",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3799.441636,
+          "y": 593.997648
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601222",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231616.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "@图片1 模特穿上@图片2 的上衣和@图片3的下装再搭配@图片4 所有配饰以@图片5 为背景，全身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "composerContent": "@图片1 模特穿上@图片2 的上衣和@图片3的下装再搭配@图片4 所有配饰以@图片5 为背景，全身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "@图1 模特穿上@图2 的上衣和@图3的下装再搭配@图4 所有配饰以@图5 为背景，全身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-007",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-021",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-022",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-006",
+        "type": "image",
+        "title": "把下装提取出来平铺在白色背景里-2069677826692571138-1.png",
+        "position": {
+          "x": 2721.293578,
+          "y": 1542.241651
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601223",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231616-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1448.0,
+          "naturalHeight": 1086.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-007",
+        "type": "image",
+        "title": "把袜子鞋子提取出来平铺在白色背景里-2069677881932726273-1.png",
+        "position": {
+          "x": 2717.14219,
+          "y": 2045.358193
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601224",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231617.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1448.0,
+          "naturalHeight": 1086.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-008",
+        "type": "image",
+        "title": "7f6259aa0aeb5df43324d209925ebc02.jpg",
+        "position": {
+          "x": 182.6828989999999,
+          "y": 2411.1011040000003
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601225",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241358.png",
+          "mimeType": "image/png",
+          "naturalWidth": 828.0,
+          "naturalHeight": 1104.0
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-009",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 104.0,
+          "y": 433.82127200000014
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601226",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "全身模特图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-010",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 128.0,
+          "y": 1014.6749960000002
+        },
+        "width": 467.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601227",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "整套服装配饰正面图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-011",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2767.793578,
+          "y": 944.046531
+        },
+        "width": 227.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601228",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "产品上衣"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-012",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2767.793578,
+          "y": 1406.029894
+        },
+        "width": 227.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601229",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "产品下装"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-013",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2708.001025,
+          "y": 1918.892342
+        },
+        "width": 365.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601230",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "鞋子/袜子/配饰"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-014",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 224.0,
+          "y": 2233.7470789999998
+        },
+        "width": 227.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601231",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "场景背景"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-015",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1334.659044,
+          "y": 2283.362896
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601232",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241403.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2172.0,
+          "naturalHeight": 2896.0,
+          "prompt": "\n@图片1 模特穿上@图片2 服装配饰以@图片3为背景，平拍视角，仅模特大腿以上至头顶出境，45°侧背面半身照，模特不漏脸，仅展示服装侧背面，模特居中构图，模特姿势主打轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "composerContent": "\n@图片1 模特穿上@图片2 服装配饰以@图片3为背景，平拍视角，仅模特大腿以上至头顶出境，45°侧背面半身照，模特不漏脸，仅展示服装侧背面，模特居中构图，模特姿势主打轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "\n@图1 模特穿上@图2 服装配饰以@图3为背景，平拍视角，仅模特大腿以上至头顶出境，45°侧背面半身照，模特不漏脸，仅展示服装侧背面，模特居中构图，模特姿势主打轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-017",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-008",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-016",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1334.659044,
+          "y": 1207.4075090000001
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601233",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241358-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "\n@图片1 模特穿上@图片2 服装配饰以@图片3 为背景，平拍视角，仅模特大腿以上头顶以下出境，正面半身，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "composerContent": "\n@图片1 模特穿上@图片2 服装配饰以@图片3 为背景，平拍视角，仅模特大腿以上头顶以下出境，正面半身，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "\n@图1 模特穿上@图2 服装配饰以@图3 为背景，平拍视角，仅模特大腿以上头顶以下出境，正面半身，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-008",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-017",
+        "type": "image",
+        "title": "把服装上衣和下装的背面配饰提取出来平铺在白色背景里-2069679376867979266-1.png",
+        "position": {
+          "x": 170.0,
+          "y": 1798.91095
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601234",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241404.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1448.0,
+          "naturalHeight": 1086.0
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-018",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 128.0,
+          "y": 1636.413043
+        },
+        "width": 467.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601235",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "整套服装配饰背面图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-019",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1334.659044,
+          "y": 1746.172665
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601236",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241405.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "\n@图片1 模特穿上@图片2 服装配饰以@图片3 为背景，平拍视角，侧面半身照，仅模特大腿以上头顶以下出境，模特居中构图，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例，鞋子不出镜。",
+          "composerContent": "\n@图片1 模特穿上@图片2 服装配饰以@图片3 为背景，平拍视角，侧面半身照，仅模特大腿以上头顶以下出境，模特居中构图，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例，鞋子不出镜。",
+          "workflowOriginalPrompt": "\n@图1 模特穿上@图2 服装配饰以@图3 为背景，平拍视角，侧面半身照，仅模特大腿以上头顶以下出境，模特居中构图，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例，鞋子不出镜。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-001",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-003",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-008",
+              "kind": "image",
+              "slot": "image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-020",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3798.941636,
+          "y": 1090.6203500000001
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601237",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241445.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "@图片1 模特穿上@图片2 的上衣和@图片3的下装@图片4 为背景，微仰拍视角，仅模特大腿至头顶出镜，正面半身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格。真实皮肤纹理，真实发丝细节，自然光影，突出服装展示效果。画面3:4比例",
+          "composerContent": "@图片1 模特穿上@图片2 的上衣和@图片3的下装@图片4 为背景，微仰拍视角，仅模特大腿至头顶出镜，正面半身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格。真实皮肤纹理，真实发丝细节，自然光影，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "@图1 模特穿上@图2 的上衣和@图3的下装@图4 为背景，微仰拍视角，仅模特大腿至头顶出镜，正面半身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格。真实皮肤纹理，真实发丝细节，自然光影，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-021",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-004",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-006",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-022",
+              "kind": "image",
+              "slot": "image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-021",
+        "type": "image",
+        "title": "模特全身.png",
+        "position": {
+          "x": 2746.861844,
+          "y": 559.99314
+        },
+        "width": 144.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601238",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241445-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1684.0,
+          "naturalHeight": 3738.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-022",
+        "type": "image",
+        "title": "微信图片_20260624150803_421_25.jpg",
+        "position": {
+          "x": 2775.153812,
+          "y": 2415.876041
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601239",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241446.png",
+          "mimeType": "image/png",
+          "naturalWidth": 828.0,
+          "naturalHeight": 1104.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-023",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3790.7071969999997,
+          "y": 1644.131873
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601240",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06241446-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "\n@图片1 模特穿上@图片2 的上衣和@图片3的下装@图片4 为背景，平拍视角，仅模特大腿至头顶出镜，侧面半身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "composerContent": "\n@图片1 模特穿上@图片2 的上衣和@图片3的下装@图片4 为背景，平拍视角，仅模特大腿至头顶出镜，侧面半身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "\n@图1 模特穿上@图2 的上衣和@图3的下装@图4 为背景，平拍视角，仅模特大腿至头顶出镜，侧面半身照，模特居中构图，模特表情姿势主打柔媚乖巧、轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-021",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-022",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-024",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3798.941636,
+          "y": 2185.757676
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601241",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-08311351.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "\n@图片1 模特穿上@图片2 的上衣和@图片3的下装以@图片4 为背景，平拍视角，仅模特大腿至头顶出镜，，侧背面半身照，模特居中构图，模特不露脸，模特姿势轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "composerContent": "\n@图片1 模特穿上@图片2 的上衣和@图片3的下装以@图片4 为背景，平拍视角，仅模特大腿至头顶出镜，，侧背面半身照，模特居中构图，模特不露脸，模特姿势轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "workflowOriginalPrompt": "\n@图1 模特穿上@图2 的上衣和@图3的下装以@图4 为背景，平拍视角，仅模特大腿至头顶出镜，，侧背面半身照，模特居中构图，模特不露脸，模特姿势轻纯欲的软妹拍摄姿态，无杂物，淘宝图风格，UGC风格，真实皮肤纹理，真实发丝细节，突出服装展示效果。画面3:4比例",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "taobao-main-image-node-021",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-022",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-035",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-036",
+              "kind": "image",
+              "slot": "image"
+            }
+          ]
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-025",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2708.001025,
+          "y": 469.82127200000014
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601242",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "全身模特图"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-026",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2777.001025,
+          "y": 2322.911652
+        },
+        "width": 227.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601243",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "场景背景"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-027",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1317.659044,
+          "y": 534.8212720000001
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601244",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特全身图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-028",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1317.659044,
+          "y": 1096.6749960000002
+        },
+        "width": 371.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601245",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特正面半身图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-029",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1252.824169,
+          "y": 1621.241651
+        },
+        "width": 419.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601246",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特侧正面半身图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-030",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1237.38971,
+          "y": 2163.172551
+        },
+        "width": 419.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601247",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特侧背面半身图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-031",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3743.2071969999997,
+          "y": 469.82127200000014
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601248",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特全身图"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-032",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3712.2071969999997,
+          "y": 973.566636
+        },
+        "width": 371.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601249",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特正面半身图"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-033",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3688.2071969999997,
+          "y": 1534.595632
+        },
+        "width": 419.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601250",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特侧正面半身图"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-034",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3709.941636,
+          "y": 2051.854151
+        },
+        "width": 419.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601251",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特侧背面半身图"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-035",
+        "type": "image",
+        "title": "上衣背面提取出来平铺在白色背景里-2069681885982601218-1.png",
+        "position": {
+          "x": 2763.896999,
+          "y": 2931.900316
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601252",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231602-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1448.0,
+          "naturalHeight": 1086.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-036",
+        "type": "image",
+        "title": "下装背面提取出来平铺在白色背景里-2069681909957738498-1.png",
+        "position": {
+          "x": 2775.153812,
+          "y": 3380.973364
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601253",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/taobao-main-image/-06231603.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1448.0,
+          "naturalHeight": 1086.0
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-037",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2736.501025,
+          "y": 2783.746702
+        },
+        "width": 323.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601254",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "产品上衣背面"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-038",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2760.896999,
+          "y": 3236.500141
+        },
+        "width": 323.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601255",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "产品下装背面"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-039",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3050.0876749999998,
+          "y": 450.82127200000014
+        },
+        "width": 594.0,
+        "height": 120.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601256",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "单产品服装融图"
+        },
+        "parentId": "taobao-main-image-node-041"
+      },
+      {
+        "id": "taobao-main-image-node-040",
+        "type": "frame",
+        "title": "分组 17 个节点",
+        "position": {
+          "x": 80.0,
+          "y": 378.82127200000014
+        },
+        "width": 1632.659044,
+        "height": 2376.279832,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 1632.659044,
+            "expandedHeight": 2376.279832
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601257",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      },
+      {
+        "id": "taobao-main-image-node-041",
+        "type": "frame",
+        "title": "分组 23 个节点",
+        "position": {
+          "x": 2660.0010249999996,
+          "y": 414.82127200000014
+        },
+        "width": 1492.940611,
+        "height": 3230.152092,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 1492.940611,
+            "expandedHeight": 3230.152092
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601258",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      },
+      {
+        "id": "taobao-main-image-node-042",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 553.2295899999999,
+          "y": 414.82127200000014
+        },
+        "width": 514.0,
+        "height": 120.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601259",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "整套服装融图"
+        },
+        "parentId": "taobao-main-image-node-040"
+      },
+      {
+        "id": "taobao-main-image-node-043",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1510.55062,
+          "y": 80.0
+        },
+        "width": 1670.0,
+        "height": 120.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "DGedf31eS3a0DkDkrqN0tVXa",
+            "nodeId": "node-2114969957598601260",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "韩式甜美模特服装最优/可换模特，服装，场景"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "taobao-main-image-edge-001",
+        "fromNodeId": "taobao-main-image-node-001",
+        "toNodeId": "taobao-main-image-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-002",
+        "fromNodeId": "taobao-main-image-node-003",
+        "toNodeId": "taobao-main-image-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-003",
+        "fromNodeId": "taobao-main-image-node-008",
+        "toNodeId": "taobao-main-image-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-004",
+        "fromNodeId": "taobao-main-image-node-007",
+        "toNodeId": "taobao-main-image-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-005",
+        "fromNodeId": "taobao-main-image-node-006",
+        "toNodeId": "taobao-main-image-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-006",
+        "fromNodeId": "taobao-main-image-node-004",
+        "toNodeId": "taobao-main-image-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-007",
+        "fromNodeId": "taobao-main-image-node-021",
+        "toNodeId": "taobao-main-image-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-008",
+        "fromNodeId": "taobao-main-image-node-022",
+        "toNodeId": "taobao-main-image-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-009",
+        "fromNodeId": "taobao-main-image-node-021",
+        "toNodeId": "taobao-main-image-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-010",
+        "fromNodeId": "taobao-main-image-node-021",
+        "toNodeId": "taobao-main-image-node-023",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-011",
+        "fromNodeId": "taobao-main-image-node-021",
+        "toNodeId": "taobao-main-image-node-024",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-012",
+        "fromNodeId": "taobao-main-image-node-004",
+        "toNodeId": "taobao-main-image-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-013",
+        "fromNodeId": "taobao-main-image-node-006",
+        "toNodeId": "taobao-main-image-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-014",
+        "fromNodeId": "taobao-main-image-node-022",
+        "toNodeId": "taobao-main-image-node-024",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-015",
+        "fromNodeId": "taobao-main-image-node-004",
+        "toNodeId": "taobao-main-image-node-023",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-016",
+        "fromNodeId": "taobao-main-image-node-006",
+        "toNodeId": "taobao-main-image-node-023",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-017",
+        "fromNodeId": "taobao-main-image-node-022",
+        "toNodeId": "taobao-main-image-node-023",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-018",
+        "fromNodeId": "taobao-main-image-node-022",
+        "toNodeId": "taobao-main-image-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-019",
+        "fromNodeId": "taobao-main-image-node-001",
+        "toNodeId": "taobao-main-image-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-020",
+        "fromNodeId": "taobao-main-image-node-003",
+        "toNodeId": "taobao-main-image-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-021",
+        "fromNodeId": "taobao-main-image-node-008",
+        "toNodeId": "taobao-main-image-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-022",
+        "fromNodeId": "taobao-main-image-node-001",
+        "toNodeId": "taobao-main-image-node-019",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-023",
+        "fromNodeId": "taobao-main-image-node-003",
+        "toNodeId": "taobao-main-image-node-019",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-024",
+        "fromNodeId": "taobao-main-image-node-008",
+        "toNodeId": "taobao-main-image-node-019",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-025",
+        "fromNodeId": "taobao-main-image-node-001",
+        "toNodeId": "taobao-main-image-node-015",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-026",
+        "fromNodeId": "taobao-main-image-node-017",
+        "toNodeId": "taobao-main-image-node-015",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-027",
+        "fromNodeId": "taobao-main-image-node-008",
+        "toNodeId": "taobao-main-image-node-015",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-028",
+        "fromNodeId": "taobao-main-image-node-035",
+        "toNodeId": "taobao-main-image-node-024",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "taobao-main-image-edge-029",
+        "fromNodeId": "taobao-main-image-node-036",
+        "toNodeId": "taobao-main-image-node-024",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

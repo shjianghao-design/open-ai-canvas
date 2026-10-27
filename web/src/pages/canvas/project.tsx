@@ -77,6 +77,9 @@ import { AssetPickerModal } from "@/components/canvas/asset-picker-modal";
 import { getProject, listCharacters, type ProjectAsset } from "@/services/api/projects";
 import { CanvasZoomControls } from "@/components/canvas/canvas-zoom-controls";
 import { CanvasShareModal } from "@/components/canvas/canvas-share-modal";
+import { CanvasSaveAsTemplateModal } from "@/components/canvas/canvas-save-as-template-modal";
+import { CanvasWorkflowUpdateHint } from "@/components/canvas/canvas-workflow-update-hint";
+import { CanvasTemplateEditBar } from "@/components/canvas/canvas-template-edit-bar";
 import { CanvasScriptEditor, CanvasScriptNodeContent } from "@/components/canvas/canvas-script-node";
 import { StoryboardAssetPickerModal } from "@/components/canvas/storyboard-asset-picker-modal";
 import { bindingForConnectedNode, replaceStoryboardRowAssets, storyboardRowReferenceNodeIds } from "@/lib/canvas/canvas-storyboard-materializer";
@@ -240,6 +243,8 @@ function CanvasViewportPage() {
     const defaultDrawingEngine = useUserStore((state) => state.drawingEngine.defaultEngine);
     const shortDramaEnabled = useUserStore((state) => state.features.shortDramaEnabled);
     const previsOnboardingScope = useUserStore((state) => state.user?.id?.trim() || "");
+    // 只有管理员能把画布存成平台模板；普通用户看不到该入口。
+    const isAdmin = useUserStore((state) => state.user?.role === "admin");
     const nodesRef = useRef<CanvasNodeData[]>([]);
     const [nodes, setNodesState] = useState<CanvasNodeData[]>([]);
     const setNodes = useMemo(() => createCanvasStateWriter(nodesRef, setNodesState, stampCanvasNodeChanges), []);
@@ -277,6 +282,7 @@ function CanvasViewportPage() {
     const workspaceMode: CanvasWorkspaceMode = "professional";
     const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
     const [shareModalOpen, setShareModalOpen] = useState(false);
+    const [saveAsTemplateOpen, setSaveAsTemplateOpen] = useState(false);
     const [tapNowImportOpen, setTapNowImportOpen] = useState(false);
     const [nodeSearchOpen, setNodeSearchOpen] = useState(false);
     const [toolbarNodeId, setToolbarNodeId] = useState<string | null>(null);
@@ -2773,6 +2779,7 @@ function CanvasViewportPage() {
                                     onUndo={undoCanvas}
                                     onRedo={redoCanvas}
                                     onShare={() => setShareModalOpen(true)}
+                                    onSaveAsTemplate={isAdmin ? () => setSaveAsTemplateOpen(true) : undefined}
                                     shortcutRequestNonce={shortcutRequestNonce}
                                     syncIcon={<CanvasSyncStatus projectId={projectId} />}
                                     onOpenSearch={() => setNodeSearchOpen(true)}
@@ -2789,6 +2796,11 @@ function CanvasViewportPage() {
                                     shortDramaGuide={shortDramaGuide}
                                 />
                             ) : null}
+
+                            {/* 模板有新版本时提示用户，但不强制重新导入。 */}
+                            {!focusMode ? <CanvasWorkflowUpdateHint canvasId={projectId} /> : null}
+                            {/* 从后台「工作流模板 → 编辑」进入时，显示保存回模板的操作条。 */}
+                            {!focusMode ? <CanvasTemplateEditBar projectId={projectId} onSaved={() => void saveCanvasProject()} /> : null}
 
                             <CanvasNodeSearchModal
                                 open={nodeSearchOpen}
@@ -2814,6 +2826,13 @@ function CanvasViewportPage() {
 
                             {batchReferencePickerModal}
                             <CanvasShareModal projectId={projectId} open={shareModalOpen} onClose={() => setShareModalOpen(false)} beforeCreate={saveCanvasProject} />
+                            <CanvasSaveAsTemplateModal
+                                projectId={projectId}
+                                projectTitle={currentProject?.title || "未命名画布"}
+                                open={saveAsTemplateOpen}
+                                onClose={() => setSaveAsTemplateOpen(false)}
+                                beforeSave={saveCanvasProject}
+                            />
                             <LibTVImportDialog open={libTVImportOpen} projectId={projectId} viewport={viewport} viewportSize={size} onClose={() => setLibTVImportOpen(false)} onApply={applyLibTVImport} />
                             <TapNowImportDialog open={tapNowImportOpen} projectId={projectId} viewport={viewport} viewportSize={size} onClose={() => setTapNowImportOpen(false)} onApply={applyTapNowImport} />
 
