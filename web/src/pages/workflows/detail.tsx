@@ -52,8 +52,13 @@ function WorkflowGraph({ nodes, connections }: { nodes: CanvasNodeData[]; connec
                 event.currentTarget.setPointerCapture(event.pointerId);
             }}
             onPointerMove={(event) => {
-                if (!drag.current) return;
-                setViewport((current) => ({ ...current, x: drag.current!.originX + event.clientX - drag.current!.x, y: drag.current!.originY + event.clientY - drag.current!.y }));
+                // setViewport 的 updater 可能在后续渲染阶段才执行，此时 drag 可能已被
+                // onPointerUp 置空；先取快照，updater 只读局部常量，避免 null.originX。
+                const start = drag.current;
+                if (!start) return;
+                const offsetX = event.clientX - start.x;
+                const offsetY = event.clientY - start.y;
+                setViewport((current) => ({ ...current, x: start.originX + offsetX, y: start.originY + offsetY }));
             }}
             onPointerUp={() => {
                 drag.current = null;
