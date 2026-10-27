@@ -162,11 +162,15 @@ func RegisterUserDataRoutes(r *gin.RouterGroup, svc *service.Service) {
 			return
 		}
 		c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 64<<10)
+		// 必须在 ShouldBindJSON 之前判断（绑定会读空 body）。
+		deliveryProvided := requestHasDeliveryFields(c)
 		var req service.OSSSettingRequest
 		if err := c.ShouldBindJSON(&req); err != nil {
 			fail(c, http.StatusBadRequest, err)
 			return
 		}
+		// 与管理端一致：测试 payload 不含 delivery 字段时，落库保留现库值。
+		req.DeliveryProvided = deliveryProvided
 		result, err := svc.TestUserOSSSetting(user, req)
 		if err != nil {
 			failService(c, err)
@@ -253,6 +257,79 @@ func RegisterUserDataRoutes(r *gin.RouterGroup, svc *service.Service) {
 			return
 		}
 		ok(c, gin.H{"resource": resource})
+	})
+	// 直传（presigned PUT）：浏览器拿签名 URL 直传对象存储，字节不经过应用服务器，
+	// 绕开反向代理的体积/超时限制。仅 S3 兼容 provider（含 Cloudflare R2）可用。
+	r.POST("/resources/direct-upload/init", func(c *gin.Context) {
+		user, err := currentUser(c, svc)
+		if err != nil {
+			failService(c, err)
+			return
+		}
+		policy, available := loadRuntimePolicy(c, svc)
+		if !available || !enforceRateLimit(c, "resources-direct-upload:"+user.ID, policy.Request.ResourceUploadPerMinute, time.Minute) {
+			return
+		}
+		c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 64<<10)
+		var req struct {
+			Kind       string `json:"kind"`
+			FileName   string `json:"fileName"`
+			MimeType   string `json:"mimeType"`
+			Size       int64  `json:"size"`
+			Width      int    `json:"width"`
+			Height     int    `json:"height"`
+			DurationMs int64  `json:"durationMs"`
+			// 客户端声明自己能处理分片直传会话时才启用 multipart，保证前后端可独立升级。
+			Multipart bool `json:"multipart"`
+		}
+		if err := c.ShouldBindJSON(&req); err != nil {
+			fail(c, http.StatusBadRequest, err)
+			return
+		}
+		session, err := svc.CreateDirectUploadSession(user.ID, req.Kind, req.FileName, req.MimeType, req.Size, req.Width, req.Height, req.DurationMs, req.Multipart, c.GetHeader("X-Idempotency-Key"))
+		if err != nil {
+			failService(c, err)
+			return
+		}
+		ok(c, gin.H{"session": session})
+	})
+	r.POST("/resources/direct-upload/:id/complete", func(c *gin.Context) {
+		user, err := currentUser(c, svc)
+		if err != nil {
+			failService(c, err)
+			return
+		}
+		policy, available := loadRuntimePolicy(c, svc)
+		if !available || !enforceRateLimit(c, "resources-direct-upload:"+user.ID, policy.Request.ResourceUploadPerMinute, time.Minute) {
+			return
+		}
+		// 分片直传需要回传 uploadId 才能合成对象；单流直传没有该字段，允许空 body。
+		var completeReq struct {
+			UploadID string `json:"uploadId"`
+		}
+		_ = c.ShouldBindJSON(&completeReq)
+		resource, err := svc.CompleteDirectUpload(user.ID, c.Param("id"), completeReq.UploadID)
+		if err != nil {
+			failService(c, err)
+			return
+		}
+		ok(c, gin.H{"resource": resource})
+	})
+	r.POST("/resources/direct-upload/:id/abort", func(c *gin.Context) {
+		user, err := currentUser(c, svc)
+		if err != nil {
+			failService(c, err)
+			return
+		}
+		var abortReq struct {
+			UploadID string `json:"uploadId"`
+		}
+		_ = c.ShouldBindJSON(&abortReq)
+		if err := svc.AbortDirectUpload(user.ID, c.Param("id"), abortReq.UploadID); err != nil {
+			failService(c, err)
+			return
+		}
+		ok(c, gin.H{"aborted": true})
 	})
 	r.POST("/resources/import", func(c *gin.Context) {
 		user, err := currentUser(c, svc)

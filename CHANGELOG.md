@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.7.2-topapis-r1
+
+- 基线升级到官方 v1.7.2（提交 d77e977a），把我们仓库自有的 25 个提交合并进来，官方功能与我们此前的生产修复同时保留。
+- 新增工作流模板库：前台工作流库（列表、详情预览、一键导入画布、封面与使用指南）、后台模板管理（草稿/发布双态、版本快照与回滚、从画布创建模板、封面裁剪上传）、导入统计与「模板已更新」提示；内置 15 套模板首次访问自动落地。
+- 后端数据库 Schema 升至 78：版本 75 `canvas_workflow_templates` 建模板表，76 `canvas_workflow_versioning` 增加版本快照与导入记录并把可写 `payload_json` 迁到 `draft_json`，77 `canvas_workflow_catalog_metadata` 补草稿简介/使用指南/封面与历史版本回填；版本 78 `resource_cold_backup` 从自有分支顺延接入冷备列。官方已占用 72–74，工作流迁移统一后移，不修改官方既有编号。
+- 合并保留的自有改动：微信服务号扫码登录与 Google OAuth 登录、登录页协议确认；对象存储预签名直传与 S3 分片并发上传；缩略图与 L2/L3 冷备、存量补齐任务；图生图参考图改走 URL 引用；hostupdate 预发布标识按数字比较、OSS delivery 保留现库配置。
+- 升级注意：Schema 58 → 78 跨度较大，升级前必须备份数据库并单独执行 `migrate-schema up`；前后端需同时升级。
+
 ## v1.7.2
 
 - 推广中心：支持邀请链接注册、推广人管理与充值积分返佣；系统设置可选全民推广或指定推广人，并配置返佣比例。
@@ -62,6 +70,108 @@
 - 画布 Agent 步骤卡新增逐步撤销，使用服务端快照回执并拒绝覆盖后续画布编辑；已提交生成任务不可撤销。
 - 后端数据库 Schema 升至 58，新增 Agent 记忆压缩提案及修订记录。升级前备份数据库，并按部署流程执行 `migrate-schema up` / `verify`；不支持通过旧二进制直接回退新 schema。
 - 升级注意：需同时更新 Web 与 Backend；真实模型质量、浏览器端操作及 PostgreSQL 生产迁移未在本次自动化验证中确认。
+## v1.6.8.14-topapis-r2
+
+- 大文件上传提速 2.62 倍：超过 6MB 的素材直传改走 S3 分片并发上传。此前浏览器对单个预签名 PUT 只能开一条 TCP 连接，实测长期稳定在约 0.5MB/s（单连接被拥塞窗口卡住，与总带宽无关）；现改为 5MB 分段、4 段并发，每段独立建连。同一份 14.8MB 素材前后连测：单流 26.21s（0.54MB/s）→ 分片 10.01s（1.41MB/s）。
+- 分片合成由服务端完成：complete 阶段由后端 `ListParts` 自行取回各段 ETag 再合成，不要求浏览器回传。原因是对象存储的 CORS 默认不暴露 `ETag` 响应头，前端读不到该值；若依赖前端回传，功能会在浏览器侧静默失败。
+- 前后端可独立升级：init 增加 `multipart` 声明字段，仅当客户端明确表示支持时才返回分片会话，旧前端仍拿到原来的单流预签名地址。因此前后端可任意顺序发布、可单边回滚。
+- 取消与失败路径补齐：分片会话在 abort 时显式 `AbortMultipartUpload`，避免对象存储残留分片持续计费；单段失败自动重试 2 次，只有整段重试耗尽才整体失败。
+- 修复用户端「测试连接」清空存储配置的问题：该接口与管理端保存共用请求结构，但测试 payload 通常只带连接参数、不带 `delivery` 子结构，按零值合并会把库里已配置的 CDN 与鉴权方式清空，表现为「点一次测试连接，图片就挂」。现改为在绑定前探测原始请求体是否携带该字段，未携带时保留现库值；管理端保存路径同步使用同一标记。
+- CDN 回源放行分片列表请求：此前为兼容 Cloudflare 将 HEAD 改写为 GET 而统一剥离 GET 的 `Authorization` 头，导致依赖头鉴权的 `ListParts` 恒返回 403，分片能传完却无法合成。现仅对带 `uploadId` 的 GET 保留鉴权头，其余读请求维持匿名回源，预签名下载不受影响。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.14-topapis-r1
+
+- 修复版本比较把 r10 判成比 r9 旧、导致更新页面看不到新版本的问题：预发布段按 `.`/`-` 切分后，`r10` 与 `r9` 都不是纯数字，会落到字符串比较，而字典序 `"r10" < "r9"` 成立，于是 `v1.6.8.13-topapis-r10` 被判为旧版本，系统更新页面排序后只显示 r9。此前 r2–r9 都是单个数字，字典序恰好等于数值序，所以问题到 r10 才暴露。
+- 修复方式：新增 `comparePreIdentifier`，对「字母前缀 + 数字后缀」的标识符（如 `r10`/`r9`）先比前缀、再按数值比较数字后缀；纯数字仍按数值比较，其他情况保持字符串比较。同时补 `r10 > r9`、`r100 > r99`、`r2 < r10` 等回归用例。
+- 版本号提升到 `v1.6.8.14`：线上 r9 运行的是旧比较逻辑，它同样会把 `v1.6.8.13-topapis-r11` 判为旧版本。只有提升核心版本号才能让新旧两套逻辑都判定为新版本，保证本次修复可以被安装。
+- 同时包含 r10 的图片编辑 URL 改写修复：声明式插件创建路径为 OpenAI 兼容 `/images/edits`、图片模式、无蒙版、参考图全为公网 URL 时，创建请求改写为 `application/json` + `{"image":"<URL>"}`（多图数组）并清空文件段；method/path/query/headers 不变，异步 create→poll 与响应解析不受影响。hydration 同步对这类插件优先签发公网 URL。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r10
+
+- 修复声明式异步图片编辑插件仍以 multipart 上传参考图的问题：r8/r9 只覆盖手写路径与 `openai-image`/`a6api-image`，而生产实际渠道（`POST /v1/async/images/edits`，Topapis AsyncGW）是独立声明式插件，manifest 声明 `multipart/form-data` + 文件段，宿主只能按声明把参考图读成字节内联上传，请求体因此超过 1 MiB。
+- 新增宿主级通用改写：声明式插件创建路径为 OpenAI 兼容 `/images/edits`、模式为图片、无蒙版、且参考图全部为公网 URL 时，自动把创建请求改写为 `application/json` + `{"image":"<URL>"}`（多图传数组），并清空文件段。method/path/query/headers 保持不变，异步网关的 create→poll 流程与响应解析不受影响。
+- hydration 策略同步扩展：上述声明式图片编辑插件在无蒙版时优先签发对象存储公网 URL，不再把资源读成 Base64 内联；蒙版与本地资源仍走 multipart 字节路径。
+- 新增两个回归测试：URL 参考图断言请求体为 JSON、小于 10 KiB、不含 `data:image/` 或 `base64`；内联参考图断言仍保持 multipart。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r9
+
+- 修复真实生产渠道 `a6api-image` 仍发送超大 multipart 的问题：r8 只覆盖 `openai-image`，而当前 A6API 渠道由独立声明式接口 `a6api-image` 执行，因此仍把参考图下载为字节后上传。现将 `a6api-image` 纳入对象存储 URL hydration，并在插件分流前使用 `POST /v1/images/edits` + `{"image":"https://..."}` 轻量 JSON 合同。
+- A6API 图片结果显式请求 `response_format=url`，避免 `b64_json` 让响应日志膨胀到数 MB。A6API 返回的约 1 小时临时 CF URL 会由后端立即下载并转存到自有资源存储，画布最终只保留 `/api/resources/<id>/file` 与 `resource:<id>`。
+- 新增 A6API 生产同构回归测试：加载官方声明式插件，断言请求小于 10 KiB、不含 Base64，且临时结果 URL 被下载成待持久化图片内容。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r8
+
+- 修复 r7 的 URL 引用分支在生产环境不可达：生产会安装 `openai-images` 官方声明式插件，`runImageTask` 原先在 URL 判断前就被插件分流，导致 r7 新增的 `image: "<URL>"` 逻辑没有执行。现将 OpenAI Images 的无蒙版 URL 快速路径前移到插件分流之前，确保对象存储参考图直接发送轻量 JSON。
+- 锁定上游合同为已实测成功的 `POST /v1/images/edits` + `{"image":"https://..."}`；不再由插件生成不兼容的 `images:[{"image_url":"..."}]`。多图仍使用 `image` 数组；蒙版与本地资源继续使用原 multipart 路径。
+- 新增生产同构回归测试：显式加载官方声明式插件，断言最终请求体仅含 URL、不含 `data:image/` 或 `base64`、不含旧 `images` 字段，且小于 10 KiB。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r7
+
+- 图生图参考图改走 URL 引用，根治大图 524 与慢生成：OpenAI Images 编辑协议（openai-image）在参考图全部带公网 URL 且无蒙版时，改发 JSON {"image":"<URL>"}（多图传数组），由上游自行从 CDN 拉图，请求体从十几 MB 降到几百字节。受控实测（同一张 15.6MB 参考图、同模型同 token）：URL 引用 46 秒成功；multipart 二进制直传被 Cloudflare 524 掐断（127.5s），绕开 CF 直连源站也要 268 秒——222 秒差额即纯上传成本。蒙版编辑仍强制走 multipart 字节路径，不受影响。
+- hydration 层把 openai-image 加入 URL 偏好协议：对象存储资源自动签发上游可读 URL，本地资源仍回退内联，行为向后兼容。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r6
+
+- 修复缩略图与冷备状态互相覆盖的竞态：缩略图任务完成/失败时改用单列更新（UpdateResourceThumbnail）而非整行 SaveResource。此前缩略图异步任务持有启动时的资源快照，整行回写会把冷备任务刚写好的 cold_backup_status=ready 覆盖回空值——生产实测：冷备文件已完整落盘（114MB），但数据库状态字段被清空，导致 L3 兜底判定失灵。冷备侧此前已用单列更新，本次补齐缩略图侧，双向不再踩踏。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。被覆盖的历史状态可由冷备/缩略图回填任务自动修复（本地文件等长即标 ready，幂等）。
+
+## v1.6.8.13-topapis-r5
+
+- 新增冷备存量补齐任务：BackfillColdBackups 分批（每批 50 条、游标分页）为历史媒体资源补建本地冷备副本，限并发 3（视频对象较大，带宽优先线上），单条失败不中断，支持 context 取消。默认关闭，需设置 CANVAS_COLD_BACKFILL=1 开启，CANVAS_COLD_BACKFILL_DELAY 控制启动延迟（默认 60s）。与缩略图回填分开开关，互不影响。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r4
+
+- 修复生成图/任务媒体资源不生成缩略图与冷备的问题：此前只有浏览器直传路径（CompleteDirectUpload）挂了缩略图与冷备钩子，模型生成图（图生图、文生图结果）、任务媒体落盘、URL 导入等经由 storeResource 的路径全部漏挂，导致这些资源在画布/素材列表仍加载原图。现统一在 storeResourceWithWriter 就绪后触发，覆盖所有资源来源。
+- 升级注意：无数据库结构迁移，Schema 保持 v58。
+
+## v1.6.8.13-topapis-r3
+
+- 新增 L2 本地冷备（cold backup）：对象存储资源（s3）在上传确认后异步同步一份到服务器本地数据目录 `{DATA_DIR}/resources/{objectKey}`，与缩略图生成并行执行。写入采用 `.tmp` + `rename` 原子方式，本地已存在等长文件则跳过（幂等），超过 512MB 的对象不备份。这样即使 R2 侧因生命周期策略删除对象，素材仍有本地副本。
+- 新增 L3 CDN 兜底读取：资源分发在 Delivery 为 `cdn`/`origin` 且请求头携带 `X-Canvas-Cold-Fallback: 1` 时，先以 5 秒超时 HEAD 探测 CDN 地址；返回 404/403 或探测失败则改为直接读取本地冷备字节返回（响应头 `X-Canvas-Delivery: cold-backup`），本地也没有副本时仍按原逻辑 302 重定向。正常展示路径不带该请求头，零额外延迟。
+- 新增缩略图存量补齐任务：`BackfillResourceThumbnails` 分批（每批 50 条、游标分页）为历史图片补生成缩略图，限并发 4，单条失败不中断，支持 context 取消。默认关闭，需设置 `CANVAS_THUMBNAIL_BACKFILL=1` 开启，`CANVAS_THUMBNAIL_BACKFILL_DELAY` 控制启动延迟（默认 30s）。
+- `resources` 表新增 `cold_backup_status` 字段（none/ready/failed），Schema 升至 v58。
+- 冷备状态更新改用单列更新（`UpdateResourceColdBackup`）而非整行保存，避免与并行的缩略图任务互相覆盖字段。
+- 升级注意：Schema v58 会自动迁移，仅新增一列。存量图片的缩略图需手动开启 `CANVAS_THUMBNAIL_BACKFILL=1` 跑一次；冷备只对升级后新上传的资源自动同步，历史素材需要时另行批量补同步。
+
+## v1.6.8.13-topapis-r2
+
+- 新增画布展示缩略图（thumbnail variant）：图片资源在上传确认后异步生成 512px JPEG 缩略图并写入对象存储，`variant=thumbnail` 请求真正返回缩略图而非回落原图。此前前端画布/素材列表请求缩略图但后端恒定回落原图，打开含上百张图的画布需下载数百 MB 原图。实测 20 张 8–23MB 原图生成缩略图后合计仅 1.06MB（平均 54KB/张），字节量降至 0.45%。
+- 缩略图对象键由原 ObjectKey 派生（同目录 `.thumb.jpg` 后缀），不新增数据库字段之外的路径状态，删除资源目录时自动一并清理；生成失败只标记 `failed` 并回落原图，不影响上传与展示主流程。
+- 资源访问合同新增 `thumbnailWidth`/`thumbnailHeight` 字段，供前端预留占位避免布局抖动。
+- 分发层 `ResolveAccess` 的 `Revision` 纳入 `thumbnailStatus`，缩略图从无到有时会刷新前端缓存的访问地址。
+- 升级注意：无数据库结构迁移（`resources` 表已有 thumbnail* 字段，Schema 保持 v57）。缩略图只对升级后新上传的图片生效；存量图片需重传或另行批量补齐。
+
+## v1.6.8.13-topapis-r1
+
+- 修复对象存储直传在浏览器端被 CORS 拦截导致上传失败：直传 PUT 改用独立 axios 实例（`withCredentials: false`），不再携带站点 Cookie，并统一 `Accept: */*`，避免 `Accept` 进入预检请求头触发失败。此前直传必然失败并回退 multipart，大文件上传耗时数十秒。
+- 直传失败时主动调用 `abort` 释放 pending 记录，并让回退链路换用新幂等键，修复「直传残留 pending → 回退 multipart 命中同一 pending → 持续 409」的上传死锁。
+- 升级注意：无数据库结构迁移，Schema 保持 v57；对象存储 CORS 需允许 `accept` 请求头。
+
+## v1.6.8.12-topapis-r3
+
+- 新增对象存储预签名直传（direct upload）：浏览器先向后端申请签名 PUT URL，再直传 S3 兼容存储（含 Cloudflare R2），最后回执确认落库。文件字节全程不经过应用服务器，绕开反向代理的体积与超时限制，修复大素材上传时客户端 15 秒软超时（`CanvasSyncPendingError`）与素材元数据未落库导致的 `GET /api/assets/:id` 404 循环重试。
+- 直传仅支持 S3 兼容 provider；未配置对象存储或 provider 不匹配时后端明确拒绝，前端自动回退原有分片/multipart 链路，行为向后兼容。
+- 直传上限 512MB，URL 有效期 30 分钟；`complete` 阶段以 HEAD 校验对象已写入且大小一致，避免幽灵资源占用配额。
+- 升级注意：无数据库结构迁移，Schema 保持 v57。
+
+## v1.6.8.12-topapis-r2
+
+- 登录页第三方登录（Google / Linux.do）增加服务协议确认：未同意协议时先弹出协议弹窗，勾选同意后携带 acceptedTerms 继续登录，修复新用户第三方注册被「请先同意服务协议」拦截的问题。
+
+## v1.6.8.12-topapis-r1
+
+- 新增微信服务号「关注即登录」：临时带参二维码、access_token 进程内串行缓存、subscribe/SCAN 事件回调、扫码确认后建会话。
+- 新增 Google OAuth 2.0 登录：id_token 完整验签（RS256 / iss / aud / exp / email_verified），拒绝 alg=none 与 HS256 混淆。
+- 扫码确认态借用 OAuthState.NextPath 存储，不新增数据库列，避免与上游后续 schema 版本校验冲突。
+- 认证响应支持多第三方身份（linuxdo / google / wechat），管理后台新增独立第三方登录配置面板。
+- 升级注意：数据库 Schema 保持 v57，无需迁移；服务器需将 CANVAS_UPDATER_REPOSITORY 指向本仓库，否则在线升级会被上游镜像覆盖。
 
 ## v1.6.8.12
 

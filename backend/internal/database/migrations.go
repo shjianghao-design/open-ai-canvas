@@ -12,7 +12,7 @@ import (
 	"gorm.io/gorm"
 )
 
-const CurrentSchemaVersion int64 = 77
+const CurrentSchemaVersion int64 = 78
 
 const baselineSchemaChecksum = "sha256:open-ai-canvas-schema-v1-20260830"
 const schemaMigrationAppliedAtIndexChecksum = "sha256:schema-migrations-applied-at-index-v2-20260830"
@@ -284,6 +284,11 @@ var schemaMigrations = []migration{
 		return tx.Exec(`UPDATE canvas_workflow_versions
 			SET description = COALESCE(NULLIF(description, ''), (SELECT description FROM canvas_workflow_templates WHERE canvas_workflow_templates.id = canvas_workflow_versions.template_id))
 			WHERE COALESCE(description, '') = ''`).Error
+	}},
+	// 冷备：官方线已用到 77，本项从自有分支前移，编号顺延到 78。
+	{version: 78, name: "resource_cold_backup", checksum: "sha256:resource-cold-backup-v78-20261022", apply: func(tx *gorm.DB) error {
+		// AutoMigrate 只补新列，不改动既有列定义；resources 表新增 cold_backup_status。
+		return tx.AutoMigrate(&model.Resource{})
 	}},
 }
 
