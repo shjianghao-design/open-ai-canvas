@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"regexp"
+	"strings"
 	"time"
 
 	"yingce/backend/internal/kernel"
@@ -12,7 +14,7 @@ import (
 	"gorm.io/gorm"
 )
 
-const CurrentSchemaVersion int64 = 78
+const CurrentSchemaVersion int64 = 79
 
 const baselineSchemaChecksum = "sha256:open-ai-canvas-schema-v1-20260830"
 const schemaMigrationAppliedAtIndexChecksum = "sha256:schema-migrations-applied-at-index-v2-20260830"
@@ -290,6 +292,62 @@ var schemaMigrations = []migration{
 		// AutoMigrate 只补新列，不改动既有列定义；resources 表新增 cold_backup_status。
 		return tx.AutoMigrate(&model.Resource{})
 	}},
+	// 内置模板的示例素材从 PNG 换成 WebP（251MB -> 15.8MB），代码里的新路径只对
+	// 全新安装生效：存量库的 revision 已 >1，ensureOneBuiltinCanvasWorkflow 出于
+	// 保护管理员改动不会再覆盖，模板详情会一直指向已不存在的 .png 而整片空白。
+	// 这里只做机械的路径改写，不改动任何提示词、参数或布局。
+	{version: 79, name: "canvas_workflow_sample_assets_webp", checksum: "sha256:canvas-workflow-sample-assets-webp-v79-20261028", apply: migrateCanvasWorkflowSampleAssetsToWebP},
+}
+
+// canvasWorkflowSamplePNGRef 匹配内置模板里指向示例素材的 PNG 静态路径。
+var canvasWorkflowSamplePNGRef = regexp.MustCompile(`(/workflow-samples-reference[0-9]*/[^"]*?)\.png"`)
+
+// canvasWorkflowSamplePNGMime 匹配示例素材节点的 MIME 字段。
+// 库里既有 json.Marshal 产出的紧凑格式，也有编辑器落库的带空格格式，两种都要覆盖。
+var canvasWorkflowSamplePNGMime = regexp.MustCompile(`("mimeType"\s*:\s*)"image/png"`)
+
+// rewriteCanvasWorkflowSampleAssets 就地把示例素材的 PNG 路径与 MIME 换成 WebP。
+func rewriteCanvasWorkflowSampleAssets(raw string) string {
+	if !strings.Contains(raw, "/workflow-samples-reference") {
+		return raw
+	}
+	out := canvasWorkflowSamplePNGRef.ReplaceAllString(raw, `$1.webp"`)
+	// 这些载荷里的 image/png 只对应示例素材，路径改了 MIME 必须同步改。
+	out = canvasWorkflowSamplePNGMime.ReplaceAllString(out, `$1"image/webp"`)
+	return out
+}
+
+func migrateCanvasWorkflowSampleAssetsToWebP(tx *gorm.DB) error {
+	var templates []model.CanvasWorkflowTemplate
+	if err := tx.Select("id", "draft_json").Find(&templates).Error; err != nil {
+		return err
+	}
+	for _, item := range templates {
+		updated := rewriteCanvasWorkflowSampleAssets(item.DraftJSON)
+		if updated == item.DraftJSON {
+			continue
+		}
+		if err := tx.Model(&model.CanvasWorkflowTemplate{}).Where("id = ?", item.ID).
+			Update("draft_json", updated).Error; err != nil {
+			return err
+		}
+	}
+
+	var versions []model.CanvasWorkflowVersion
+	if err := tx.Select("id", "payload_json").Find(&versions).Error; err != nil {
+		return err
+	}
+	for _, item := range versions {
+		updated := rewriteCanvasWorkflowSampleAssets(item.PayloadJSON)
+		if updated == item.PayloadJSON {
+			continue
+		}
+		if err := tx.Model(&model.CanvasWorkflowVersion{}).Where("id = ?", item.ID).
+			Update("payload_json", updated).Error; err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // migrateReferralCenter 增加推广人标记和推广码、绑定、返佣三张表；旧用户默认不是推广人。

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.7.2-topapis-r3
+
+- 修复升级后模板图片依旧空白：`v1.7.2-topapis-r2` 把示例素材改成 WebP，但内置模板在库里已存在且 `revision > 1`，出于「保护管理员改动」不会再被代码内容覆盖，存量库的模板详情仍指向已不存在的 `.png`。Schema 79 `canvas_workflow_sample_assets_webp` 就地把模板草稿与版本快照里的示例素材路径和 `mimeType` 改为 WebP，只改机械路径，不动提示词、参数与布局；迁移幂等，可重复执行。
+- 升级注意：Schema 从 78 升到 79。若从 `v1.6.8.x`（自有编号：58 冷备、59–61 工作流）直接升级，必须先把这 4 条历史记录对账到新编号（58→78、59→75、60→76、61→77，并同步 `checksum`），否则迁移器会以「名称/校验和不一致」拒绝启动；对账后 `migrate-schema up` 会补齐官方的 58–74。
+- 运维注意：Schema 变更后需重启 pgbouncer（`docker restart canvas-pgbouncer`）再重启 Backend，否则连接池里的旧执行计划会报 `cached plan must not change result type`，表现为所有需登录的接口 401。
+
 ## v1.7.2-topapis-r2
 
 - 内置工作流模板的配图与视频全部恢复显示：12 个模板共 129 处素材引用，实物文件此前从未进入仓库与镜像，模板卡片、列表封面和只读详情因此整片空白。本次把 126 个素材纳入仓库，并按 Web 展示规格重新编码（251MB → 15.8MB）：图片转 WebP（长边上限 1920、保留透明通道），视频转 H.264 并开启 faststart；模板 JSON 的路径与 `mimeType` 同步更新。
