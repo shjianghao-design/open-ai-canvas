@@ -1,0 +1,470 @@
+{
+  "id": "builtin-perfect-action-transfer",
+  "slug": "perfect-action-transfer",
+  "name": "视频完美动作迁移",
+  "description": "按参考画布复刻：12 个节点、6 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "perfect-action-transfer",
+    "title": "视频完美动作迁移",
+    "nodes": [
+      {
+        "id": "perfect-action-transfer-node-001",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 95.5,
+          "y": 80.0
+        },
+        "width": 262.0,
+        "height": 70.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539540994",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "导入参考视频"
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-002",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 650.511719,
+          "y": 94.636277
+        },
+        "width": 376.0,
+        "height": 70.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539540995",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "反推视频分镜提示词"
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-003",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 643.928334,
+          "y": 498.46669799999995
+        },
+        "width": 452.0,
+        "height": 70.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539540996",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "提取原视频黑白深度视频"
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-004",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1285.371094,
+          "y": 94.636277
+        },
+        "width": 300.0,
+        "height": 70.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539540997",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "修改分镜提示词"
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-005",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1315.371094,
+          "y": 518.999938
+        },
+        "width": 224.0,
+        "height": 70.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539540998",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传人物图"
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-006",
+        "type": "image",
+        "title": "00_00001_ockkl_1789107771.png",
+        "position": {
+          "x": 1315.371094,
+          "y": 608.500493
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539540999",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/perfect-action-transfer/-09111343.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1440.0,
+          "naturalHeight": 1920.0
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-007",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 1315.371094,
+          "y": 173.00737100000003
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539541000",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "把文本中的模特，产品服装描述，换成@图片1 ",
+          "composerContent": "把文本中的模特，产品服装描述，换成@图片1 ",
+          "workflowOriginalPrompt": "把文本中的模特，产品服装描述，换成@图片1 ",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "<div>时尚穿搭街拍风格短视频，时长约10秒，户外自然光，明亮柔和，背景为米黄色文化砖墙搭配黑色玻璃门头店铺，门侧挂金色金属招牌，地面为灰色石砖铺装广场。</div><div><br></div><div>0-2秒：平视视角，近景特写开场，聚焦人物上身随后镜头手持快速后拉，景别由近景过渡到中景，展现人物全貌，年轻亚洲女性黑色长直发披肩，佩戴银色圆环耳环，腰系黑色细皮带并垂坠银色金属链条装饰，下穿浅蓝色水洗高腰阔腿牛仔裤，脚穿棕色方头皮鞋，面带浅笑迎面站立，发丝微飘。</div><div><br></div><div>2-4秒：镜头继续后退拉至全景，平视略低机位，人物迈走秀步伐向前行走，中途轻盈转身甩动长直发，双臂自然摆动，手提黑色皮包，表情自信微笑，阔腿牛仔裤裤脚随步伐摆动，砖墙与黑色门面完整入画，画面带轻微运动模糊。</div><div><br></div><div>4-5秒：切中近景跟随拍摄，人物走近镜头，单手叉腰，嘴角上扬微笑，黑色长直发被风吹起，动感模糊增强节奏。</div><div><br></div><div>5-6秒：近景侧拍环绕，人物侧身回眸看向镜头，展示手拎黑色皮革手提包与黑色毛茸挂饰细节，腰间银色链条皮带装饰入画，眼神柔和含笑。</div><div><br></div><div>6-8秒：镜头拉回全景固定机位，人物原地旋转一圈，长直发飞扬，手提包随身体摆动，阔腿裤摆飘逸，背身时可见背景金色招牌文字，随后转回正面继续迈步。</div><div><br></div><div>8-10秒：中景缓慢推进，人物抬手轻撩耳边发丝并整理针织衫堆堆领口，步伐从容，表情自然甜美，最终定格半身中景。</div><div><br></div><div>整体运镜以手持跟随、后退拉镜、推拉变焦与环绕侧拍结合，转场带甩镜模糊感，节奏轻快流畅；画面色调柔和干净，突出服装质感、配饰细节与人物身材比例，呈现韩系时尚穿搭展示氛围。</div>",
+          "workflowInputs": [
+            {
+              "nodeId": "perfect-action-transfer-node-008",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "perfect-action-transfer-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-008",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 718.511719,
+          "y": 173.00737100000003
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539541001",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "反推视频中的时间线，镜头拍摄视角，景别，运镜，人物动作表情，画面内容，不要表格，控制字数在2000字之内\t\t\t\t",
+          "composerContent": "反推视频中的时间线，镜头拍摄视角，景别，运镜，人物动作表情，画面内容，不要表格，控制字数在2000字之内\t\t\t\t",
+          "workflowOriginalPrompt": "反推视频中的时间线，镜头拍摄视角，景别，运镜，人物动作表情，画面内容，不要表格，控制字数在2000字之内\t\t\t\t",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "<div>时尚穿搭街拍风格短视频，时长约10秒，户外自然光，明亮柔和，背景为米黄色文化砖墙搭配黑色玻璃门头店铺，门侧挂金色金属招牌，地面为灰色石砖铺装广场。</div><div><br></div><div>0-2秒：平视视角，近景特写开场，聚焦人物上身灰色粗花呢军装风双排扣短外套的金属圆扣细节与肩前棕色金链包带；随后镜头手持快速后拉，景别由近景过渡到中景，展现人物全貌，年轻女性棕色长卷发披肩，头顶架黑色墨镜，内搭白色圆领打底衫，下穿棕色西装短裤，肩背棕色麂皮菱格链条包，面带浅笑迎面站立，发丝微飘。</div><div><br></div><div>2-4秒：镜头继续后退拉至全景，平视略低机位，人物迈走秀步伐向前行走，中途轻盈转身甩动长发，双臂自然摆动，表情自信微笑，脚穿棕色堆堆皮靴，砖墙与黑色门面完整入画，画面带轻微运动模糊。</div><div><br></div><div>4-5秒：切中近景跟随拍摄，人物戴上黑色墨镜走近镜头，单手叉腰，嘴角上扬微笑，长发被风吹起，动感模糊增强节奏。</div><div><br></div><div>5-6秒：近景侧拍环绕，人物侧身回眸看向镜头，展示肩背棕色菱格纹金属双C链条包细节，手中捏着取下的墨镜，眼神柔和含笑。</div><div><br></div><div>6-8秒：镜头拉回全景固定机位，人物原地旋转一圈，长发飞扬，链条包随身体摆动，背身时可见背景金色招牌文字，随后转回正面继续迈步。</div><div><br></div><div>8-10秒：中景缓慢推进，人物头顶墨镜、手执墨镜走近，抬手轻整理外套衣襟，步伐从容，表情自然甜美，最终定格半身中景。</div><div><br></div><div>整体运镜以手持跟随、后退拉镜、推拉变焦与环绕侧拍结合，转场带甩镜模糊感，节奏轻快流畅；画面色调柔和干净，突出服装质感、配饰细节与人物身材比例，呈现韩系时尚穿搭展示氛围。</div>",
+          "workflowInputs": [
+            {
+              "nodeId": "perfect-action-transfer-node-009",
+              "kind": "video",
+              "slot": "input_video"
+            }
+          ]
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-009",
+        "type": "video",
+        "title": "解析参考视频.mp4",
+        "position": {
+          "x": 80.0,
+          "y": 213.12196800000004
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539541002",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/perfect-action-transfer/-09111414.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 2160.0,
+          "naturalHeight": 3840.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/perfect-action-transfer/-09111414.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-010",
+        "type": "video",
+        "title": "9月5日 (1).mov",
+        "position": {
+          "x": 830.2881669999999,
+          "y": 608.500493
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539541003",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/perfect-action-transfer/-09111414-2.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 2160.0,
+          "naturalHeight": 3840.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/perfect-action-transfer/-09111414-2.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-011",
+        "type": "video",
+        "title": "视频生成",
+        "position": {
+          "x": 1839.9962269999999,
+          "y": 173.00737100000003
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539541004",
+            "type": "video",
+            "taskType": "VIDEO_TASK",
+            "modelCode": "SEEDANCE_2_5",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/perfect-action-transfer/-09111414.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/perfect-action-transfer/-09111414.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "根据文本生成视频，人物的动作、运镜参考@视频1 人物和服装参考：@图片1 ",
+          "composerContent": "根据文本生成视频，人物的动作、运镜参考@视频1 人物和服装参考：@图片1 ",
+          "workflowOriginalPrompt": "根据文本生成视频，人物的动作、运镜参考@视频1 人物和服装参考：@图片1 ",
+          "generationMode": "video",
+          "model": "seedance-2.5",
+          "size": "9:16",
+          "quality": "480p",
+          "count": "1",
+          "seconds": "11",
+          "workflowInputs": [
+            {
+              "nodeId": "perfect-action-transfer-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "perfect-action-transfer-node-007",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "perfect-action-transfer-node-010",
+              "kind": "video",
+              "slot": "reference_video"
+            }
+          ]
+        }
+      },
+      {
+        "id": "perfect-action-transfer-node-012",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 471.411509,
+          "y": 579.344417
+        },
+        "width": 320.0,
+        "height": 306.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "h0PwPnscjMiYzbr0f-LS8rtO",
+            "nodeId": "node-2114968605539541005",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/perfect-action-transfer/-09111346.png",
+          "mimeType": "image/png",
+          "naturalWidth": 627.0,
+          "naturalHeight": 600.0
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "perfect-action-transfer-edge-001",
+        "fromNodeId": "perfect-action-transfer-node-008",
+        "toNodeId": "perfect-action-transfer-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "perfect-action-transfer-edge-002",
+        "fromNodeId": "perfect-action-transfer-node-006",
+        "toNodeId": "perfect-action-transfer-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "perfect-action-transfer-edge-003",
+        "fromNodeId": "perfect-action-transfer-node-009",
+        "toNodeId": "perfect-action-transfer-node-008",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "perfect-action-transfer-edge-004",
+        "fromNodeId": "perfect-action-transfer-node-006",
+        "toNodeId": "perfect-action-transfer-node-011",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "perfect-action-transfer-edge-005",
+        "fromNodeId": "perfect-action-transfer-node-007",
+        "toNodeId": "perfect-action-transfer-node-011",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "perfect-action-transfer-edge-006",
+        "fromNodeId": "perfect-action-transfer-node-010",
+        "toNodeId": "perfect-action-transfer-node-011",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

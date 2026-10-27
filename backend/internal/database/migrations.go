@@ -6,12 +6,13 @@ import (
 	"fmt"
 	"time"
 
+	"yingce/backend/internal/kernel"
 	"yingce/backend/internal/model"
 
 	"gorm.io/gorm"
 )
 
-const CurrentSchemaVersion int64 = 58
+const CurrentSchemaVersion int64 = 61
 
 const baselineSchemaChecksum = "sha256:open-ai-canvas-schema-v1-20260830"
 const schemaMigrationAppliedAtIndexChecksum = "sha256:schema-migrations-applied-at-index-v2-20260830"
@@ -201,6 +202,101 @@ var schemaMigrations = []migration{
 		// AutoMigrate 只补新列，不改动既有列定义；resources 表新增 cold_backup_status。
 		return tx.AutoMigrate(&model.Resource{})
 	}},
+	{version: 59, name: "canvas_workflow_templates", checksum: "sha256:canvas-workflow-templates-v59-20261026", apply: migrateCanvasWorkflowTemplates},
+	{version: 60, name: "canvas_workflow_versioning", checksum: "sha256:canvas-workflow-versioning-v60-20261026", apply: migrateCanvasWorkflowVersioning},
+	{version: 61, name: "canvas_workflow_catalog_metadata", checksum: "sha256:canvas-workflow-catalog-metadata-v61-20261027", apply: func(tx *gorm.DB) error {
+		if err := tx.AutoMigrate(&model.CanvasWorkflowTemplate{}, &model.CanvasWorkflowVersion{}, &model.CanvasWorkflowCoverDraft{}); err != nil {
+			return err
+		}
+		if err := tx.Exec("UPDATE canvas_workflow_templates SET draft_description = description WHERE COALESCE(draft_description, '') = '' AND COALESCE(description, '') <> ''").Error; err != nil {
+			return err
+		}
+		return tx.Exec(`UPDATE canvas_workflow_versions
+			SET description = COALESCE(NULLIF(description, ''), (SELECT description FROM canvas_workflow_templates WHERE canvas_workflow_templates.id = canvas_workflow_versions.template_id))
+			WHERE COALESCE(description, '') = ''`).Error
+	}},
+}
+
+// migrateCanvasWorkflowTemplates 单独建表，不能依赖 version 1 的 AutoMigrate：
+// 已上线数据库的 version 1 早已记录为完成，新增模型不会在那里补建，工作流接口会报
+// relation does not exist。独立版本让旧库升级时也能拿到这张表。
+func migrateCanvasWorkflowTemplates(tx *gorm.DB) error {
+	return tx.AutoMigrate(&model.CanvasWorkflowTemplate{})
+}
+
+// migrateCanvasWorkflowVersioning 引入草稿/发布双态、版本快照与导入统计。
+//
+// 升级要点：
+//   - 旧表只有 payload_json 一个可写区，升级时把它迁移到 draft_json，
+//     并生成一条 v1 版本记录，保证已发布模板不丢内容。
+//   - enabled 默认 true，避免升级后所有模板突然消失。
+func migrateCanvasWorkflowVersioning(tx *gorm.DB) error {
+	if err := tx.AutoMigrate(&model.CanvasWorkflowTemplate{}, &model.CanvasWorkflowVersion{}, &model.CanvasWorkflowImport{}); err != nil {
+		return err
+	}
+	// 旧数据回填：payload_json -> draft_json + 一条 v1 快照。
+	// 旧列已从模型移除，这里用原生 SQL 读取，避免依赖已删除的结构体字段。
+	type legacyRow struct {
+		ID        string
+		Slug      string
+		Published bool
+		Payload   string
+	}
+	var legacy []legacyRow
+	if tx.Migrator().HasColumn("canvas_workflow_templates", "payload_json") {
+		if err := tx.Raw("SELECT id, slug, published, COALESCE(payload_json, '') AS payload FROM canvas_workflow_templates WHERE COALESCE(draft_json, '') = '' AND COALESCE(payload_json, '') <> ''").Scan(&legacy).Error; err != nil {
+			return err
+		}
+	}
+	for index := range legacy {
+		item := legacy[index]
+		payload := item.Payload
+		if err := tx.Model(&model.CanvasWorkflowTemplate{}).Where("id = ?", item.ID).Updates(map[string]any{
+			"draft_json": payload,
+			"enabled":    true,
+			"revision":   1,
+		}).Error; err != nil {
+			return err
+		}
+		if !item.Published {
+			continue
+		}
+		var existing int64
+		if err := tx.Model(&model.CanvasWorkflowVersion{}).Where("template_id = ?", item.ID).Count(&existing).Error; err != nil {
+			return err
+		}
+		if existing > 0 {
+			continue
+		}
+		version := model.CanvasWorkflowVersion{
+			ID:          kernel.NewID(),
+			TemplateID:  item.ID,
+			Version:     1,
+			PayloadJSON: payload,
+			NodeCount:   canvasWorkflowNodeCount(payload),
+			CreatedAt:   time.Now(),
+		}
+		if err := tx.Create(&version).Error; err != nil {
+			return err
+		}
+		if err := tx.Model(&model.CanvasWorkflowTemplate{}).Where("id = ?", item.ID).Updates(map[string]any{
+			"latest_version_id": version.ID,
+			"version":           1,
+		}).Error; err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func canvasWorkflowNodeCount(payload string) int {
+	var document struct {
+		Nodes []any `json:"nodes"`
+	}
+	if err := json.Unmarshal([]byte(payload), &document); err != nil {
+		return 0
+	}
+	return len(document.Nodes)
 }
 
 func migratePrefixedIDSequenceReconcile(tx *gorm.DB) error {

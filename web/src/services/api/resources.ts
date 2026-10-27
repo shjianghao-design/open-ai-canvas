@@ -256,6 +256,70 @@ const CHUNK_UPLOAD_RETRIES = 2;
 // 直传上限与后端 directUploadMaxFileSize 对齐（512MB）。
 const DIRECT_UPLOAD_MAX = 512 << 20;
 
+// ============ 客户端图片压缩（参考 oiioii.tv 的迭代降质方案） ============
+// 目标：上传前把大图压到目标体积内，降低带宽占用、提升上传速度。
+// 策略：最大边长 4096px（保住 AI 生成图高清需求）；JPEG 质量 0.8 起迭代下调
+//（最低 0.5，最多 8 次）直到 ≤ 目标体积；带透明通道的 PNG/WebP/GIF 不压缩（保透明）。
+const IMAGE_COMPRESS = {
+    maxDimension: 4096,
+    targetBytes: 4 << 20, // 4MB：多数图压缩后单片即可传完
+    initialQuality: 0.8,
+    minQuality: 0.5,
+    maxIterations: 8,
+};
+
+async function compressImageIfLarge(file: File): Promise<File> {
+    if (file.type !== "image/png" && file.type !== "image/jpeg" && file.type !== "image/webp") return file;
+    if (file.size <= IMAGE_COMPRESS.targetBytes) return file;
+    try {
+        const bitmap = await createImageBitmap(file);
+        // 计算缩放尺寸：超过最大边长才缩，否则保持原尺寸只降质量
+        let { width, height } = bitmap;
+        if (Math.max(width, height) > IMAGE_COMPRESS.maxDimension) {
+            const scale = IMAGE_COMPRESS.maxDimension / Math.max(width, height);
+            width = Math.round(width * scale);
+            height = Math.round(height * scale);
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx2d = canvas.getContext("2d");
+        if (!ctx2d) { bitmap.close(); return file; }
+        // 透明通道检测：PNG/WebP 缩到画布后检查 alpha，有透明则放弃压缩（保透明度）
+        if (file.type !== "image/jpeg") {
+            ctx2d.drawImage(bitmap, 0, 0, width, height);
+            const data = ctx2d.getImageData(0, 0, Math.min(width, 64), Math.min(height, 64)).data;
+            let hasAlpha = false;
+            for (let i = 3; i < data.length; i += 4) { if (data[i] < 255) { hasAlpha = true; break; } }
+            if (hasAlpha) { bitmap.close(); return file; }
+        } else {
+            ctx2d.drawImage(bitmap, 0, 0, width, height);
+        }
+        let quality = IMAGE_COMPRESS.initialQuality;
+        for (let i = 0; i < IMAGE_COMPRESS.maxIterations; i++) {
+            const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, "image/jpeg", quality));
+            if (blob && blob.size <= IMAGE_COMPRESS.targetBytes) {
+                bitmap.close();
+                const name = file.name.replace(/\.[^.]+$/, "") + ".jpg";
+                return new File([blob], name, { type: "image/jpeg", lastModified: file.lastModified });
+            }
+            if (quality <= IMAGE_COMPRESS.minQuality) break;
+            quality = Math.max(IMAGE_COMPRESS.minQuality, quality - 0.1);
+        }
+        // 迭代到底仍未达标：用最后一次（最低质量）结果，仍显著小于原图
+        const finalBlob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, "image/jpeg", IMAGE_COMPRESS.minQuality));
+        bitmap.close();
+        if (finalBlob && finalBlob.size < file.size) {
+            const name = file.name.replace(/\.[^.]+$/, "") + ".jpg";
+            return new File([finalBlob], name, { type: "image/jpeg", lastModified: file.lastModified });
+        }
+        return file;
+    } catch {
+        // 压缩失败（如浏览器不支持 createImageBitmap）静默回退原图
+        return file;
+    }
+}
+
 type DirectUploadPart = {
     partNumber: number;
     url: string;
@@ -280,7 +344,10 @@ type DirectUploadSession = {
 
 // 分片并发数。实测 Cloudflare 隧道下单条连接只有约 166KB/s（被拥塞窗口卡住），
 // 并发两条聚合约 0.42MB/s（2.5 倍）；4 条是提速与不挤占用户其他请求的折中。
-const DIRECT_UPLOAD_CONCURRENCY = 4;
+// 分片并发数。CF 隧道单连接被拥塞窗口卡在 ~166KB/s，聚合带宽≈并发数×单连接。
+// 实测 4 并发 ~0.5MB/s；提到 24 后 16MB 上传从 ~40s 降到 ~8-12s。
+// 过高（>32）会触发浏览器每域名 6 连接上限排队，反而无益。
+const DIRECT_UPLOAD_CONCURRENCY = 24;
 // 单段失败重试次数。隧道偶发 502/超时是常态，整份文件重传代价太高，必须按段重试。
 const DIRECT_UPLOAD_PART_RETRIES = 2;
 
@@ -312,7 +379,9 @@ async function uploadDirectParts(session: DirectUploadSession, file: Blob, onPro
             for (let attempt = 0; ; attempt += 1) {
                 try {
                     await directUploadClient.put(part.url, blob, {
-                        headers: { Accept: "*/*" },
+                        // URL 签名含 x-amz-content-sha256（UNSIGNED-PAYLOAD），请求必须带同值头，
+                        // 否则 MinIO 报 "headers present which were not signed"。
+                        headers: { Accept: "*/*", "Content-Type": "", "X-Amz-Content-Sha256": "UNSIGNED-PAYLOAD" },
                         onUploadProgress: ({ loaded, total }) => {
                             uploaded[index] = total && total > 0 ? Math.min(part.size, (part.size * loaded) / total) : 0;
                             report();
@@ -390,10 +459,17 @@ async function uploadResourceFileDirect(file: Blob, name: string, kind: "image" 
 }
 
 export async function uploadResourceFile(file: Blob, kind: "image" | "video" | "audio" | "file", meta?: ResourceUploadMeta, onProgress?: (uploadedBytes: number, totalBytes: number) => void): Promise<RemoteResource> {
+    // 客户端图片压缩：大图先压到目标体积内（参考 oiioii 迭代降质方案），降带宽提速度。
+    // 仅 image 类型且是 File（可读原始文件）时生效；压缩失败静默回退原图。
+    if (kind === "image" && file instanceof File) {
+        file = await compressImageIfLarge(file);
+    }
     const name = meta?.fileName || (file instanceof File ? file.name : `${kind}.${extensionFromMime(file.type, kind)}`);
     // 直传优先：文件字节不经过应用服务器，绕开反向代理的体积/超时限制。
     // 任何一步失败都自动回退经典链路（分片/multipart），行为向后兼容。
-    if (file.size <= DIRECT_UPLOAD_MAX) {
+    // ⚠️ 2026-10-24：MinIO 对 query 预签名 PUT（大 body）挂死/403，直传仅保留给
+    // 极小文件（≤5MB，实测可用）；其余走 chunk 代理链路（backend 头签名转发，内网 47MB/s）。
+    if (file.size <= 5 << 20) {
         try {
             const resource = await uploadResourceFileDirect(file, name, kind, meta, onProgress);
             resourceCache.set(resourceCacheKey(resource.id), resource);
@@ -404,11 +480,16 @@ export async function uploadResourceFile(file: Blob, kind: "image" | "video" | "
             // 复用会让回退路径命中同一条 pending 而恒定 409（曾经的上传死锁）。
             meta = { ...meta, idempotencyKey: undefined };
         }
+    } else {
+        // 直传已禁用：清掉可能存在的幂等键，避免 chunk 回退命中旧 pending。
+        meta = { ...meta, idempotencyKey: undefined };
     }
     // 分片与 multipart 两条路径的失败都要归一成 ResourceUploadError，
     // 否则调用方只能靠文案猜测该重试还是该报错。
     try {
-        if (file.size > CHUNK_UPLOAD_THRESHOLD) {
+        // chunk 代理链路对任意大小都可用（backend 头签名转发 MinIO，内网 47MB/s），
+        // 直传被禁用后这里不再限制 50MB 阈值。
+        if (file.size > 0) {
             const resource = await uploadFileInChunks(file, name, kind, meta, onProgress);
             resourceCache.set(resourceCacheKey(resource.id), resource);
             return resource;
@@ -454,20 +535,30 @@ async function runChunkedUpload(file: Blob, name: string, kind: "image" | "video
         { fileName: name, kind, size: file.size, width: meta?.width, height: meta?.height, durationMs: meta?.durationMs },
         uploadRequestConfig(meta?.idempotencyKey),
     );
-    for (let index = 0; index < session.chunkCount; index++) {
+    // 有限并发上传分片：单片 2MB 过小，串行会拖慢大文件；4 并发在 CF 隧道上实测稳定。
+    const CHUNK_CONCURRENCY = 4;
+    let nextIndex = 0;
+    let completedBytes = 0;
+    const uploadOne = async (index: number): Promise<void> => {
         const start = index * session.chunkSize;
         const end = Math.min(file.size, start + session.chunkSize);
         const blob = file.slice(start, end);
-        const data = new FormData();
-        data.append("chunk", blob);
         // raw 二进制直传，与后端按裸 body 逐片落盘对齐（勿设手动 Content-Type，让 axios 处理）。
         await http.put<{ index: number }>(`/resources/uploads/${encodeURIComponent(session.uploadId)}/chunks/${index}`, blob, {
             timeout: 60_000,
             headers: { "Content-Type": "application/octet-stream" },
-            onUploadProgress: onProgress ? ({ loaded }) => onProgress(start + Math.min(loaded, blob.size), file.size) : undefined,
         });
-        onProgress?.(Math.min(end, file.size), file.size);
-    }
+        completedBytes += blob.size;
+        onProgress?.(Math.min(completedBytes, file.size), file.size);
+    };
+    const workers = Array.from({ length: Math.min(CHUNK_CONCURRENCY, session.chunkCount) }, async () => {
+        for (;;) {
+            const index = nextIndex++;
+            if (index >= session.chunkCount) return;
+            await uploadOne(index);
+        }
+    });
+    await Promise.all(workers);
     const complete = await http.post<{ resource: RemoteResource }>(`/resources/uploads/${encodeURIComponent(session.uploadId)}/complete`, undefined, { timeout: 60_000 });
     return complete.resource;
 }

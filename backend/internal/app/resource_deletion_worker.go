@@ -19,6 +19,7 @@ func (s *Service) startResourceDeletionWorker(ctx context.Context) {
 	s.runWorkerLoop(func(ctx context.Context) {
 		s.drainResourceDeletionJobs(32)
 		s.cleanupStaleAnnouncementImageDrafts()
+		s.cleanupStaleCanvasWorkflowCoverDrafts()
 		s.cleanupExpiredArchivedAssets()
 		s.cleanupDetachedResources()
 		ticker := time.NewTicker(15 * time.Second)
@@ -32,6 +33,7 @@ func (s *Service) startResourceDeletionWorker(ctx context.Context) {
 				s.drainResourceDeletionJobs(32)
 				if time.Since(lastPeriodicCleanup) >= time.Hour {
 					s.cleanupStaleAnnouncementImageDrafts()
+					s.cleanupStaleCanvasWorkflowCoverDrafts()
 					s.cleanupExpiredArchivedAssets()
 					s.cleanupDetachedResources()
 					lastPeriodicCleanup = time.Now()

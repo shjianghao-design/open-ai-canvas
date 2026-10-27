@@ -253,6 +253,23 @@ export type CanvasSkillSnapshot = {
 };
 
 export type CanvasNodeMetadata = {
+    /** Provenance for imported third-party workflow nodes; it is informational, not an executable skill. */
+    workflowSource?: {
+        provider: "aiqianjue";
+        shareToken: string;
+        nodeId: string;
+        type: string;
+        taskType: string;
+        modelCode: string;
+        promptMasked: boolean;
+    };
+    /** Slot-aware references retained during workflow import. IDs are local canvas node IDs. */
+    workflowInputs?: Array<{ nodeId: string; kind: "text" | "image" | "video" | "audio"; slot: string }>;
+    workflowGenerationWarning?: string;
+    workflowOriginalPrompt?: string;
+    workflowSample?: true;
+    /** Preserve the authored reference-workflow layout until the user edits the node. */
+    workflowLayoutLocked?: boolean;
     /** Credential-free editable generation contract; submitted recipes live with tasks. */
     generationSpec?: GenerationSpec;
     /** Namespaced extension ownership for nodes contributed by a unified plugin. */

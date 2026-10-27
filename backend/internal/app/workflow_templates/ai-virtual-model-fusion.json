@@ -1,0 +1,353 @@
+{
+  "id": "builtin-ai-virtual-model-fusion",
+  "slug": "ai-virtual-model-fusion",
+  "name": "AI虚拟模特融合",
+  "description": "按参考画布复刻：8 个节点、7 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "ai-virtual-model-fusion",
+    "title": "AI虚拟模特融合",
+    "nodes": [
+      {
+        "id": "ai-virtual-model-fusion-node-001",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 889.721123,
+          "y": 303.637455
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505345",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "@图片1、@图片2、@图片3 仅作为审美参考：提取三张图共同的年龄感、脸型倾向、五官比例、肤色质感、发质方向、妆容质感、表情气质和商业摄影风格。\n\n禁止复制任何一张参考图的具体脸部、人物身份、发型造型、服装、姿势、背景、构图和摄影角度。\n禁止将三张脸融合、平均或拼接。\n生成一个参考图中不存在的全新原创模特，不像任何真实人物或明星。\n\n【生成画面】\n\n全新原创模特，面部五官自然协调，独立辨识度，高级冷静的时尚气质，真实自然的皮肤纹理，细腻毛孔，轻微自然妆感，眼神清晰，表情平静放松。\n\n人物特写构图，头部和肩部为主，画面裁切至胸口以上，脸部占画面约65%—75%，正面或轻微四分之三侧脸，眼睛位于画面上方三分之一处，人物居中，肩线自然，不要全身，不要半身，不要展示服装。\n\n背景由文字重新设定为简洁干净的浅灰色摄影棚背景，柔和的真实摄影光线，面部光影自然，浅景深，85mm人像镜头质感，高级时尚杂志肖像摄影，高清细节，真实摄影效果，画面干净统一。\n\n【负面词】\n\n复制@图片1人物、复制@图片2人物、复制@图片3人物、像参考图中的任何人、三张脸融合、平均脸、混合五官、明星脸、真实人物肖像、换脸、脸部变形、五官不对称、双眼不一致、塑料皮肤、过度磨皮、蜡像感、AI感、夸张妆容、全身照、半身照、服装展示、复杂背景、背景复制、姿势复制、低清晰度、过曝、噪点、文字、LOGO、水印。",
+          "composerContent": "@图片1、@图片2、@图片3 仅作为审美参考：提取三张图共同的年龄感、脸型倾向、五官比例、肤色质感、发质方向、妆容质感、表情气质和商业摄影风格。\n\n禁止复制任何一张参考图的具体脸部、人物身份、发型造型、服装、姿势、背景、构图和摄影角度。\n禁止将三张脸融合、平均或拼接。\n生成一个参考图中不存在的全新原创模特，不像任何真实人物或明星。\n\n【生成画面】\n\n全新原创模特，面部五官自然协调，独立辨识度，高级冷静的时尚气质，真实自然的皮肤纹理，细腻毛孔，轻微自然妆感，眼神清晰，表情平静放松。\n\n人物特写构图，头部和肩部为主，画面裁切至胸口以上，脸部占画面约65%—75%，正面或轻微四分之三侧脸，眼睛位于画面上方三分之一处，人物居中，肩线自然，不要全身，不要半身，不要展示服装。\n\n背景由文字重新设定为简洁干净的浅灰色摄影棚背景，柔和的真实摄影光线，面部光影自然，浅景深，85mm人像镜头质感，高级时尚杂志肖像摄影，高清细节，真实摄影效果，画面干净统一。\n\n【负面词】\n\n复制@图片1人物、复制@图片2人物、复制@图片3人物、像参考图中的任何人、三张脸融合、平均脸、混合五官、明星脸、真实人物肖像、换脸、脸部变形、五官不对称、双眼不一致、塑料皮肤、过度磨皮、蜡像感、AI感、夸张妆容、全身照、半身照、服装展示、复杂背景、背景复制、姿势复制、低清晰度、过曝、噪点、文字、LOGO、水印。",
+          "workflowOriginalPrompt": "@图1、@图2、@图3 仅作为审美参考：提取三张图共同的年龄感、脸型倾向、五官比例、肤色质感、发质方向、妆容质感、表情气质和商业摄影风格。\n\n禁止复制任何一张参考图的具体脸部、人物身份、发型造型、服装、姿势、背景、构图和摄影角度。\n禁止将三张脸融合、平均或拼接。\n生成一个参考图中不存在的全新原创模特，不像任何真实人物或明星。\n\n【生成画面】\n\n全新原创模特，面部五官自然协调，独立辨识度，高级冷静的时尚气质，真实自然的皮肤纹理，细腻毛孔，轻微自然妆感，眼神清晰，表情平静放松。\n\n人物特写构图，头部和肩部为主，画面裁切至胸口以上，脸部占画面约65%—75%，正面或轻微四分之三侧脸，眼睛位于画面上方三分之一处，人物居中，肩线自然，不要全身，不要半身，不要展示服装。\n\n背景由文字重新设定为简洁干净的浅灰色摄影棚背景，柔和的真实摄影光线，面部光影自然，浅景深，85mm人像镜头质感，高级时尚杂志肖像摄影，高清细节，真实摄影效果，画面干净统一。\n\n【负面词】\n\n复制@图1人物、复制@图2人物、复制@图3人物、像参考图中的任何人、三张脸融合、平均脸、混合五官、明星脸、真实人物肖像、换脸、脸部变形、五官不对称、双眼不一致、塑料皮肤、过度磨皮、蜡像感、AI感、夸张妆容、全身照、半身照、服装展示、复杂背景、背景复制、姿势复制、低清晰度、过曝、噪点、文字、LOGO、水印。",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "审美基调：约20至25岁年轻女性的年龄感，柔和流畅的鹅蛋脸型倾向，三庭五眼均衡协调的五官比例，白皙通透均匀的肤色质感，柔顺有光泽的健康发质方向，清透服帖的自然妆容质感，平静温柔中带有高级冷静的气质，商业时尚杂志肖像摄影风格；以上仅作为审美参考，不复制任何参考图的具体脸部、人物身份、发型造型、服装、姿势、背景、构图与摄影角度，不融合、平均或拼接多张面孔。\n\n主体：一位全新原创的虚构模特，不像任何真实人物或明星，面部五官自然协调并具有独立辨识度，高级冷静的时尚气质，真实自然的皮肤纹理与细腻毛孔，轻微自然妆感，眼神清澈清晰，表情平静放松；发型为全新设计：自然侧分的深栗色顺直长发，发尾带轻微内弧，无发饰、无编发、无复制造型。\n\n构图：人物特写构图，以头部和肩部为主，画面裁切至胸口以上，脸部约占画面65%至75%，正面或轻微四分之三侧脸，眼睛位于画面上方三分之一处，人物居中，肩线自然舒展，不展示全身、半身与服装。\n\n光影与背景：简洁干净的浅灰色摄影棚背景，柔和真实的摄影布光，面部光影自然过渡，浅景深虚化，85mm人像镜头质感，高级时尚杂志肖像摄影，高清细节，真实摄影效果，画面干净统一。\n\n负面提示词：复制参考图人物、像参考图中的任何人、三张脸融合、平均脸、混合五官、明星脸、真实人物肖像、换脸、脸部变形、五官不对称、双眼不一致、塑料皮肤、过度磨皮、蜡像感、AI感、夸张妆容、全身照、半身照、服装展示、复杂背景、背景复制、姿势复制、低清晰度、过曝、噪点、文字、LOGO、水印。",
+          "workflowInputs": [
+            {
+              "nodeId": "ai-virtual-model-fusion-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "ai-virtual-model-fusion-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "ai-virtual-model-fusion-node-005",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "ai-virtual-model-fusion-node-007"
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-002",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1298.9938129999998,
+          "y": 624.190432
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505346",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3072.0,
+          "naturalHeight": 4096.0,
+          "prompt": "@图片1 @图片2 @图片3 只提取共同的视觉特征：年龄感、脸型倾向、五官比例、肤色质感、发型方向、身材比例、表情气质、妆容风格和商业摄影质感。\n不要复制@图片1、@图片2、@图片3中任何人物的具体脸部、身份、服装、姿势、背景或构图。",
+          "composerContent": "@图片1 @图片2 @图片3 只提取共同的视觉特征：年龄感、脸型倾向、五官比例、肤色质感、发型方向、身材比例、表情气质、妆容风格和商业摄影质感。\n不要复制@图片1、@图片2、@图片3中任何人物的具体脸部、身份、服装、姿势、背景或构图。",
+          "workflowOriginalPrompt": "@图1 @图2 @图3 只提取共同的视觉特征：年龄感、脸型倾向、五官比例、肤色质感、发型方向、身材比例、表情气质、妆容风格和商业摄影质感。\n不要复制@图1、@图2、@图3中任何人物的具体脸部、身份、服装、姿势、背景或构图。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:4",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "ai-virtual-model-fusion-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "ai-virtual-model-fusion-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "ai-virtual-model-fusion-node-005",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "ai-virtual-model-fusion-node-001",
+              "kind": "text",
+              "slot": "prompt_text"
+            }
+          ]
+        },
+        "parentId": "ai-virtual-model-fusion-node-007"
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-003",
+        "type": "image",
+        "title": "canvas-node-task-1782378206670-result-1-paste-1782378466593-1.png",
+        "position": {
+          "x": 241.0,
+          "y": 210.426629
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505347",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1536.0,
+          "naturalHeight": 2048.0
+        }
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-004",
+        "type": "image",
+        "title": "canvas-node-task-1785236657929-result-1.png",
+        "position": {
+          "x": 241.0,
+          "y": 592.0293780000001
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505348",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111547.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1440.0,
+          "naturalHeight": 1920.0
+        }
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-005",
+        "type": "image",
+        "title": "📸 随手拍｜阳光下的白月光小姐姐～_1_造像Ai写真 📸_来自小红书网页版.jpg",
+        "position": {
+          "x": 235.5,
+          "y": 980.102838
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505349",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539-3.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1440.0
+        }
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-006",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 80.0,
+          "y": 80.0
+        },
+        "width": 562.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505350",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传自己喜欢的模特印象"
+        }
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-007",
+        "type": "frame",
+        "title": "分组 2 个节点",
+        "position": {
+          "x": 863.721123,
+          "y": 265.849103
+        },
+        "width": 749.429518,
+        "height": 783.365807,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 749.429518,
+            "expandedHeight": 783.365807
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505351",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      },
+      {
+        "id": "ai-virtual-model-fusion-node-008",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 859.1506410000001,
+          "y": 120.32283100000001
+        },
+        "width": 754.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "kq8CabvwLG98Qx8mf2iUhVkb",
+            "nodeId": "node-2114968365160505352",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "整组执行，要把文本节点重新执行"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "ai-virtual-model-fusion-edge-001",
+        "fromNodeId": "ai-virtual-model-fusion-node-003",
+        "toNodeId": "ai-virtual-model-fusion-node-001",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "ai-virtual-model-fusion-edge-002",
+        "fromNodeId": "ai-virtual-model-fusion-node-004",
+        "toNodeId": "ai-virtual-model-fusion-node-001",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "ai-virtual-model-fusion-edge-003",
+        "fromNodeId": "ai-virtual-model-fusion-node-005",
+        "toNodeId": "ai-virtual-model-fusion-node-001",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "ai-virtual-model-fusion-edge-004",
+        "fromNodeId": "ai-virtual-model-fusion-node-003",
+        "toNodeId": "ai-virtual-model-fusion-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "ai-virtual-model-fusion-edge-005",
+        "fromNodeId": "ai-virtual-model-fusion-node-004",
+        "toNodeId": "ai-virtual-model-fusion-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "ai-virtual-model-fusion-edge-006",
+        "fromNodeId": "ai-virtual-model-fusion-node-005",
+        "toNodeId": "ai-virtual-model-fusion-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "ai-virtual-model-fusion-edge-007",
+        "fromNodeId": "ai-virtual-model-fusion-node-001",
+        "toNodeId": "ai-virtual-model-fusion-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

@@ -3,6 +3,7 @@ import type { MenuProps } from "antd";
 import {
     Activity,
     ArrowLeft,
+    GitBranch,
     BarChart3,
     BellRing,
     ChevronDown,
@@ -79,6 +80,7 @@ const adminNavigation: Array<{ label: string; items: AdminNavigationItem[] }> = 
             { path: "/admin/models", label: "前台模型", description: "展示、线路与用户价格", icon: <Layers3 className="size-4" />, requireFeature: "frontendModelsEnabled" },
             { path: "/admin/prompt-templates", label: "提示词模板", description: "平台创作策略版本", icon: <MessageSquareText className="size-4" /> },
             { path: "/admin/workbench-tools", label: "工作台工具", description: "生图/视频工具与预设", icon: <WandSparkles className="size-4" /> },
+            { path: "/admin/workflows", label: "工作流模板", description: "模板、版本、启停与导入统计", icon: <GitBranch className="size-4" /> },
             { path: "/admin/resources", label: "存储资源", description: "资源列表、容量与预览", icon: <Database className="size-4" /> },
         ],
     },

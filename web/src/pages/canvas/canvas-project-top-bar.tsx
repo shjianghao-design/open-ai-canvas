@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { Link } from "react-router";
-import { Clapperboard, CloudDownload, CopyPlus, Focus, FolderKanban, Home, LayoutGrid, LoaderCircle, Menu, Pencil, Plus, Redo2, Save, Search, Share2, Trash2, Undo2, Upload } from "lucide-react";
+import { Clapperboard, CloudDownload, CopyPlus, Focus, FolderKanban, Home, LayoutGrid, LayoutTemplate, LoaderCircle, Menu, Pencil, Plus, Redo2, Save, Search, Share2, Trash2, Undo2, Upload } from "lucide-react";
 import { Button, Dropdown, Tooltip } from "antd";
 
 import { WorkspaceCreditGiftMark } from "@/components/layout/workspace-credit-gift-mark";
@@ -33,6 +33,7 @@ type CanvasTopBarProps = {
     onUndo: () => void;
     onRedo: () => void;
     onShare: () => void;
+    onSaveAsTemplate?: () => void;
     shortcutRequestNonce: number;
     syncIcon?: ReactNode;
     onOpenSearch: () => void;
@@ -60,6 +61,7 @@ export function CanvasTopBar({
     onUndo,
     onRedo,
     onShare,
+    onSaveAsTemplate,
     shortcutRequestNonce,
     syncIcon,
     onOpenSearch,
@@ -231,6 +233,11 @@ export function CanvasTopBar({
                             >
                                 <span className="tabular-nums">{shortDramaGuide.progress.completedCount}/5</span>
                             </Button>
+                        </CanvasTopBarTooltip>
+                    ) : null}
+                    {onSaveAsTemplate ? (
+                        <CanvasTopBarTooltip label="另存为工作流模板">
+                            <Button type="text" className="canvas-topbar-action !h-10 !w-10 !min-w-10 !rounded-xl !p-0" style={{ color: theme.node.text }} icon={<LayoutTemplate className="size-4" />} onClick={onSaveAsTemplate} aria-label="另存为工作流模板" />
                         </CanvasTopBarTooltip>
                     ) : null}
                     <CanvasTopBarTooltip label="分享画布">

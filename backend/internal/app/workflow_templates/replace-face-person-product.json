@@ -1,0 +1,773 @@
+{
+  "id": "builtin-replace-face-person-product",
+  "slug": "replace-face-person-product",
+  "name": "换人换脸换产品复刻",
+  "description": "按参考画布复刻：21 个节点、11 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "replace-face-person-product",
+    "title": "换人换脸换产品复刻",
+    "nodes": [
+      {
+        "id": "replace-face-person-product-node-001",
+        "type": "video",
+        "title": "解析参考视频.mp4",
+        "position": {
+          "x": 114.44632200000001,
+          "y": 580.147423
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494465",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "workflowGenerationWarning": "素材包中没有可用的该媒体类型样例。",
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-002",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 148.946322,
+          "y": 473.509265
+        },
+        "width": 224.0,
+        "height": 70.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494466",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传原视频"
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-003",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 1166.157143,
+          "y": 580.147423
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494467",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "反推视频中的时间线，镜头拍摄视角，景别，运镜，人物，动作表情，画面内容，不要表格，控制字数在2000字之内",
+          "composerContent": "反推视频中的时间线，镜头拍摄视角，景别，运镜，人物，动作表情，画面内容，不要表格，控制字数在2000字之内",
+          "workflowOriginalPrompt": "反推视频中的时间线，镜头拍摄视角，景别，运镜，人物，动作表情，画面内容，不要表格，控制字数在2000字之内",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "总时长约10秒的竖屏室内穿搭展示视频。场景为现代简约风格酒店卧室门口，两侧浅木色格栅推拉门打开形成框式构图，门内可见米色墙面、铺白色床品的双人床、床尾木腿软凳、灰白格纹地毯与天花板嵌入式筒灯，整体光线柔和温暖，色调以米色与原木色为主。\n\n时间线描述：0至2秒，一位棕红长直发年轻女性从画面左侧步入镜头中央，身穿白色斜肩露肩针织上衣，内搭细吊带，下着粉色多层蛋糕褶皱长裙，腰间深色系带垂坠，手提白色编织手提包，脚踩黑色厚底凉拖，站定后正面面向镜头温柔微笑，双手提包置于身前，随后换为一手叉腰的展示姿势；2至4秒，人物原地缓慢转身，先侧身再完全背对镜头，展示上衣斜肩露背设计与长裙背面层次，长发自然垂背；4至5秒，人物顺势转回正面，面对镜头含笑站立，提包垂于身侧；5至6秒，人物向镜头方向走近，景别由全身全景自然过渡为中近景，清晰呈现针织面料纹理、斜肩吊带细节与精致妆容，表情松弛自然略带微笑；6至8秒，人物后退回到全景位置，原地轻盈旋转一周，粉色裙摆随动作飘扬展开，旋转过程中回眸注视镜头微笑，手提包随身体轻摆；8至10秒，旋转结束侧身定格微笑，随即转身向画面左侧迈步走出镜头，裙摆余韵摆动，画面收束于门口卧室场景。\n\n镜头语言：全程固定机位、正面平视视角拍摄，以全身全景为主景别，中段借由人物走位自然形成中近景推近效果，结尾人物出画回到环境空镜感；无剧烈运镜，构图平稳居中，推拉门框形成天然画框突出人物主体。\n\n人物动作与表情：动作连贯流畅，包含入镜走位、正面定格、叉腰摆姿、原地转身展示背面、走近特写、旋转裙摆、回眸微笑、侧身出画；全程保持甜美自信微笑，眼神柔和注视镜头，姿态优雅松弛。\n\n画面风格：柔和漫射室内光，暖调奶油色系，画质清晰细腻，时尚穿搭种草视频质感，竖屏9:16构图。",
+          "workflowInputs": [
+            {
+              "nodeId": "replace-face-person-product-node-001",
+              "kind": "video",
+              "slot": "input_video"
+            }
+          ]
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-004",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 507.268198,
+          "y": 564.718868
+        },
+        "width": 320.0,
+        "height": 77.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494468",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101540.png",
+          "mimeType": "image/png",
+          "naturalWidth": 602.0,
+          "naturalHeight": 144.0
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-005",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 510.268198,
+          "y": 443.9523730000001
+        },
+        "width": 314.0,
+        "height": 72.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494469",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "提取视频分镜图"
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-006",
+        "type": "image",
+        "title": "分镜·逐秒拆分",
+        "position": {
+          "x": 510.268198,
+          "y": 710.364221
+        },
+        "width": 320.0,
+        "height": 243.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494470",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101538.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1845.0,
+          "naturalHeight": 1402.0
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-007",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1002.4589360000001,
+          "y": 433.56256300000007
+        },
+        "width": 554.0,
+        "height": 72.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494471",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "连接文本节点反推视频提示词"
+        },
+        "parentId": "replace-face-person-product-node-009"
+      },
+      {
+        "id": "replace-face-person-product-node-008",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 832.6762580000001,
+          "y": 204.00138500000003
+        },
+        "width": 178.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494472",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "第一步"
+        }
+      },
+      {
+        "id": "replace-face-person-product-node-009",
+        "type": "frame",
+        "title": "分组 7 个节点",
+        "position": {
+          "x": 80.0,
+          "y": 395.56256300000007
+        },
+        "width": 1502.458936,
+        "height": 742.409985,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 1502.458936,
+            "expandedHeight": 742.409985
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494473",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      },
+      {
+        "id": "replace-face-person-product-node-010",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 1936.6234760000002,
+          "y": 343.52483800000005
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494474",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101546.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1440.0,
+          "naturalHeight": 1920.0
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-011",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1936.6234760000002,
+          "y": 242.00138500000003
+        },
+        "width": 234.0,
+        "height": 72.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494475",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传人物图"
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-012",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 2512.474405,
+          "y": 580.147423
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494476",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101540.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1448.0,
+          "naturalHeight": 1086.0,
+          "prompt": "把分镜图@图片3 里面的人物替换为@图片1，服装搭配替换为@图片2，其他的不变。负面提示词：脸部变形，五官错位，双重五官，发型混乱，手指畸形，手臂扭曲，腿部变形，身体比例错误，过度消瘦，服装混搭，服装改款，衣服结构错误，颜色错误，材质错误，鞋子变形，缺鞋，少腿，裁切脚部，人物漂浮，脚不着地，阴影错误，抠图白边，背景穿帮，透视错误，额外人物，额外物体，文字，Logo，水印，模糊，低清晰度，塑料皮肤，卡通感",
+          "composerContent": "把分镜图@图片3 里面的人物替换为@图片1，服装搭配替换为@图片2，其他的不变。负面提示词：脸部变形，五官错位，双重五官，发型混乱，手指畸形，手臂扭曲，腿部变形，身体比例错误，过度消瘦，服装混搭，服装改款，衣服结构错误，颜色错误，材质错误，鞋子变形，缺鞋，少腿，裁切脚部，人物漂浮，脚不着地，阴影错误，抠图白边，背景穿帮，透视错误，额外人物，额外物体，文字，Logo，水印，模糊，低清晰度，塑料皮肤，卡通感",
+          "workflowOriginalPrompt": "把分镜图@图3 里面的人物替换为@图1，服装搭配替换为@图2，其他的不变。负面提示词：脸部变形，五官错位，双重五官，发型混乱，手指畸形，手臂扭曲，腿部变形，身体比例错误，过度消瘦，服装混搭，服装改款，衣服结构错误，颜色错误，材质错误，鞋子变形，缺鞋，少腿，裁切脚部，人物漂浮，脚不着地，阴影错误，抠图白边，背景穿帮，透视错误，额外人物，额外物体，文字，Logo，水印，模糊，低清晰度，塑料皮肤，卡通感",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "auto",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "replace-face-person-product-node-010",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-013",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-013",
+        "type": "image",
+        "title": "裁剪结果",
+        "position": {
+          "x": 1911.0195640000002,
+          "y": 905.2593850000001
+        },
+        "width": 311.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494477",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101538.png",
+          "mimeType": "image/png",
+          "naturalWidth": 750.0,
+          "naturalHeight": 771.0
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-014",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1942.6234760000002,
+          "y": 785.5830860000001
+        },
+        "width": 234.0,
+        "height": 72.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494478",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传产品图"
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-015",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2408.382521,
+          "y": 363.61852500000003
+        },
+        "width": 554.0,
+        "height": 168.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494479",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "先连接拆解好的原视频分镜图\n再替换人物图和产品图\n输入提示词替换分镜"
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-016",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 2513.426589,
+          "y": 1193.298511
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494480",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "替换脚本里面的产品描述为@图片1 ，出镜模特为@图片2 ",
+          "composerContent": "替换脚本里面的产品描述为@图片1 ，出镜模特为@图片2 ",
+          "workflowOriginalPrompt": "替换脚本里面的产品描述为@图片1 ，出镜模特为@图2 ",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "总时长约10秒的竖屏室内穿搭展示视频。场景为现代简约风格酒店卧室门口，两侧浅木色格栅推拉门打开形成框式构图，门内可见米色墙面、铺白色床品的双人床、床尾木腿软凳、灰白格纹地毯与天花板嵌入式筒灯，整体光线柔和温暖，色调以米色与原木色为主。\n\n时间线描述：0至2秒，一位黑长直发年轻亚洲女性从画面左侧步入镜头中央，身穿黑色一字肩露肩长袖连衣裙，面料柔软垂坠贴身，腰间束黑色金属扣皮质腰带勾勒腰线，裙摆为不对称不规则斜裁设计、前短后长自然垂坠，脚踩橄榄棕翻边麂皮尖头低跟短靴，站定后正面面向镜头温柔微笑，双手自然交叠置于身前，随后换为一手叉腰的展示姿势；2至4秒，人物原地缓慢转身，先侧身再完全背对镜头，展示连衣裙一字肩露背设计与不对称裙摆背面垂坠层次，黑长直发自然垂背；4至5秒，人物顺势转回正面，面对镜头含笑站立，双臂垂于身侧；5至6秒，人物向镜头方向走近，景别由全身全景自然过渡为中近景，清晰呈现垂坠面料纹理、一字肩领口与腰带细节及精致清透妆容，表情松弛自然略带微笑；6至8秒，人物后退回到全景位置，原地轻盈旋转一周，黑色不对称裙摆随动作飘扬展开，旋转过程中回眸注视镜头微笑；8至10秒，旋转结束侧身定格微笑，随即转身向画面左侧迈步走出镜头，裙摆余韵摆动，画面收束于门口卧室场景。\n\n镜头语言：全程固定机位、正面平视视角拍摄，以全身全景为主景别，中段借由人物走位自然形成中近景推近效果，结尾人物出画回到环境空镜感；无剧烈运镜，构图平稳居中，推拉门框形成天然画框突出人物主体。\n\n人物动作与表情：动作连贯流畅，包含入镜走位、正面定格、叉腰摆姿、原地转身展示背面、走近特写、旋转裙摆、回眸微笑、侧身出画；全程保持甜美自信微笑，眼神柔和注视镜头，姿态优雅松弛。\n\n画面风格：柔和漫射室内光，暖调奶油色系，画质清晰细腻，时尚穿搭种草视频质感，竖屏9:16构图。",
+          "workflowInputs": [
+            {
+              "nodeId": "replace-face-person-product-node-003",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-013",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-010",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-017",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2435.474405,
+          "y": 998.193878
+        },
+        "width": 474.0,
+        "height": 168.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494481",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "连接原视频脚本提示词\n连接人物图，和产品图，\n输入你的需求修改脚本"
+        },
+        "parentId": "replace-face-person-product-node-018"
+      },
+      {
+        "id": "replace-face-person-product-node-018",
+        "type": "frame",
+        "title": "分组 8 个节点",
+        "position": {
+          "x": 1878.1234760000002,
+          "y": 204.00138500000003
+        },
+        "width": 1110.259045,
+        "height": 1295.297126,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 1110.259045,
+            "expandedHeight": 1295.297126
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494482",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      },
+      {
+        "id": "replace-face-person-product-node-019",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2421.163028,
+          "y": 80.00000000000006
+        },
+        "width": 178.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494483",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "第二步"
+        }
+      },
+      {
+        "id": "replace-face-person-product-node-020",
+        "type": "video",
+        "title": "视频生成",
+        "position": {
+          "x": 3366.103825,
+          "y": 718.8031530000001
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494484",
+            "type": "video",
+            "taskType": "VIDEO_TASK",
+            "modelCode": "SEEDANCE_2_5",
+            "promptMasked": true
+          },
+          "workflowGenerationWarning": "素材包中没有可用的该媒体类型样例。",
+          "prompt": "参考分镜图进行运镜@图片1   ，模特面部参考@图片2  ，产品细节参考@图片3 。",
+          "composerContent": "参考分镜图进行运镜@图片1   ，模特面部参考@图片2  ，产品细节参考@图片3 。",
+          "workflowOriginalPrompt": "参考分镜图进行运镜@图1   ，模特面部参考@图2  ，产品细节参考@图3 。",
+          "generationMode": "video",
+          "model": "seedance-2.5",
+          "size": "9:16",
+          "quality": "480p",
+          "count": "1",
+          "seconds": "10",
+          "workflowInputs": [
+            {
+              "nodeId": "replace-face-person-product-node-016",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-012",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-010",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "replace-face-person-product-node-013",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "replace-face-person-product-node-021",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3274.603105,
+          "y": 453.374726
+        },
+        "width": 674.0,
+        "height": 216.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "ji5p10e51jiUsRSNBiLp8iod",
+            "nodeId": "node-2114968677442494485",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "双击新建视频节点\n连接替换好的分镜图和脚本\n再连接人脸和产品图\n选择视频模型和时长，直接生成视频"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "replace-face-person-product-edge-001",
+        "fromNodeId": "replace-face-person-product-node-001",
+        "toNodeId": "replace-face-person-product-node-003",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-002",
+        "fromNodeId": "replace-face-person-product-node-010",
+        "toNodeId": "replace-face-person-product-node-012",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-003",
+        "fromNodeId": "replace-face-person-product-node-013",
+        "toNodeId": "replace-face-person-product-node-012",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-004",
+        "fromNodeId": "replace-face-person-product-node-003",
+        "toNodeId": "replace-face-person-product-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-005",
+        "fromNodeId": "replace-face-person-product-node-013",
+        "toNodeId": "replace-face-person-product-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-006",
+        "fromNodeId": "replace-face-person-product-node-010",
+        "toNodeId": "replace-face-person-product-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-007",
+        "fromNodeId": "replace-face-person-product-node-016",
+        "toNodeId": "replace-face-person-product-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-008",
+        "fromNodeId": "replace-face-person-product-node-012",
+        "toNodeId": "replace-face-person-product-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-009",
+        "fromNodeId": "replace-face-person-product-node-010",
+        "toNodeId": "replace-face-person-product-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-010",
+        "fromNodeId": "replace-face-person-product-node-013",
+        "toNodeId": "replace-face-person-product-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "replace-face-person-product-edge-011",
+        "fromNodeId": "replace-face-person-product-node-006",
+        "toNodeId": "replace-face-person-product-node-012",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

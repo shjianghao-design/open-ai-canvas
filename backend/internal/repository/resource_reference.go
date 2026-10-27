@@ -169,6 +169,27 @@ func (r *Repository) ResourceReferenceSnapshotExcludingAssets(userID string, exc
 			snapshot.Direct = append(snapshot.Direct, ResourceDirectReference{Kind: "工作台工具封面", ID: tool.ID, Title: tool.Name, ResourceID: tool.CoverResourceID})
 		}
 	}
+	var workflowTemplates []model.CanvasWorkflowTemplate
+	if err := r.db.Where("draft_cover_resource_id IN ?", resourceIDs).Find(&workflowTemplates).Error; err != nil {
+		return snapshot, err
+	}
+	for _, template := range workflowTemplates {
+		snapshot.Direct = append(snapshot.Direct, ResourceDirectReference{Kind: "工作流模板草稿封面", ID: template.ID, Title: template.Name, ResourceID: template.DraftCoverResourceID})
+	}
+	var workflowVersions []model.CanvasWorkflowVersion
+	if err := r.db.Where("cover_resource_id IN ?", resourceIDs).Find(&workflowVersions).Error; err != nil {
+		return snapshot, err
+	}
+	for _, version := range workflowVersions {
+		snapshot.Direct = append(snapshot.Direct, ResourceDirectReference{Kind: "工作流模板发布封面", ID: version.ID, Title: version.Name, ResourceID: version.CoverResourceID})
+	}
+	var workflowCoverDrafts []model.CanvasWorkflowCoverDraft
+	if err := r.db.Where("user_id = ? AND resource_id IN ?", userID, resourceIDs).Find(&workflowCoverDrafts).Error; err != nil {
+		return snapshot, err
+	}
+	for _, draft := range workflowCoverDrafts {
+		snapshot.Direct = append(snapshot.Direct, ResourceDirectReference{Kind: "工作流封面上传草稿", ID: draft.ResourceID, Title: "工作流封面上传草稿", ResourceID: draft.ResourceID})
+	}
 
 	var assets []model.Asset
 	assetQuery := r.db.Where("user_id = ?", userID)

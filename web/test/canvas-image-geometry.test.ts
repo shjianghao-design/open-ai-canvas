@@ -45,6 +45,34 @@ describe("bounded image geometry", () => {
         });
     }
 
+    test("imported reference workflow keeps the authored image layout on reload", () => {
+        const node = {
+            id: "workflow-image",
+            type: CanvasNodeType.Image,
+            title: "image.png",
+            position: { x: 120, y: 240 },
+            width: 240,
+            height: 320,
+            metadata: { content: "/workflow-samples-reference/image.png", naturalWidth: 2172, naturalHeight: 2896, workflowLayoutLocked: true },
+        } satisfies CanvasNodeData;
+
+        expect(ensureMediaNodeMinimumSize(node)).toBe(node);
+    });
+
+    test("imported reference workflow keeps the authored video layout on reload", () => {
+        const node = {
+            id: "workflow-video",
+            type: CanvasNodeType.Video,
+            title: "video.mp4",
+            position: { x: 420, y: 180 },
+            width: 293,
+            height: 520,
+            metadata: { content: "/workflow-samples-reference/video.mp4", naturalWidth: 1080, naturalHeight: 1920, workflowLayoutLocked: true },
+        } satisfies CanvasNodeData;
+
+        expect(ensureMediaNodeMinimumSize(node)).toBe(node);
+    });
+
     test("generated result cannot overwrite a resize made while the task was running", () => {
         const original = { ...imageNode(), metadata: { taskId: "task" } };
         const resized = { ...original, width: 150, height: 250, position: { x: 175, y: 175 }, metadata: { ...original.metadata, manualSize: true } };

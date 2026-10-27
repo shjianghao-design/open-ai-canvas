@@ -1,0 +1,463 @@
+{
+  "id": "builtin-child-outfit-transformation",
+  "slug": "child-outfit-transformation",
+  "name": "童装变装1比1复刻",
+  "description": "按参考画布复刻：10 个节点、9 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "child-outfit-transformation",
+    "title": "童装变装1比1复刻",
+    "nodes": [
+      {
+        "id": "child-outfit-transformation-node-001",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 174.810177,
+          "y": 1761.546407
+        },
+        "width": 320.0,
+        "height": 240.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281090",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041736.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2048.0,
+          "naturalHeight": 1536.0
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-002",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 976.0,
+          "y": 1336.749694
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281091",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041736-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1086.0,
+          "naturalHeight": 1448.0
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-003",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 352.0,
+          "y": 1336.749694
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281092",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041736-3.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1536.0,
+          "naturalHeight": 2048.0
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-004",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 80.0,
+          "y": 1336.749694
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281093",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041736-4.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1536.0,
+          "naturalHeight": 2048.0
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-005",
+        "type": "image",
+        "title": "image.png",
+        "position": {
+          "x": 624.299325,
+          "y": 1336.749694
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281094",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041836.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2048.0,
+          "naturalHeight": 2048.0
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-006",
+        "type": "image",
+        "title": "场景提取",
+        "position": {
+          "x": 755.299325,
+          "y": 1891.3080380000001
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281095",
+            "type": "result",
+            "taskType": "SCENE_IMAGE_EXTRACTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041736.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1152.0,
+          "naturalHeight": 2048.0,
+          "prompt": "从 @图一 提取干净的场景素材。",
+          "composerContent": "从 @图一 提取干净的场景素材。",
+          "workflowOriginalPrompt": "从 @图一 提取干净的场景素材。",
+          "generationMode": "image",
+          "size": "auto",
+          "generationType": "edit",
+          "workflowGenerationWarning": "该节点依赖参考站场景提取专用协议；本地需选择支持场景提取的图像能力后再生成。",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-007",
+        "type": "video",
+        "title": "视频生成",
+        "position": {
+          "x": 1983.99012,
+          "y": 966.693851
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281096",
+            "type": "video",
+            "taskType": "VIDEO_TASK",
+            "modelCode": "SEEDANCE_2_0",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09051543.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/child-outfit-transformation/-09051543.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "@图片1 出镜的模特，@图片2 是第一套搭配，@图片3 是第二套搭配@图片4 是第三套搭配@图片5 是第4套搭配。参考@图片7 的分镜图的顺序来来生成变装视频，不要出现分镜图里的服装和模特，背景。仅参考分镜的节奏动作",
+          "composerContent": "@图片1 出镜的模特，@图片2 是第一套搭配，@图片3 是第二套搭配@图片4 是第三套搭配@图片5 是第4套搭配。参考@图片7 的分镜图的顺序来来生成变装视频，不要出现分镜图里的服装和模特，背景。仅参考分镜的节奏动作",
+          "workflowOriginalPrompt": "@图1 出镜的模特，@图2 是第一套搭配，@图3 是第二套搭配@图4 是第三套搭配@图5 是第4套搭配。参考@图7 的分镜图的顺序来来生成变装视频，不要出现分镜图里的服装和模特，背景。仅参考分镜的节奏动作",
+          "generationMode": "video",
+          "model": "seedance-2.0",
+          "size": "9:16",
+          "quality": "480p",
+          "count": "1",
+          "seconds": "15",
+          "workflowInputs": [
+            {
+              "nodeId": "child-outfit-transformation-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-004",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-005",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-010",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "child-outfit-transformation-node-009",
+              "kind": "text",
+              "slot": "prompt_text"
+            }
+          ]
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-008",
+        "type": "video",
+        "title": "解析参考视频.mp4",
+        "position": {
+          "x": 571.767048,
+          "y": 80.0
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281097",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09051543.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1920.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/child-outfit-transformation/-09051543.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-009",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 1452.542039,
+          "y": 217.38438100000008
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281098",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "拆解视频的时间帧，不要描述素材和服装和字幕信息",
+          "composerContent": "拆解视频的时间帧，不要描述素材和服装和字幕信息",
+          "workflowOriginalPrompt": "拆解视频的时间帧，不要描述素材和服装和字幕信息",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "<div>真人竖版短视频，户外街拍场景，总时长10秒，共5个2秒动作分段，以“近景互动—遮掌转场—镜头拉远全身定格”为循环结构：</div><div>0-2秒：小女孩近景伸手指指向镜头，镜头快速拉远至全身，女孩歪头、单腿向后翘起俏皮定格；</div><div>2-4秒：手掌伸向镜头遮蔽画面完成转场，镜头拉远，女孩张开双臂、单腿向后抬起、歪头定格；</div><div>4-6秒：手掌离开镜头露出微笑近景脸，镜头拉远至全身，女孩一手比剪刀手、另一手张开挥手打招呼；</div><div>6-8秒：微笑近景，手掌再次贴近镜头遮屏转场，镜头拉远，女孩单手在脸颊旁比剪刀手、闭眼俏皮定格；</div><div>8-10秒：手指再次近景指向镜头，镜头拉远至全身，女孩双手身前握持物件、单腿向后翘起、歪头微笑定格收尾。</div>",
+          "workflowInputs": [
+            {
+              "nodeId": "child-outfit-transformation-node-008",
+              "kind": "video",
+              "slot": "input_video"
+            }
+          ]
+        }
+      },
+      {
+        "id": "child-outfit-transformation-node-010",
+        "type": "image",
+        "title": "分镜·逐秒拆分",
+        "position": {
+          "x": 976.0,
+          "y": 483.811237
+        },
+        "width": 281.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "M8WDPb_Q9rrLXyvqj-DESaX_",
+            "nodeId": "node-2114968164504281099",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/child-outfit-transformation/-09041736-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1845.0,
+          "naturalHeight": 2103.0
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "child-outfit-transformation-edge-001",
+        "fromNodeId": "child-outfit-transformation-node-001",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-002",
+        "fromNodeId": "child-outfit-transformation-node-002",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-003",
+        "fromNodeId": "child-outfit-transformation-node-003",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-004",
+        "fromNodeId": "child-outfit-transformation-node-004",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-005",
+        "fromNodeId": "child-outfit-transformation-node-005",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-006",
+        "fromNodeId": "child-outfit-transformation-node-006",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-007",
+        "fromNodeId": "child-outfit-transformation-node-008",
+        "toNodeId": "child-outfit-transformation-node-009",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-008",
+        "fromNodeId": "child-outfit-transformation-node-010",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "child-outfit-transformation-edge-009",
+        "fromNodeId": "child-outfit-transformation-node-009",
+        "toNodeId": "child-outfit-transformation-node-007",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

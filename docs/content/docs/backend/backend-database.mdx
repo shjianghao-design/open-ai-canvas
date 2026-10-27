@@ -338,3 +338,9 @@ Schema 32 为 `channel_models` 新增 `tags`（TEXT、NOT NULL、默认 `'[]'`�
 迁移 46 新增 skill_curation_settings、skill_curation_categories、skill_curation_assignments；默认关闭，不导入技能内容。表结构与事务规则见 [平台技能策展](./skill-curation)。
 
 迁移 47 依赖 46，新增 skill_curation_roots 与 skill_curation_root_assignments；保留原五个根 ID，根停用时使用派生默认桶，根表为空回落固定五类。
+
+## 工作流目录资料（Schema 61）
+
+迁移 61 为 `canvas_workflow_templates` 增加 `draft_description`、`draft_usage_guide` 与 `draft_cover_resource_id`，为 `canvas_workflow_versions` 增加对应发布快照字段，并新增 `canvas_workflow_cover_drafts` 跟踪管理员上传但尚未发布的封面资源。升级时将旧模板简介回填到草稿与历史版本。
+
+工作流卡片简介、Markdown 使用指南和封面与画布 JSON 采用同一发布版本。目录 API 仅投影当前发布版本资料；未发布草稿不泄露。封面资源经模板启用/发布状态校验后流式读取，不暴露对象存储地址。上传草稿可取消；资源引用快照与删除事务共同保护仍被草稿或任一历史版本使用的封面。超过 24 小时的孤儿封面草稿由资源清理 Worker 回收。

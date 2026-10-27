@@ -44,6 +44,12 @@ func TestMigrateSchemaRecordsAndValidatesVersion(t *testing.T) {
 	if !db.Migrator().HasTable(&model.UploadReservation{}) {
 		t.Fatal("upload reservation migration missing")
 	}
+	if !db.Migrator().HasTable(&model.CanvasWorkflowCoverDraft{}) ||
+		!db.Migrator().HasColumn(&model.CanvasWorkflowTemplate{}, "draft_description") ||
+		!db.Migrator().HasColumn(&model.CanvasWorkflowTemplate{}, "draft_usage_guide") ||
+		!db.Migrator().HasColumn(&model.CanvasWorkflowVersion{}, "cover_resource_id") {
+		t.Fatal("schema migration v61 did not add workflow catalog metadata and cover drafts")
+	}
 	if !db.Migrator().HasTable(&model.WorkbenchTool{}) || !db.Migrator().HasTable(&model.WorkbenchPreset{}) {
 		t.Fatal("schema migration v54 did not create workbench tool and preset tables")
 	}
