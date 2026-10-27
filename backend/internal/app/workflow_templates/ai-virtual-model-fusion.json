@@ -85,8 +85,8 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 3072.0,
           "naturalHeight": 4096.0,
           "prompt": "@图片1 @图片2 @图片3 只提取共同的视觉特征：年龄感、脸型倾向、五官比例、肤色质感、发型方向、身材比例、表情气质、妆容风格和商业摄影质感。\n不要复制@图片1、@图片2、@图片3中任何人物的具体脸部、身份、服装、姿势、背景或构图。",
@@ -145,8 +145,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539-2.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539-2.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1536.0,
           "naturalHeight": 2048.0
         }
@@ -174,8 +174,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111547.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111547.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1440.0,
           "naturalHeight": 1920.0
         }
@@ -203,8 +203,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539-3.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/ai-virtual-model-fusion/-09111539-3.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1080.0,
           "naturalHeight": 1440.0
         }

@@ -36,8 +36,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/tvc-one-click/-09111905.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/tvc-one-click/-09111905.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1440.0,
           "naturalHeight": 1920.0
         }
@@ -90,8 +90,8 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/tvc-one-click/-09111635.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/tvc-one-click/-09111635.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1086.0,
           "naturalHeight": 1448.0,
           "prompt": "换一个角度，生成一张特写3/4中景构图的",
@@ -134,8 +134,8 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/tvc-one-click/-09111917.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/tvc-one-click/-09111917.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1536.0,
           "naturalHeight": 2048.0,
           "prompt": "请根据输入的主体类型，生成一张真实商业广告风格的四宫格展示图。\n【输入参数】\n主体类型：@图片1 {模特 / 服装 / 鞋子 / 包袋 / 美妆 / 食品 / 家居 / 数码 / 饰品 / 其他}\n展示目的：{商品展示 / 功能展示 / 使用场景 / 品牌广告}\n画面数量：4格\n画面比例：{3:4 / 4:5 / 1:1}\n整体风格：高级商业广告摄影，真实、自然、统一\n\n【参考图职责】\n@图片1：主体唯一参考图。\n如果是人物，保留人物身份、脸部特征、发型、肤色、年龄感、真实身材比例和服装。\n如果是产品，保留产品的外形、尺寸比例、结构、材质、颜色、图案、接口、配件和品牌细节。\n@图片2：场景参考图。\n只参考空间结构、地面、背景、陈设、光线方向、色调和氛围。\n不要复制 @图片2 中的人物、产品、文字、Logo 或动作。\n如有 @图片3：细节参考图，只用于补充主体局部细节，不改变 @图片1 的主体身份和整体结构。\n\n【主体一致性】\n四个画面必须使用同一个主体，保持主体的形状、比例、颜色、材质、细节和视觉身份一致。\n不得在不同画面中改变主体大小、结构、款式、包装、配件、颜色或材质。\n不得凭空增加、删除、改造或替换主体细节。\n\n【比例与透视规则】\n如果主体包含人物：\n使用真实成年人体比例，头身比约 1:7，头部、肩膀、躯干、骨盆、手臂和双腿比例自然。\n禁止大头、短躯干、过长腿、四肢拉伸、关节错位和假人比例。\n使用 70mm–85mm 镜头，镜头与人物胸口保持水平，禁止低机位、俯拍和广角畸变。\n\n如果主体是产品：\n保持产品真实长宽高比例、结构比例和透视关系。\n产品边缘、厚度、弧度、开口、接口、缝线、包装和配件必须准确。\n禁止产品被拉长、压扁、变薄、变宽、悬浮或改变结构。\n产品必须与地面、手部或其他接触面产生真实接触阴影。\n\n如果画面包含人物与产品：\n人物比例和产品比例必须同时真实，手部抓握、穿戴、摆放、接触和遮挡关系准确。\n人物不能遮挡主体关键卖点，产品不能漂浮或脱离接触面。\n\n【四宫格分镜】\n1. 主体正面或主视角展示，完整呈现主体轮廓。\n2. 三分之二侧面或使用角度，展示立体结构和空间关系。\n3. 局部细节特写，突出材质、工艺、功能或核心卖点。\n4. 场景化展示，表现主体与环境、人物或使用动作的关系。\n\n四格画面保持同一主体、同一场景逻辑、同一光线方向、同一色彩体系和同一广告质感。\n画面清晰、比例真实、透视自然，适合 TVC、电商主视觉和品牌广告。\n\n【统一负面词】\n主体变形，比例错误，透视错误，结构改变，颜色漂移，材质错误，细节丢失，配件增减，Logo变形，文字乱码，主体悬浮，接触阴影缺失，边缘融化，重复主体，四格主体不一致，背景跳变，光线不一致，广角畸变，低机位变形，俯拍变形，拼贴感，塑料感，廉价AI感。",
@@ -183,8 +183,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/tvc-one-click/-09111913.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/tvc-one-click/-09111913.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 736.0,
           "naturalHeight": 981.0
         }

@@ -36,8 +36,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/talking-head-product-demo/-09021315.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021315.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1440.0,
           "naturalHeight": 2560.0
         }
@@ -65,8 +65,8 @@
             "modelCode": "SEEDREAM_5_0_PRO",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/talking-head-product-demo/-09021431.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021431.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1440.0,
           "naturalHeight": 2560.0,
           "prompt": "将@图片1 人物在@图片2场景中替换掉里面的人物。实拍真实照片质感。iPhone照片色调质感",
@@ -553,8 +553,8 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/talking-head-product-demo/-09021435.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021435.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 941.0,
           "naturalHeight": 1672.0,
           "prompt": "把shot3单独提取出来",
@@ -597,8 +597,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/talking-head-product-demo/-09021435-2.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021435-2.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1845.0,
           "naturalHeight": 1402.0
         }

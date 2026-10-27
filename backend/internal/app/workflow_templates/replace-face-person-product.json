@@ -133,8 +133,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/replace-face-person-product/-09101540.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101540.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 602.0,
           "naturalHeight": 144.0
         },
@@ -189,8 +189,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/replace-face-person-product/-09101538.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101538.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1845.0,
           "naturalHeight": 1402.0
         },
@@ -299,8 +299,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/replace-face-person-product/-09101546.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101546.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1440.0,
           "naturalHeight": 1920.0
         },
@@ -355,8 +355,8 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/replace-face-person-product/-09101540.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101540.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 1448.0,
           "naturalHeight": 1086.0,
           "prompt": "把分镜图@图片3 里面的人物替换为@图片1，服装搭配替换为@图片2，其他的不变。负面提示词：脸部变形，五官错位，双重五官，发型混乱，手指畸形，手臂扭曲，腿部变形，身体比例错误，过度消瘦，服装混搭，服装改款，衣服结构错误，颜色错误，材质错误，鞋子变形，缺鞋，少腿，裁切脚部，人物漂浮，脚不着地，阴影错误，抠图白边，背景穿帮，透视错误，额外人物，额外物体，文字，Logo，水印，模糊，低清晰度，塑料皮肤，卡通感",
@@ -410,8 +410,8 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/replace-face-person-product/-09101538.png",
-          "mimeType": "image/png",
+          "content": "/workflow-samples-reference/replace-face-person-product/-09101538.webp",
+          "mimeType": "image/webp",
           "naturalWidth": 750.0,
           "naturalHeight": 771.0
         },
