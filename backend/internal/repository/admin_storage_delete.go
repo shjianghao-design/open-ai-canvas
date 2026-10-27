@@ -86,6 +86,9 @@ func (r *Repository) DeleteAdminResources(resources []model.Resource, deletionJo
 		if err := tx.Where("resource_id IN ?", resourceIDs).Delete(&model.AnnouncementImageDraft{}).Error; err != nil {
 			return err
 		}
+		if err := tx.Where("resource_id IN ?", resourceIDs).Delete(&model.CanvasWorkflowCoverDraft{}).Error; err != nil {
+			return err
+		}
 		if len(deletionJobs) > 0 {
 			if err := tx.Create(&deletionJobs).Error; err != nil {
 				return err

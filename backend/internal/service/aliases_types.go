@@ -6,11 +6,23 @@ type AgentAvatarBundleManifest = app.AgentAvatarBundleManifest
 type AgentAvatarBundleImport = app.AgentAvatarBundleImport
 
 const (
-	WorkbenchKindImage = app.WorkbenchKindImage
-	WorkbenchKindVideo = app.WorkbenchKindVideo
+	WorkbenchKindImage          = app.WorkbenchKindImage
+	WorkbenchKindVideo          = app.WorkbenchKindVideo
+	CanvasWorkflowCoverMaxBytes = app.CanvasWorkflowCoverMaxBytes
 )
 
 type (
+	CanvasWorkflowTemplateSummary          = app.CanvasWorkflowTemplateSummary
+	CanvasWorkflowTemplateDetail           = app.CanvasWorkflowTemplateDetail
+	AdminCanvasWorkflowSummary             = app.AdminCanvasWorkflowSummary
+	AdminCanvasWorkflowDetail              = app.AdminCanvasWorkflowDetail
+	AdminCanvasWorkflowVersion             = app.AdminCanvasWorkflowVersion
+	AdminCanvasWorkflowDraftRequest        = app.AdminCanvasWorkflowDraftRequest
+	AdminCanvasWorkflowMetaRequest         = app.AdminCanvasWorkflowMetaRequest
+	AdminCanvasWorkflowCreateRequest       = app.AdminCanvasWorkflowCreateRequest
+	AdminCanvasWorkflowPublishRequest      = app.AdminCanvasWorkflowPublishRequest
+	CanvasWorkflowUpdateHint               = app.CanvasWorkflowUpdateHint
+	CanvasWorkflowEditSession              = app.CanvasWorkflowEditSession
 	BindProjectAssetImageRequest           = app.BindProjectAssetImageRequest
 	PaymentOrderQuery                      = app.PaymentOrderQuery
 	PaymentReconciliationQuery             = app.PaymentReconciliationQuery

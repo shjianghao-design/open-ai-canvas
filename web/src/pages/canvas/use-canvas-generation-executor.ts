@@ -112,6 +112,10 @@ export function useCanvasGenerationExecutor({
                         message.info("合并成片节点不直接重新生成，请重新选择源视频合并");
                         return;
                     }
+                    if (sourceNode?.metadata?.workflowGenerationWarning) {
+                        message.warning(`该工作流节点暂不可执行：${sourceNode.metadata.workflowGenerationWarning}`);
+                        return;
+                    }
                     let generationConfig = buildGenerationConfig(effectiveConfig, sourceNode, mode);
                     const hasLiveBatchChildren =
                         sourceNode?.type === CanvasNodeType.Image && (sourceNode.metadata?.batchChildIds || []).some((childId) => nodesRef.current.some((node) => node.id === childId && node.metadata?.batchRootId === sourceNode.id));

@@ -687,3 +687,9 @@ install 的 Base URL、协议、能力和成本全部从服务端快照读取，
 | `DELETE /dramas/:id` | 删除作品与全部制作记录 |
 
 编排由后端调度循环推进，浏览器只提交意图；制作台目前按 3 秒轮询摘要和当前集详情，没有新增 SSE，也不需要调整代理缓冲配置。模型选择只接受逻辑模型或系统渠道模型；浏览器自定义渠道密钥无法驱动无人值守流水线。
+
+## 画布工作流目录
+
+`GET /api/canvas-workflows` 返回已启用且已发布模板的卡片资料：名称、短描述、分类、版本、节点数、媒体类型、导入量、更新时间和可选封面路径。封面由 `GET /api/canvas-workflows/:slug/cover` 按当前发布版本授权读取；旧模板无封面时前端回退使用画布样例节点。
+
+管理员可通过 `POST /api/admin/canvas-workflow-covers` 上传不超过 10 MiB 的 1200×675 PNG/JPEG 封面；前台上传前提供 16:9 裁切。通过 `DELETE /api/admin/canvas-workflow-covers/:resourceId` 取消未引用草稿。封面 ID、卡片短描述、Markdown 使用指南通过 `PATCH /api/admin/canvas-workflows/:id` 保存到草稿元数据，与画布草稿一同在 `POST /api/admin/canvas-workflows/:id/publish` 发布；`GET /api/admin/canvas-workflows/:id/draft-cover` 仅管理员可读取当前草稿封面。历史版本保存自身封面和说明，回滚会将其载入草稿而不直接更改线上版本。

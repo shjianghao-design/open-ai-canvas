@@ -1,0 +1,739 @@
+{
+  "id": "builtin-product-three-view",
+  "slug": "product-three-view",
+  "name": "产品三视图生成",
+  "description": "按参考画布复刻：17 个节点、14 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "product-three-view",
+    "title": "产品三视图生成",
+    "nodes": [
+      {
+        "id": "product-three-view-node-001",
+        "type": "image",
+        "title": "IMG_8889.jpg",
+        "position": {
+          "x": 120.0,
+          "y": 970.9156409999999
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074946",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071619.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3024.0,
+          "naturalHeight": 4032.0
+        }
+      },
+      {
+        "id": "product-three-view-node-002",
+        "type": "image",
+        "title": "IMG_8885.jpg",
+        "position": {
+          "x": 120.0,
+          "y": 541.6511039999999
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074947",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071642.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3024.0,
+          "naturalHeight": 4032.0
+        }
+      },
+      {
+        "id": "product-three-view-node-003",
+        "type": "image",
+        "title": "IMG_8887.jpg",
+        "position": {
+          "x": 120.0,
+          "y": 1393.9783819999998
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074948",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071655.png",
+          "mimeType": "image/png",
+          "naturalWidth": 3024.0,
+          "naturalHeight": 4032.0
+        }
+      },
+      {
+        "id": "product-three-view-node-004",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 120.0,
+          "y": 79.99999999999994
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074949",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": false
+          },
+          "prompt": "请根据我上传的产品实拍照片，生成一张商业级精修产品三视图，在同一张图片中展示同一款产品的正面、侧面和背面。\n【参考依据】\n自动识别产品主体及各张照片对应的角度，将所有照片作为同一件产品的结构参考。严格保留实物的外形、比例、颜色、材质、部件和设计细节，不重新设计，不增加或删减功能结构。若照片包含其他物品，仅提取主要产品。\n参考图未展示的区域，根据已有结构谨慎补全，不凭空添加接口、按键、装饰或功能部件。\n\n【三视图与排版】\n输出一张横向图片，从左到右依次排列：正面、90°侧面、背面。优先选择参考照片中信息更完整的一侧作为侧面。\n使用接近正交投影的摄影效果，避免广角畸变，不用45°斜视角代替正侧面。\n三个视图保持相同缩放比例、统一摆放姿态、统一装配与开合状态，仅改变观察方向。对应部件的尺寸、位置、厚度和连接关系必须互相吻合。\n产品完整展示，不裁切、不重叠，底部基线对齐，间距均匀，四周留白充足。根据产品形状合理分配各视图空间，不单独拉伸或放大某个视图。\n\n【产品精修】\n清除灰尘、污渍、指纹及非设计性的轻微划痕，修正拍摄偏色、曝光不均和透视倾斜，使产品呈现干净、完好的新品状态。\n保留真实材质纹理、结构接缝、功能开孔及工艺细节，不将真实结构当作瑕疵抹除。\n准确区分并还原产品实际具有的金属、塑料、玻璃、织物、皮革、橡胶或其他材质；保留各自合理的纹理、光泽、透明度和反射特征，避免全部处理成光滑塑料。\n去除拍摄者、手机及杂乱环境倒影，保留符合材质和形体的干净摄影棚反射。避免过度磨皮、过度锐化、虚假高光及夸张渲染。\n忠实还原实物颜色，三个视图的色彩、质感和细节精度保持一致。\n\n【背景与光线】\n纯白色无缝摄影棚背景，柔和均匀的专业产品布光。三个视图使用一致的光线方向、曝光和白平衡。\n适当保留暗部层次，使凹槽、内部结构及边缘清晰可辨；避免高光过曝、暗部死黑。\n产品下方保留轻微自然的接触阴影，不悬浮，不添加场景、道具或装饰。\n\n【标识与文字】\n准确保留产品原有品牌、图案、标识和标签的位置、比例及内容。无法辨认的文字不要擅自编造，不生成虚假的品牌或参数。\n除产品本身已有内容外，不添加标题、视图标签、尺寸线、说明文字、边框或水印。\n\n【输出要求】\n只输出一张包含三个视图的完整图片，不输出三张独立图片。优先使用横版2:1画幅，必要时根据产品长宽比例调整画幅，以完整、清晰、协调地展示三视图为准。\n成图应达到专业电商产品精修标准：结构忠实、比例准确、材质真实、轮廓干净、细节清晰。",
+          "composerContent": "请根据我上传的产品实拍照片，生成一张商业级精修产品三视图，在同一张图片中展示同一款产品的正面、侧面和背面。\n【参考依据】\n自动识别产品主体及各张照片对应的角度，将所有照片作为同一件产品的结构参考。严格保留实物的外形、比例、颜色、材质、部件和设计细节，不重新设计，不增加或删减功能结构。若照片包含其他物品，仅提取主要产品。\n参考图未展示的区域，根据已有结构谨慎补全，不凭空添加接口、按键、装饰或功能部件。\n\n【三视图与排版】\n输出一张横向图片，从左到右依次排列：正面、90°侧面、背面。优先选择参考照片中信息更完整的一侧作为侧面。\n使用接近正交投影的摄影效果，避免广角畸变，不用45°斜视角代替正侧面。\n三个视图保持相同缩放比例、统一摆放姿态、统一装配与开合状态，仅改变观察方向。对应部件的尺寸、位置、厚度和连接关系必须互相吻合。\n产品完整展示，不裁切、不重叠，底部基线对齐，间距均匀，四周留白充足。根据产品形状合理分配各视图空间，不单独拉伸或放大某个视图。\n\n【产品精修】\n清除灰尘、污渍、指纹及非设计性的轻微划痕，修正拍摄偏色、曝光不均和透视倾斜，使产品呈现干净、完好的新品状态。\n保留真实材质纹理、结构接缝、功能开孔及工艺细节，不将真实结构当作瑕疵抹除。\n准确区分并还原产品实际具有的金属、塑料、玻璃、织物、皮革、橡胶或其他材质；保留各自合理的纹理、光泽、透明度和反射特征，避免全部处理成光滑塑料。\n去除拍摄者、手机及杂乱环境倒影，保留符合材质和形体的干净摄影棚反射。避免过度磨皮、过度锐化、虚假高光及夸张渲染。\n忠实还原实物颜色，三个视图的色彩、质感和细节精度保持一致。\n\n【背景与光线】\n纯白色无缝摄影棚背景，柔和均匀的专业产品布光。三个视图使用一致的光线方向、曝光和白平衡。\n适当保留暗部层次，使凹槽、内部结构及边缘清晰可辨；避免高光过曝、暗部死黑。\n产品下方保留轻微自然的接触阴影，不悬浮，不添加场景、道具或装饰。\n\n【标识与文字】\n准确保留产品原有品牌、图案、标识和标签的位置、比例及内容。无法辨认的文字不要擅自编造，不生成虚假的品牌或参数。\n除产品本身已有内容外，不添加标题、视图标签、尺寸线、说明文字、边框或水印。\n\n【输出要求】\n只输出一张包含三个视图的完整图片，不输出三张独立图片。优先使用横版2:1画幅，必要时根据产品长宽比例调整画幅，以完整、清晰、协调地展示三视图为准。\n成图应达到专业电商产品精修标准：结构忠实、比例准确、材质真实、轮廓干净、细节清晰。",
+          "workflowOriginalPrompt": "请根据我上传的产品实拍照片，生成一张商业级精修产品三视图，在同一张图片中展示同一款产品的正面、侧面和背面。\n【参考依据】\n自动识别产品主体及各张照片对应的角度，将所有照片作为同一件产品的结构参考。严格保留实物的外形、比例、颜色、材质、部件和设计细节，不重新设计，不增加或删减功能结构。若照片包含其他物品，仅提取主要产品。\n参考图未展示的区域，根据已有结构谨慎补全，不凭空添加接口、按键、装饰或功能部件。\n\n【三视图与排版】\n输出一张横向图片，从左到右依次排列：正面、90°侧面、背面。优先选择参考照片中信息更完整的一侧作为侧面。\n使用接近正交投影的摄影效果，避免广角畸变，不用45°斜视角代替正侧面。\n三个视图保持相同缩放比例、统一摆放姿态、统一装配与开合状态，仅改变观察方向。对应部件的尺寸、位置、厚度和连接关系必须互相吻合。\n产品完整展示，不裁切、不重叠，底部基线对齐，间距均匀，四周留白充足。根据产品形状合理分配各视图空间，不单独拉伸或放大某个视图。\n\n【产品精修】\n清除灰尘、污渍、指纹及非设计性的轻微划痕，修正拍摄偏色、曝光不均和透视倾斜，使产品呈现干净、完好的新品状态。\n保留真实材质纹理、结构接缝、功能开孔及工艺细节，不将真实结构当作瑕疵抹除。\n准确区分并还原产品实际具有的金属、塑料、玻璃、织物、皮革、橡胶或其他材质；保留各自合理的纹理、光泽、透明度和反射特征，避免全部处理成光滑塑料。\n去除拍摄者、手机及杂乱环境倒影，保留符合材质和形体的干净摄影棚反射。避免过度磨皮、过度锐化、虚假高光及夸张渲染。\n忠实还原实物颜色，三个视图的色彩、质感和细节精度保持一致。\n\n【背景与光线】\n纯白色无缝摄影棚背景，柔和均匀的专业产品布光。三个视图使用一致的光线方向、曝光和白平衡。\n适当保留暗部层次，使凹槽、内部结构及边缘清晰可辨；避免高光过曝、暗部死黑。\n产品下方保留轻微自然的接触阴影，不悬浮，不添加场景、道具或装饰。\n\n【标识与文字】\n准确保留产品原有品牌、图案、标识和标签的位置、比例及内容。无法辨认的文字不要擅自编造，不生成虚假的品牌或参数。\n除产品本身已有内容外，不添加标题、视图标签、尺寸线、说明文字、边框或水印。\n\n【输出要求】\n只输出一张包含三个视图的完整图片，不输出三张独立图片。优先使用横版2:1画幅，必要时根据产品长宽比例调整画幅，以完整、清晰、协调地展示三视图为准。\n成图应达到专业电商产品精修标准：结构忠实、比例准确、材质真实、轮廓干净、细节清晰。",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "请根据我上传的产品实拍照片，生成一张商业级精修产品三视图，在同一张图片中展示同一款产品的正面、侧面和背面。\n【参考依据】\n自动识别产品主体及各张照片对应的角度，将所有照片作为同一件产品的结构参考。严格保留实物的外形、比例、颜色、材质、部件和设计细节，不重新设计，不增加或删减功能结构。若照片包含其他物品，仅提取主要产品。\n参考图未展示的区域，根据已有结构谨慎补全，不凭空添加接口、按键、装饰或功能部件。\n\n【三视图与排版】\n输出一张横向图片，从左到右依次排列：正面、90°侧面、背面。优先选择参考照片中信息更完整的一侧作为侧面。\n使用接近正交投影的摄影效果，避免广角畸变，不用45°斜视角代替正侧面。\n三个视图保持相同缩放比例、统一摆放姿态、统一装配与开合状态，仅改变观察方向。对应部件的尺寸、位置、厚度和连接关系必须互相吻合。\n产品完整展示，不裁切、不重叠，底部基线对齐，间距均匀，四周留白充足。根据产品形状合理分配各视图空间，不单独拉伸或放大某个视图。\n\n【产品精修】\n清除灰尘、污渍、指纹及非设计性的轻微划痕，修正拍摄偏色、曝光不均和透视倾斜，使产品呈现干净、完好的新品状态。\n保留真实材质纹理、结构接缝、功能开孔及工艺细节，不将真实结构当作瑕疵抹除。\n准确区分并还原产品实际具有的金属、塑料、玻璃、织物、皮革、橡胶或其他材质；保留各自合理的纹理、光泽、透明度和反射特征，避免全部处理成光滑塑料。\n去除拍摄者、手机及杂乱环境倒影，保留符合材质和形体的干净摄影棚反射。避免过度磨皮、过度锐化、虚假高光及夸张渲染。\n忠实还原实物颜色，三个视图的色彩、质感和细节精度保持一致。\n\n【背景与光线】\n纯白色无缝摄影棚背景，柔和均匀的专业产品布光。三个视图使用一致的光线方向、曝光和白平衡。\n适当保留暗部层次，使凹槽、内部结构及边缘清晰可辨；避免高光过曝、暗部死黑。\n产品下方保留轻微自然的接触阴影，不悬浮，不添加场景、道具或装饰。\n\n【标识与文字】\n准确保留产品原有品牌、图案、标识和标签的位置、比例及内容。无法辨认的文字不要擅自编造，不生成虚假的品牌或参数。\n除产品本身已有内容外，不添加标题、视图标签、尺寸线、说明文字、边框或水印。\n\n【输出要求】\n只输出一张包含三个视图的完整图片，不输出三张独立图片。优先使用横版2:1画幅，必要时根据产品长宽比例调整画幅，以完整、清晰、协调地展示三视图为准。\n成图应达到专业电商产品精修标准：结构忠实、比例准确、材质真实、轮廓干净、细节清晰。",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "product-three-view-node-005",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1363.1522300000001,
+          "y": 903.7598889999999
+        },
+        "width": 320.0,
+        "height": 213.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074950",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071619.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2048.0,
+          "naturalHeight": 1360.0,
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:2",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "product-three-view-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-003",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-004",
+              "kind": "text",
+              "slot": "prompt_text"
+            }
+          ]
+        }
+      },
+      {
+        "id": "product-three-view-node-006",
+        "type": "image",
+        "title": "O1CN01LVimwi1Cw0ASX1m5W_!!2216947740144.jpg",
+        "position": {
+          "x": 2703.455969,
+          "y": 541.6511039999999
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074951",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071642.png",
+          "mimeType": "image/png",
+          "naturalWidth": 790.0,
+          "naturalHeight": 790.0
+        }
+      },
+      {
+        "id": "product-three-view-node-007",
+        "type": "image",
+        "title": "O1CN01p2rg5L1Cw09utYxJe_!!2216947740144-1.jpg",
+        "position": {
+          "x": 2703.455969,
+          "y": 970.9156409999999
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074952",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071655.png",
+          "mimeType": "image/png",
+          "naturalWidth": 748.0,
+          "naturalHeight": 748.0
+        }
+      },
+      {
+        "id": "product-three-view-node-008",
+        "type": "image",
+        "title": "O1CN01lyh1n71Cw0ASLPOYm_!!2216947740144.jpg",
+        "position": {
+          "x": 2703.455969,
+          "y": 1393.9783819999998
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074953",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071619.png",
+          "mimeType": "image/png",
+          "naturalWidth": 709.0,
+          "naturalHeight": 709.0
+        }
+      },
+      {
+        "id": "product-three-view-node-009",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 2743.455969,
+          "y": 79.99999999999994
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074954",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": false
+          },
+          "prompt": "请根据我上传的产品图片，制作一张纯白背景的商业精修三视角产品展示图。\n\n【视角与产品】\n图片展示的是同一款产品，请分别提取每张参考图中的完整产品，保留各自的拍摄角度、摆放方式和产品数量，在最终画面中形成三个独立视角。\n不要把几个视角变成同一个角度，不强行转换为参考图中没有的正面、侧面或背面。\n如果参考图中是一对或一组产品，保留完整组合及相互位置，不擅自减少数量。\n\n【忠实还原】\n严格保持产品原有外形、比例、配色、材质、拼接、纹理、缝线、配件、标识和结构细节，不重新设计，不替换款式，不随意增加或删除部件。\n三个视角中的产品必须保持同款一致，避免局部形状、颜色、纹理和标识发生变化。原有文字能辨认的准确保留，不能辨认的不编造。\n\n【白底与精修】\n彻底移除原图的背景，统一替换为纯白色背景，背景色为RGB（255,255,255），不要米白、灰白、渐变、墙面或地面分界线。\n准确处理产品轮廓及镂空区域，边缘自然干净，无原背景残留、杂色、白边或锯齿；白色部件保留完整边界，不与背景融为一体。\n清除灰尘、污渍和非设计性的轻微瑕疵，保留真实材质纹理。统一产品的曝光、白平衡和光泽表现，使用柔和的商业摄影布光。\n仅在产品下方保留轻微自然的接触阴影，其余背景保持纯白。避免浓重投影、过曝、过度磨皮、过度锐化和虚假塑料质感。\n\n【合成排版】\n只生成一张完整图片，横版3:2画幅。\n将参考图对应的产品视角按上传顺序从左到右排列，形成一行三列的干净布局。\n统一产品展示尺度，各组视觉大小协调，间距均匀，上下居中，四周保留充足留白。不得为了填满版面拉伸产品。\n三个视角均完整呈现，不裁切、不重叠，不保留原图的矩形背景块，不添加分隔线。\n\n【最终输出】\n高清商业产品摄影效果，细节清楚，颜色准确，材质真实。\n不添加标题、角度标签、说明文字、边框、水印或装饰。只输出一张包含三个产品视角的纯白底成图。",
+          "composerContent": "请根据我上传的产品图片，制作一张纯白背景的商业精修三视角产品展示图。\n\n【视角与产品】\n图片展示的是同一款产品，请分别提取每张参考图中的完整产品，保留各自的拍摄角度、摆放方式和产品数量，在最终画面中形成三个独立视角。\n不要把几个视角变成同一个角度，不强行转换为参考图中没有的正面、侧面或背面。\n如果参考图中是一对或一组产品，保留完整组合及相互位置，不擅自减少数量。\n\n【忠实还原】\n严格保持产品原有外形、比例、配色、材质、拼接、纹理、缝线、配件、标识和结构细节，不重新设计，不替换款式，不随意增加或删除部件。\n三个视角中的产品必须保持同款一致，避免局部形状、颜色、纹理和标识发生变化。原有文字能辨认的准确保留，不能辨认的不编造。\n\n【白底与精修】\n彻底移除原图的背景，统一替换为纯白色背景，背景色为RGB（255,255,255），不要米白、灰白、渐变、墙面或地面分界线。\n准确处理产品轮廓及镂空区域，边缘自然干净，无原背景残留、杂色、白边或锯齿；白色部件保留完整边界，不与背景融为一体。\n清除灰尘、污渍和非设计性的轻微瑕疵，保留真实材质纹理。统一产品的曝光、白平衡和光泽表现，使用柔和的商业摄影布光。\n仅在产品下方保留轻微自然的接触阴影，其余背景保持纯白。避免浓重投影、过曝、过度磨皮、过度锐化和虚假塑料质感。\n\n【合成排版】\n只生成一张完整图片，横版3:2画幅。\n将参考图对应的产品视角按上传顺序从左到右排列，形成一行三列的干净布局。\n统一产品展示尺度，各组视觉大小协调，间距均匀，上下居中，四周保留充足留白。不得为了填满版面拉伸产品。\n三个视角均完整呈现，不裁切、不重叠，不保留原图的矩形背景块，不添加分隔线。\n\n【最终输出】\n高清商业产品摄影效果，细节清楚，颜色准确，材质真实。\n不添加标题、角度标签、说明文字、边框、水印或装饰。只输出一张包含三个产品视角的纯白底成图。",
+          "workflowOriginalPrompt": "请根据我上传的产品图片，制作一张纯白背景的商业精修三视角产品展示图。\n\n【视角与产品】\n图片展示的是同一款产品，请分别提取每张参考图中的完整产品，保留各自的拍摄角度、摆放方式和产品数量，在最终画面中形成三个独立视角。\n不要把几个视角变成同一个角度，不强行转换为参考图中没有的正面、侧面或背面。\n如果参考图中是一对或一组产品，保留完整组合及相互位置，不擅自减少数量。\n\n【忠实还原】\n严格保持产品原有外形、比例、配色、材质、拼接、纹理、缝线、配件、标识和结构细节，不重新设计，不替换款式，不随意增加或删除部件。\n三个视角中的产品必须保持同款一致，避免局部形状、颜色、纹理和标识发生变化。原有文字能辨认的准确保留，不能辨认的不编造。\n\n【白底与精修】\n彻底移除原图的背景，统一替换为纯白色背景，背景色为RGB（255,255,255），不要米白、灰白、渐变、墙面或地面分界线。\n准确处理产品轮廓及镂空区域，边缘自然干净，无原背景残留、杂色、白边或锯齿；白色部件保留完整边界，不与背景融为一体。\n清除灰尘、污渍和非设计性的轻微瑕疵，保留真实材质纹理。统一产品的曝光、白平衡和光泽表现，使用柔和的商业摄影布光。\n仅在产品下方保留轻微自然的接触阴影，其余背景保持纯白。避免浓重投影、过曝、过度磨皮、过度锐化和虚假塑料质感。\n\n【合成排版】\n只生成一张完整图片，横版3:2画幅。\n将参考图对应的产品视角按上传顺序从左到右排列，形成一行三列的干净布局。\n统一产品展示尺度，各组视觉大小协调，间距均匀，上下居中，四周保留充足留白。不得为了填满版面拉伸产品。\n三个视角均完整呈现，不裁切、不重叠，不保留原图的矩形背景块，不添加分隔线。\n\n【最终输出】\n高清商业产品摄影效果，细节清楚，颜色准确，材质真实。\n不添加标题、角度标签、说明文字、边框、水印或装饰。只输出一张包含三个产品视角的纯白底成图。",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "请根据我上传的产品图片，制作一张纯白背景的商业精修三视角产品展示图。\n\n【视角与产品】\n图片展示的是同一款产品，请分别提取每张参考图中的完整产品，保留各自的拍摄角度、摆放方式和产品数量，在最终画面中形成三个独立视角。\n不要把几个视角变成同一个角度，不强行转换为参考图中没有的正面、侧面或背面。\n如果参考图中是一对或一组产品，保留完整组合及相互位置，不擅自减少数量。\n\n【忠实还原】\n严格保持产品原有外形、比例、配色、材质、拼接、纹理、缝线、配件、标识和结构细节，不重新设计，不替换款式，不随意增加或删除部件。\n三个视角中的产品必须保持同款一致，避免局部形状、颜色、纹理和标识发生变化。原有文字能辨认的准确保留，不能辨认的不编造。\n\n【白底与精修】\n彻底移除原图的背景，统一替换为纯白色背景，背景色为RGB（255,255,255），不要米白、灰白、渐变、墙面或地面分界线。\n准确处理产品轮廓及镂空区域，边缘自然干净，无原背景残留、杂色、白边或锯齿；白色部件保留完整边界，不与背景融为一体。\n清除灰尘、污渍和非设计性的轻微瑕疵，保留真实材质纹理。统一产品的曝光、白平衡和光泽表现，使用柔和的商业摄影布光。\n仅在产品下方保留轻微自然的接触阴影，其余背景保持纯白。避免浓重投影、过曝、过度磨皮、过度锐化和虚假塑料质感。\n\n【合成排版】\n只生成一张完整图片，横版3:2画幅。\n将参考图对应的产品视角按上传顺序从左到右排列，形成一行三列的干净布局。\n统一产品展示尺度，各组视觉大小协调，间距均匀，上下居中，四周保留充足留白。不得为了填满版面拉伸产品。\n三个视角均完整呈现，不裁切、不重叠，不保留原图的矩形背景块，不添加分隔线。\n\n【最终输出】\n高清商业产品摄影效果，细节清楚，颜色准确，材质真实。\n不添加标题、角度标签、说明文字、边框、水印或装饰。只输出一张包含三个产品视角的纯白底成图。",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "product-three-view-node-010",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3929.3643460000003,
+          "y": 875.656332
+        },
+        "width": 320.0,
+        "height": 213.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074955",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071642.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2048.0,
+          "naturalHeight": 1360.0,
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:2",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "product-three-view-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-008",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-007",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-009",
+              "kind": "text",
+              "slot": "prompt_text"
+            }
+          ]
+        }
+      },
+      {
+        "id": "product-three-view-node-011",
+        "type": "image",
+        "title": "产品拍摄｜首饰耳环高级感电商图（附布光）_2_商业摄影师Jade__来自小红书网页版.jpg",
+        "position": {
+          "x": 80.0,
+          "y": 2231.959705
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074956",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071655.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1080.0
+        }
+      },
+      {
+        "id": "product-three-view-node-012",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 1024.365582,
+          "y": 2905.150013
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074957",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": false
+          },
+          "prompt": "请根据我上传的1—3张饰品参考照片，生成同一款饰品的商业精修三视图，将正面、侧面和背面排列在一张纯白背景图片中。\n\n【识别与参考】\n上传图片的数量不固定，所有照片共同用于理解同一款饰品，不按照片数量决定输出视图数量。\n自动识别饰品类别、主体结构及不同照片之间的对应关系，综合参考所有可见细节。无论上传几张照片，最终均展示三个不同的标准视角。\n仅提取饰品，移除原图中的道具、人物、手部、展示架、包装、背景及水印。\n\n【三视图定义】\n从左到右依次展示：\n左：正面，主要装饰面朝向镜头，完整展示主体造型。\n中：90°侧面，准确展示厚度、弧度、侧边轮廓及连接关系，不以45°斜视角代替。\n右：背面，相对于正面旋转180°，展示背部结构及实际存在的固定或佩戴部件。\n\n采用接近正交投影的写实产品摄影效果，减少透视畸变。\n三个视角必须是同一件饰品在相同装配状态下的旋转观察结果，不是三个相似款式，不得用水平镜像正面代替背面。\n\n【单件与成对饰品】\n单件饰品，每个视图展示同一单件。\n成对饰品，每个视图展示完整一对，并保持左右配对关系、设计差异及排列顺序一致。每一组中的两件都采用该组对应的观察方向，适度间隔，避免互相遮挡。\n项链、手链等柔性饰品采用自然、清晰、可复现的陈列形态，三个视图保持同一形态，不随意改变链条走向或吊坠位置。\n\n【结构忠实】\n严格保留参考图中的轮廓、长宽比例、厚度、弧度、开口、镂空、重复单元数量和排列方式。\n准确保留实际存在的耳针、耳堵、耳钩、铰链、扣头、链节、连接环、镶爪和镶嵌结构，不凭空添加，不遗漏，不改变连接方式。\n保持金属颜色、宝石数量与切割形状、珍珠形态及装饰纹样一致。\n参考图中可辨认的结构优先于常见款式经验；不可见部分仅做必要、保守的补全，不编造复杂背饰、刻字、品牌或机械结构。\n\n【饰品精修】\n达到专业珠宝饰品电商精修效果。\n去除灰尘、指纹、污渍及非设计性的轻微划痕，同时保留真实工艺纹理、接缝、雕刻和边缘倒角，不改变设计本身的不规则形态。\n根据实物分别还原抛光、拉丝、磨砂等表面处理，不将所有材质处理成镜面。\n金属呈现干净、受控的明暗过渡和柔和条状高光，保留体积感及真实反射，避免大片死黑、过曝发白、塑料感或液态金属感。\n如有宝石、珍珠、珐琅或其他材质，忠实保留其色泽、透明度、光泽和纹理，不添加夸张星芒或虚假发光。\n三个视图的颜色、曝光、白平衡、光源方向和精修程度保持一致。\n\n【纯白背景与排版】\n只输出一张横版3:2图片，一行三列，正面、侧面、背面从左到右排列。\n背景为纯白色RGB（255,255,255），无渐变、无纹理、无场景、无地平线。\n三个视图采用相同缩放比例，不为填满版面而单独放大侧面或拉伸饰品。主体居中，间距均匀，四周留白充足，所有部件完整呈现，不裁切、不重叠。\n边缘与镂空区域干净自然，无原背景残留、杂色、锯齿或抠图白边。保留浅色及透明部件的真实边界。\n如有接触阴影，仅保留极淡、自然的阴影，其余背景保持纯白，不出现浓重投影或镜面地面倒影。\n\n【输出限制】\n不要拼贴原照片，不要重复三个相同视角，不要输出三张独立图片。\n不添加标题、视图标签、尺寸线、文案、边框、水印或装饰。\n最终成图为写实商业产品摄影：同款一致、结构清楚、材质真实、精修细腻的白底饰品三视图。",
+          "composerContent": "请根据我上传的1—3张饰品参考照片，生成同一款饰品的商业精修三视图，将正面、侧面和背面排列在一张纯白背景图片中。\n\n【识别与参考】\n上传图片的数量不固定，所有照片共同用于理解同一款饰品，不按照片数量决定输出视图数量。\n自动识别饰品类别、主体结构及不同照片之间的对应关系，综合参考所有可见细节。无论上传几张照片，最终均展示三个不同的标准视角。\n仅提取饰品，移除原图中的道具、人物、手部、展示架、包装、背景及水印。\n\n【三视图定义】\n从左到右依次展示：\n左：正面，主要装饰面朝向镜头，完整展示主体造型。\n中：90°侧面，准确展示厚度、弧度、侧边轮廓及连接关系，不以45°斜视角代替。\n右：背面，相对于正面旋转180°，展示背部结构及实际存在的固定或佩戴部件。\n\n采用接近正交投影的写实产品摄影效果，减少透视畸变。\n三个视角必须是同一件饰品在相同装配状态下的旋转观察结果，不是三个相似款式，不得用水平镜像正面代替背面。\n\n【单件与成对饰品】\n单件饰品，每个视图展示同一单件。\n成对饰品，每个视图展示完整一对，并保持左右配对关系、设计差异及排列顺序一致。每一组中的两件都采用该组对应的观察方向，适度间隔，避免互相遮挡。\n项链、手链等柔性饰品采用自然、清晰、可复现的陈列形态，三个视图保持同一形态，不随意改变链条走向或吊坠位置。\n\n【结构忠实】\n严格保留参考图中的轮廓、长宽比例、厚度、弧度、开口、镂空、重复单元数量和排列方式。\n准确保留实际存在的耳针、耳堵、耳钩、铰链、扣头、链节、连接环、镶爪和镶嵌结构，不凭空添加，不遗漏，不改变连接方式。\n保持金属颜色、宝石数量与切割形状、珍珠形态及装饰纹样一致。\n参考图中可辨认的结构优先于常见款式经验；不可见部分仅做必要、保守的补全，不编造复杂背饰、刻字、品牌或机械结构。\n\n【饰品精修】\n达到专业珠宝饰品电商精修效果。\n去除灰尘、指纹、污渍及非设计性的轻微划痕，同时保留真实工艺纹理、接缝、雕刻和边缘倒角，不改变设计本身的不规则形态。\n根据实物分别还原抛光、拉丝、磨砂等表面处理，不将所有材质处理成镜面。\n金属呈现干净、受控的明暗过渡和柔和条状高光，保留体积感及真实反射，避免大片死黑、过曝发白、塑料感或液态金属感。\n如有宝石、珍珠、珐琅或其他材质，忠实保留其色泽、透明度、光泽和纹理，不添加夸张星芒或虚假发光。\n三个视图的颜色、曝光、白平衡、光源方向和精修程度保持一致。\n\n【纯白背景与排版】\n只输出一张横版3:2图片，一行三列，正面、侧面、背面从左到右排列。\n背景为纯白色RGB（255,255,255），无渐变、无纹理、无场景、无地平线。\n三个视图采用相同缩放比例，不为填满版面而单独放大侧面或拉伸饰品。主体居中，间距均匀，四周留白充足，所有部件完整呈现，不裁切、不重叠。\n边缘与镂空区域干净自然，无原背景残留、杂色、锯齿或抠图白边。保留浅色及透明部件的真实边界。\n如有接触阴影，仅保留极淡、自然的阴影，其余背景保持纯白，不出现浓重投影或镜面地面倒影。\n\n【输出限制】\n不要拼贴原照片，不要重复三个相同视角，不要输出三张独立图片。\n不添加标题、视图标签、尺寸线、文案、边框、水印或装饰。\n最终成图为写实商业产品摄影：同款一致、结构清楚、材质真实、精修细腻的白底饰品三视图。",
+          "workflowOriginalPrompt": "请根据我上传的1—3张饰品参考照片，生成同一款饰品的商业精修三视图，将正面、侧面和背面排列在一张纯白背景图片中。\n\n【识别与参考】\n上传图片的数量不固定，所有照片共同用于理解同一款饰品，不按照片数量决定输出视图数量。\n自动识别饰品类别、主体结构及不同照片之间的对应关系，综合参考所有可见细节。无论上传几张照片，最终均展示三个不同的标准视角。\n仅提取饰品，移除原图中的道具、人物、手部、展示架、包装、背景及水印。\n\n【三视图定义】\n从左到右依次展示：\n左：正面，主要装饰面朝向镜头，完整展示主体造型。\n中：90°侧面，准确展示厚度、弧度、侧边轮廓及连接关系，不以45°斜视角代替。\n右：背面，相对于正面旋转180°，展示背部结构及实际存在的固定或佩戴部件。\n\n采用接近正交投影的写实产品摄影效果，减少透视畸变。\n三个视角必须是同一件饰品在相同装配状态下的旋转观察结果，不是三个相似款式，不得用水平镜像正面代替背面。\n\n【单件与成对饰品】\n单件饰品，每个视图展示同一单件。\n成对饰品，每个视图展示完整一对，并保持左右配对关系、设计差异及排列顺序一致。每一组中的两件都采用该组对应的观察方向，适度间隔，避免互相遮挡。\n项链、手链等柔性饰品采用自然、清晰、可复现的陈列形态，三个视图保持同一形态，不随意改变链条走向或吊坠位置。\n\n【结构忠实】\n严格保留参考图中的轮廓、长宽比例、厚度、弧度、开口、镂空、重复单元数量和排列方式。\n准确保留实际存在的耳针、耳堵、耳钩、铰链、扣头、链节、连接环、镶爪和镶嵌结构，不凭空添加，不遗漏，不改变连接方式。\n保持金属颜色、宝石数量与切割形状、珍珠形态及装饰纹样一致。\n参考图中可辨认的结构优先于常见款式经验；不可见部分仅做必要、保守的补全，不编造复杂背饰、刻字、品牌或机械结构。\n\n【饰品精修】\n达到专业珠宝饰品电商精修效果。\n去除灰尘、指纹、污渍及非设计性的轻微划痕，同时保留真实工艺纹理、接缝、雕刻和边缘倒角，不改变设计本身的不规则形态。\n根据实物分别还原抛光、拉丝、磨砂等表面处理，不将所有材质处理成镜面。\n金属呈现干净、受控的明暗过渡和柔和条状高光，保留体积感及真实反射，避免大片死黑、过曝发白、塑料感或液态金属感。\n如有宝石、珍珠、珐琅或其他材质，忠实保留其色泽、透明度、光泽和纹理，不添加夸张星芒或虚假发光。\n三个视图的颜色、曝光、白平衡、光源方向和精修程度保持一致。\n\n【纯白背景与排版】\n只输出一张横版3:2图片，一行三列，正面、侧面、背面从左到右排列。\n背景为纯白色RGB（255,255,255），无渐变、无纹理、无场景、无地平线。\n三个视图采用相同缩放比例，不为填满版面而单独放大侧面或拉伸饰品。主体居中，间距均匀，四周留白充足，所有部件完整呈现，不裁切、不重叠。\n边缘与镂空区域干净自然，无原背景残留、杂色、锯齿或抠图白边。保留浅色及透明部件的真实边界。\n如有接触阴影，仅保留极淡、自然的阴影，其余背景保持纯白，不出现浓重投影或镜面地面倒影。\n\n【输出限制】\n不要拼贴原照片，不要重复三个相同视角，不要输出三张独立图片。\n不添加标题、视图标签、尺寸线、文案、边框、水印或装饰。\n最终成图为写实商业产品摄影：同款一致、结构清楚、材质真实、精修细腻的白底饰品三视图。",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "请根据我上传的1—3张饰品参考照片，生成同一款饰品的商业精修三视图，将正面、侧面和背面排列在一张纯白背景图片中。\n\n【识别与参考】\n上传图片的数量不固定，所有照片共同用于理解同一款饰品，不按照片数量决定输出视图数量。\n自动识别饰品类别、主体结构及不同照片之间的对应关系，综合参考所有可见细节。无论上传几张照片，最终均展示三个不同的标准视角。\n仅提取饰品，移除原图中的道具、人物、手部、展示架、包装、背景及水印。\n\n【三视图定义】\n从左到右依次展示：\n左：正面，主要装饰面朝向镜头，完整展示主体造型。\n中：90°侧面，准确展示厚度、弧度、侧边轮廓及连接关系，不以45°斜视角代替。\n右：背面，相对于正面旋转180°，展示背部结构及实际存在的固定或佩戴部件。\n\n采用接近正交投影的写实产品摄影效果，减少透视畸变。\n三个视角必须是同一件饰品在相同装配状态下的旋转观察结果，不是三个相似款式，不得用水平镜像正面代替背面。\n\n【单件与成对饰品】\n单件饰品，每个视图展示同一单件。\n成对饰品，每个视图展示完整一对，并保持左右配对关系、设计差异及排列顺序一致。每一组中的两件都采用该组对应的观察方向，适度间隔，避免互相遮挡。\n项链、手链等柔性饰品采用自然、清晰、可复现的陈列形态，三个视图保持同一形态，不随意改变链条走向或吊坠位置。\n\n【结构忠实】\n严格保留参考图中的轮廓、长宽比例、厚度、弧度、开口、镂空、重复单元数量和排列方式。\n准确保留实际存在的耳针、耳堵、耳钩、铰链、扣头、链节、连接环、镶爪和镶嵌结构，不凭空添加，不遗漏，不改变连接方式。\n保持金属颜色、宝石数量与切割形状、珍珠形态及装饰纹样一致。\n参考图中可辨认的结构优先于常见款式经验；不可见部分仅做必要、保守的补全，不编造复杂背饰、刻字、品牌或机械结构。\n\n【饰品精修】\n达到专业珠宝饰品电商精修效果。\n去除灰尘、指纹、污渍及非设计性的轻微划痕，同时保留真实工艺纹理、接缝、雕刻和边缘倒角，不改变设计本身的不规则形态。\n根据实物分别还原抛光、拉丝、磨砂等表面处理，不将所有材质处理成镜面。\n金属呈现干净、受控的明暗过渡和柔和条状高光，保留体积感及真实反射，避免大片死黑、过曝发白、塑料感或液态金属感。\n如有宝石、珍珠、珐琅或其他材质，忠实保留其色泽、透明度、光泽和纹理，不添加夸张星芒或虚假发光。\n三个视图的颜色、曝光、白平衡、光源方向和精修程度保持一致。\n\n【纯白背景与排版】\n只输出一张横版3:2图片，一行三列，正面、侧面、背面从左到右排列。\n背景为纯白色RGB（255,255,255），无渐变、无纹理、无场景、无地平线。\n三个视图采用相同缩放比例，不为填满版面而单独放大侧面或拉伸饰品。主体居中，间距均匀，四周留白充足，所有部件完整呈现，不裁切、不重叠。\n边缘与镂空区域干净自然，无原背景残留、杂色、锯齿或抠图白边。保留浅色及透明部件的真实边界。\n如有接触阴影，仅保留极淡、自然的阴影，其余背景保持纯白，不出现浓重投影或镜面地面倒影。\n\n【输出限制】\n不要拼贴原照片，不要重复三个相同视角，不要输出三张独立图片。\n不添加标题、视图标签、尺寸线、文案、边框、水印或装饰。\n最终成图为写实商业产品摄影：同款一致、结构清楚、材质真实、精修细腻的白底饰品三视图。",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "product-three-view-node-013",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1743.9477160000001,
+          "y": 2251.959705
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074958",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071619.png",
+          "mimeType": "image/png",
+          "naturalWidth": 240.0,
+          "naturalHeight": 280.0,
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "3:2",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "product-three-view-node-011",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-012",
+              "kind": "text",
+              "slot": "prompt_text"
+            }
+          ]
+        }
+      },
+      {
+        "id": "product-three-view-node-014",
+        "type": "image",
+        "title": "O1CN01kAk6hp1eR8guei7gr_!!2200777063867.jpg",
+        "position": {
+          "x": 80.0,
+          "y": 3108.210608
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074959",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071642.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2053.0,
+          "naturalHeight": 2053.0
+        }
+      },
+      {
+        "id": "product-three-view-node-015",
+        "type": "image",
+        "title": "O1CN01QKYy5t1eR8gpz0B6r_!!2200777063867.jpg",
+        "position": {
+          "x": 80.0,
+          "y": 3508.162523
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074960",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071655.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2081.0,
+          "naturalHeight": 2081.0
+        }
+      },
+      {
+        "id": "product-three-view-node-016",
+        "type": "image",
+        "title": "O1CN010l7a771eR8gw42xj9_!!2200777063867.jpg",
+        "position": {
+          "x": 80.0,
+          "y": 3943.9262439999998
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074961",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071619.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2096.0,
+          "naturalHeight": 2096.0
+        }
+      },
+      {
+        "id": "product-three-view-node-017",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1743.9477160000001,
+          "y": 3281.950183
+        },
+        "width": 320.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "6mS-eb90J7XqWM7Foff9aXN0",
+            "nodeId": "node-2114969295557074962",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": false
+          },
+          "content": "/workflow-samples-reference/product-three-view/-09071642.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1254.0,
+          "naturalHeight": 1254.0,
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "auto",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "product-three-view-node-012",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "product-three-view-node-014",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-015",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "product-three-view-node-016",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "product-three-view-edge-001",
+        "fromNodeId": "product-three-view-node-001",
+        "toNodeId": "product-three-view-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-002",
+        "fromNodeId": "product-three-view-node-002",
+        "toNodeId": "product-three-view-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-003",
+        "fromNodeId": "product-three-view-node-003",
+        "toNodeId": "product-three-view-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-004",
+        "fromNodeId": "product-three-view-node-004",
+        "toNodeId": "product-three-view-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-005",
+        "fromNodeId": "product-three-view-node-006",
+        "toNodeId": "product-three-view-node-010",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-006",
+        "fromNodeId": "product-three-view-node-008",
+        "toNodeId": "product-three-view-node-010",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-007",
+        "fromNodeId": "product-three-view-node-007",
+        "toNodeId": "product-three-view-node-010",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-008",
+        "fromNodeId": "product-three-view-node-009",
+        "toNodeId": "product-three-view-node-010",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-009",
+        "fromNodeId": "product-three-view-node-011",
+        "toNodeId": "product-three-view-node-013",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-010",
+        "fromNodeId": "product-three-view-node-012",
+        "toNodeId": "product-three-view-node-013",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-011",
+        "fromNodeId": "product-three-view-node-012",
+        "toNodeId": "product-three-view-node-017",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-012",
+        "fromNodeId": "product-three-view-node-014",
+        "toNodeId": "product-three-view-node-017",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-013",
+        "fromNodeId": "product-three-view-node-015",
+        "toNodeId": "product-three-view-node-017",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "product-three-view-edge-014",
+        "fromNodeId": "product-three-view-node-016",
+        "toNodeId": "product-three-view-node-017",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

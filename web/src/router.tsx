@@ -35,6 +35,7 @@ const ArkPrivateAssetsSettingsPage = lazy(() => import("@/pages/admin/settings/a
 const ResponseInterceptionSettingsPage = lazy(() => import("@/pages/admin/settings/response-interception-settings-page"));
 const ThirdPartySettingsPage = lazy(() => import("@/pages/admin/settings/libtv-settings-page"));
 const WorkbenchToolsPage = lazy(() => import("@/pages/admin/workbench-tools/workbench-tools-page"));
+const AdminWorkflowsPage = lazy(() => import("@/pages/admin/workflows/workflows-page"));
 const SystemUpdatePage = lazy(() => import("@/pages/admin/settings/system-update-page"));
 const SystemPerformancePage = lazy(() => import("@/pages/admin/settings/system-performance-page"));
 const StoryboardPromptsPage = lazy(() => import("@/pages/admin/storyboard-prompts/storyboard-prompts-page"));
@@ -47,6 +48,8 @@ const ForgotPasswordPage = lazy(() => import("@/pages/auth/forgot-password"));
 const CanvasPage = lazy(loadCanvasPage);
 const CanvasProjectPage = lazy(loadCanvasProjectPage);
 const SharedCanvasPage = lazy(() => import("@/pages/canvas/shared"));
+const CanvasWorkflowsPage = lazy(() => import("@/pages/workflows"));
+const CanvasWorkflowDetailPage = lazy(() => import("@/pages/workflows/detail"));
 const CreatePage = lazy(loadCreatePage);
 const ImageWorkbenchPage = lazy(() => import("@/pages/workbench/image-workbench-route"));
 const VideoWorkbenchPage = lazy(() => import("@/pages/workbench/video-workbench-page"));
@@ -203,6 +206,8 @@ export const router = createBrowserRouter([
                     </RequireAuth>
                 ),
             },
+            { path: "/workflows", element: <RequireAuth>{deferred(<CanvasWorkflowsPage />)}</RequireAuth> },
+            { path: "/workflows/:slug", element: <RequireAuth>{deferred(<CanvasWorkflowDetailPage />)}</RequireAuth> },
             { path: "/projects/:projectId/*", element: <Navigate to=".." relative="path" replace /> },
             { path: "/canvas", element: <RequireAuth>{deferred(<CanvasPage />)}</RequireAuth> },
             {
@@ -232,6 +237,7 @@ export const router = createBrowserRouter([
                     },
                     { path: "plugins", element: <AdminPluginsPage /> },
                     { path: "workbench-tools", element: <WorkbenchToolsPage /> },
+                    { path: "workflows", element: <AdminWorkflowsPage /> },
                     { path: "skill-curation", element: <SkillCurationPage /> },
                     { path: "payments", element: <AdminPaymentsPage /> },
                     { path: "prompt-templates", element: <StoryboardPromptsPage /> },

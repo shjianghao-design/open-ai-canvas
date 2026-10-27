@@ -1,0 +1,735 @@
+{
+  "id": "builtin-talking-head-product-demo",
+  "slug": "talking-head-product-demo",
+  "name": "人物口播讲解工作流",
+  "description": "按参考画布复刻：18 个节点、12 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "talking-head-product-demo",
+    "title": "人物口播讲解工作流",
+    "nodes": [
+      {
+        "id": "talking-head-product-demo-node-001",
+        "type": "image",
+        "title": "补齐全身。白色现实背景，平拍视角的全身图，模特整体身材修长匀-2096077200611901442-1.png",
+        "position": {
+          "x": 1030.64199,
+          "y": 736.125545
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442049",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021315.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1440.0,
+          "naturalHeight": 2560.0
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-002",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1633.6169,
+          "y": 490.0
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442050",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "SEEDREAM_5_0_PRO",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021431.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1440.0,
+          "naturalHeight": 2560.0,
+          "prompt": "将@图片1 人物在@图片2场景中替换掉里面的人物。实拍真实照片质感。iPhone照片色调质感",
+          "composerContent": "将@图片1 人物在@图片2场景中替换掉里面的人物。实拍真实照片质感。iPhone照片色调质感",
+          "workflowOriginalPrompt": "将@图1 人物在@图片2场景中替换掉里面的人物。实拍真实照片质感。iPhone照片色调质感",
+          "generationMode": "image",
+          "model": "seedream-5.0-pro",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "talking-head-product-demo-node-001",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "talking-head-product-demo-node-016",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-003",
+        "type": "video",
+        "title": "21401cf4202d46e89e590d03f1b0d1ec.mp4",
+        "position": {
+          "x": 80.0,
+          "y": 365.211438
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442051",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021322.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/talking-head-product-demo/-09021322.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-004",
+        "type": "text",
+        "title": "口播反推提示词",
+        "position": {
+          "x": 2113.136876,
+          "y": 511.878169
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442052",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "画面不要生成字幕、字幕条、标题字、贴片文字或其他可读文字。\n人物主体使用 @图片1 ，生成电商卖货口播视频，镜头之间均为硬切。\n\n镜号1｜中景｜0-1.4秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，身体微微前倾，右手抬至胸前做出短促下切的强调手势，随后双手自然交叠于身前；眉头轻蹙，眼神直视镜头，口型清晰张开，表情严肃恳切；固定机位中景，室内柔和明亮的光线均匀落在面部，暖调写实的口播短视频质感\n台词：\"他的成绩都不会好。\"（语气：严肃提醒；情绪：恳切略带担忧；语速：正常；“都不会好”加重）\n表演要点：开场即进入提醒状态，眉头保持轻微皱起，眼神始终锁定镜头，手势短促有力并与台词落点同步，说完后双手收回身前，情绪克制而认真\n拍摄注意：人物腰部以上完整入镜，面部与右手手势清晰，固定机位保持稳定，避免手指和五官变形，与下一镜头硬切衔接\n\n镜号2｜中景｜1.4-3.9秒\n画面：人物主体使用 @图片1 ，人物保持画面中央正对镜头，右手向前依次做出小幅度的列举招呼手势，左手护于身前；眉梢随呼唤轻微抬起，眼神真诚注视镜头，头部随每一次称呼轻轻点动，口型开合清楚，表情从严肃逐渐转向亲切；固定机位中景，光线柔和，暖调写实质感\n台词：\"爷爷奶奶，姥姥姥爷，爸爸妈妈，\"（语气：亲切呼唤；情绪：真诚恳切；语速：正常；三个称呼之间有轻微停顿）\n表演要点：三组称呼逐一点送，每组之间留半拍停顿，眼神像对着家人说话一样真诚，手势幅度小而节奏清楚，点头轻而自然，句末表情开始回暖\n拍摄注意：固定机位，人物面部清晰不被手部遮挡，手势完整入镜，动作连贯不僵硬，硬切衔接\n\n镜号3｜中景｜3.9-6.5秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，双手自然向身体两侧摊开做出分享欢迎的手势，随后轻轻合拢于身前；眉眼舒展放亮，嘴角明显上扬露出温暖笑容，眼神直视镜头，情绪由恳切转为惊喜喜悦；固定机位中景，柔和明亮光线突出面部笑容，氛围温暖亲切\n台词：\"你们看到这个视频真的是太幸运了\"（语气：惊喜肯定；情绪：热情亲切；语速：正常；“太幸运”加重，尾音微微上扬）\n表演要点：笑容逐层放开，说到“太幸运”时眉毛轻抬并轻轻点头，双手摊开的动作松弛大方，像向朋友分享好消息，情绪真诚饱满\n拍摄注意：面部受光均匀，笑容自然不僵硬，手势完整清晰，固定机位稳定，硬切衔接\n\n镜号4｜中景｜6.5-7.7秒\n画面：人物主体使用 @图片1 ，人物保持画面中央正对镜头，右手抬起、手掌摊开做出邀请招呼的手势，左手自然收于身前；笑容扩大露齿，眉眼弯起，眼神明亮锁定镜头，整体状态轻快热情；固定机位中景，光线柔和，暖调写实短视频质感\n台词：\"点赞收藏起来\"（语气：轻快号召；情绪：热情友好；语速：较快；尾音上扬）\n表演要点：节奏明快，笑容与抬手动作同步到位，语气带着友好的号召感，说完后手势自然回收\n拍摄注意：手掌与面部同时清晰入镜，避免手指变形，固定机位稳定，硬切衔接\n\n镜号5｜中景｜7.7-9.6秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，双手先向外摊开，随后右手做出向前指点递送的手势，左手自然收于胸前；微笑温和自然，眼神坚定注视镜头，动作完成后自然停住，表情稳定温暖；固定机位中景，柔和明亮光线，温暖写实的生活化口播质感\n台词：\"等孩子以后有空的时候转发\"（语气：真诚建议；情绪：温和肯定；语速：正常；“转发”加重）\n表演要点：台词与手势配合，说到“转发”时右手向前送出并轻轻点头，句末保持微笑与注视，情绪真诚温暖，收尾平稳\n拍摄注意：固定机位稳定收尾，人物面部与双手清晰，动作平稳停住不变形，结束画面保持自然稳定",
+          "composerContent": "画面不要生成字幕、字幕条、标题字、贴片文字或其他可读文字。\n人物主体使用 @图片1 ，生成电商卖货口播视频，镜头之间均为硬切。\n\n镜号1｜中景｜0-1.4秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，身体微微前倾，右手抬至胸前做出短促下切的强调手势，随后双手自然交叠于身前；眉头轻蹙，眼神直视镜头，口型清晰张开，表情严肃恳切；固定机位中景，室内柔和明亮的光线均匀落在面部，暖调写实的口播短视频质感\n台词：\"他的成绩都不会好。\"（语气：严肃提醒；情绪：恳切略带担忧；语速：正常；“都不会好”加重）\n表演要点：开场即进入提醒状态，眉头保持轻微皱起，眼神始终锁定镜头，手势短促有力并与台词落点同步，说完后双手收回身前，情绪克制而认真\n拍摄注意：人物腰部以上完整入镜，面部与右手手势清晰，固定机位保持稳定，避免手指和五官变形，与下一镜头硬切衔接\n\n镜号2｜中景｜1.4-3.9秒\n画面：人物主体使用 @图片1 ，人物保持画面中央正对镜头，右手向前依次做出小幅度的列举招呼手势，左手护于身前；眉梢随呼唤轻微抬起，眼神真诚注视镜头，头部随每一次称呼轻轻点动，口型开合清楚，表情从严肃逐渐转向亲切；固定机位中景，光线柔和，暖调写实质感\n台词：\"爷爷奶奶，姥姥姥爷，爸爸妈妈，\"（语气：亲切呼唤；情绪：真诚恳切；语速：正常；三个称呼之间有轻微停顿）\n表演要点：三组称呼逐一点送，每组之间留半拍停顿，眼神像对着家人说话一样真诚，手势幅度小而节奏清楚，点头轻而自然，句末表情开始回暖\n拍摄注意：固定机位，人物面部清晰不被手部遮挡，手势完整入镜，动作连贯不僵硬，硬切衔接\n\n镜号3｜中景｜3.9-6.5秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，双手自然向身体两侧摊开做出分享欢迎的手势，随后轻轻合拢于身前；眉眼舒展放亮，嘴角明显上扬露出温暖笑容，眼神直视镜头，情绪由恳切转为惊喜喜悦；固定机位中景，柔和明亮光线突出面部笑容，氛围温暖亲切\n台词：\"你们看到这个视频真的是太幸运了\"（语气：惊喜肯定；情绪：热情亲切；语速：正常；“太幸运”加重，尾音微微上扬）\n表演要点：笑容逐层放开，说到“太幸运”时眉毛轻抬并轻轻点头，双手摊开的动作松弛大方，像向朋友分享好消息，情绪真诚饱满\n拍摄注意：面部受光均匀，笑容自然不僵硬，手势完整清晰，固定机位稳定，硬切衔接\n\n镜号4｜中景｜6.5-7.7秒\n画面：人物主体使用 @图片1 ，人物保持画面中央正对镜头，右手抬起、手掌摊开做出邀请招呼的手势，左手自然收于身前；笑容扩大露齿，眉眼弯起，眼神明亮锁定镜头，整体状态轻快热情；固定机位中景，光线柔和，暖调写实短视频质感\n台词：\"点赞收藏起来\"（语气：轻快号召；情绪：热情友好；语速：较快；尾音上扬）\n表演要点：节奏明快，笑容与抬手动作同步到位，语气带着友好的号召感，说完后手势自然回收\n拍摄注意：手掌与面部同时清晰入镜，避免手指变形，固定机位稳定，硬切衔接\n\n镜号5｜中景｜7.7-9.6秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，双手先向外摊开，随后右手做出向前指点递送的手势，左手自然收于胸前；微笑温和自然，眼神坚定注视镜头，动作完成后自然停住，表情稳定温暖；固定机位中景，柔和明亮光线，温暖写实的生活化口播质感\n台词：\"等孩子以后有空的时候转发\"（语气：真诚建议；情绪：温和肯定；语速：正常；“转发”加重）\n表演要点：台词与手势配合，说到“转发”时右手向前送出并轻轻点头，句末保持微笑与注视，情绪真诚温暖，收尾平稳\n拍摄注意：固定机位稳定收尾，人物面部与双手清晰，动作平稳停住不变形，结束画面保持自然稳定",
+          "workflowOriginalPrompt": "画面不要生成字幕、字幕条、标题字、贴片文字或其他可读文字。\n人物主体使用 @图片1 ，生成电商卖货口播视频，镜头之间均为硬切。\n\n镜号1｜中景｜0-1.4秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，身体微微前倾，右手抬至胸前做出短促下切的强调手势，随后双手自然交叠于身前；眉头轻蹙，眼神直视镜头，口型清晰张开，表情严肃恳切；固定机位中景，室内柔和明亮的光线均匀落在面部，暖调写实的口播短视频质感\n台词：\"他的成绩都不会好。\"（语气：严肃提醒；情绪：恳切略带担忧；语速：正常；“都不会好”加重）\n表演要点：开场即进入提醒状态，眉头保持轻微皱起，眼神始终锁定镜头，手势短促有力并与台词落点同步，说完后双手收回身前，情绪克制而认真\n拍摄注意：人物腰部以上完整入镜，面部与右手手势清晰，固定机位保持稳定，避免手指和五官变形，与下一镜头硬切衔接\n\n镜号2｜中景｜1.4-3.9秒\n画面：人物主体使用 @图片1 ，人物保持画面中央正对镜头，右手向前依次做出小幅度的列举招呼手势，左手护于身前；眉梢随呼唤轻微抬起，眼神真诚注视镜头，头部随每一次称呼轻轻点动，口型开合清楚，表情从严肃逐渐转向亲切；固定机位中景，光线柔和，暖调写实质感\n台词：\"爷爷奶奶，姥姥姥爷，爸爸妈妈，\"（语气：亲切呼唤；情绪：真诚恳切；语速：正常；三个称呼之间有轻微停顿）\n表演要点：三组称呼逐一点送，每组之间留半拍停顿，眼神像对着家人说话一样真诚，手势幅度小而节奏清楚，点头轻而自然，句末表情开始回暖\n拍摄注意：固定机位，人物面部清晰不被手部遮挡，手势完整入镜，动作连贯不僵硬，硬切衔接\n\n镜号3｜中景｜3.9-6.5秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，双手自然向身体两侧摊开做出分享欢迎的手势，随后轻轻合拢于身前；眉眼舒展放亮，嘴角明显上扬露出温暖笑容，眼神直视镜头，情绪由恳切转为惊喜喜悦；固定机位中景，柔和明亮光线突出面部笑容，氛围温暖亲切\n台词：\"你们看到这个视频真的是太幸运了\"（语气：惊喜肯定；情绪：热情亲切；语速：正常；“太幸运”加重，尾音微微上扬）\n表演要点：笑容逐层放开，说到“太幸运”时眉毛轻抬并轻轻点头，双手摊开的动作松弛大方，像向朋友分享好消息，情绪真诚饱满\n拍摄注意：面部受光均匀，笑容自然不僵硬，手势完整清晰，固定机位稳定，硬切衔接\n\n镜号4｜中景｜6.5-7.7秒\n画面：人物主体使用 @图片1 ，人物保持画面中央正对镜头，右手抬起、手掌摊开做出邀请招呼的手势，左手自然收于身前；笑容扩大露齿，眉眼弯起，眼神明亮锁定镜头，整体状态轻快热情；固定机位中景，光线柔和，暖调写实短视频质感\n台词：\"点赞收藏起来\"（语气：轻快号召；情绪：热情友好；语速：较快；尾音上扬）\n表演要点：节奏明快，笑容与抬手动作同步到位，语气带着友好的号召感，说完后手势自然回收\n拍摄注意：手掌与面部同时清晰入镜，避免手指变形，固定机位稳定，硬切衔接\n\n镜号5｜中景｜7.7-9.6秒\n画面：人物主体使用 @图片1 ，人物位于画面中央，正对镜头，双手先向外摊开，随后右手做出向前指点递送的手势，左手自然收于胸前；微笑温和自然，眼神坚定注视镜头，动作完成后自然停住，表情稳定温暖；固定机位中景，柔和明亮光线，温暖写实的生活化口播质感\n台词：\"等孩子以后有空的时候转发\"（语气：真诚建议；情绪：温和肯定；语速：正常；“转发”加重）\n表演要点：台词与手势配合，说到“转发”时右手向前送出并轻轻点头，句末保持微笑与注视，情绪真诚温暖，收尾平稳\n拍摄注意：固定机位稳定收尾，人物面部与双手清晰，动作平稳停住不变形，结束画面保持自然稳定",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "电商卖货口播短视频，总时长约9.6秒，共5个镜头，镜头之间均为硬切，全程固定机位中景，画面中不生成任何字幕、字幕条、标题字、贴片文字或其他可读文字。人物主体严格参考图片1：年轻女性，黑色长卷发散落肩头，佩戴银色坠饰耳环，身穿白色V领短袖衬衫与蓝色高腰牛仔裤，领口夹黑色小麦克风；场景沿用图片1的室内家居环境：背景为米色窗帘与白色纱帘，右侧绿色植物，左侧木质书架摆放书籍与插着橙红色果实的枝条；室内柔和明亮光线均匀落在面部，暖调写实口播短视频质感，人物腰部以上完整入镜，面部与双手清晰，避免手指和五官变形。\n\n镜头1（0-1.4秒）：人物位于画面中央，正对镜头，身体微微前倾，右手抬至胸前做出短促下切的强调手势，随后双手自然交叠于身前；眉头轻蹙，眼神直视镜头，口型清晰张开，表情严肃恳切；台词配音：\"他的成绩都不会好。\"语气严肃提醒，情绪恳切略带担忧，语速正常，\"都不会好\"加重；开场即进入提醒状态，手势短促有力并与台词落点同步，说完后双手收回身前，情绪克制而认真。\n\n镜头2（1.4-3.9秒）：人物保持画面中央正对镜头，右手向前依次做出小幅度的列举招呼手势，左手护于身前；眉梢随呼唤轻微抬起，眼神真诚注视镜头，头部随每一次称呼轻轻点动，口型开合清楚，表情从严肃逐渐转向亲切；台词配音：\"爷爷奶奶，姥姥姥爷，爸爸妈妈，\"语气亲切呼唤，情绪真诚恳切，语速正常，三个称呼之间有轻微停顿；三组称呼逐一点送，每组之间留半拍停顿，眼神像对着家人说话一样真诚，手势幅度小而节奏清楚，点头轻而自然，句末表情开始回暖。\n\n镜头3（3.9-6.5秒）：人物位于画面中央，正对镜头，双手自然向身体两侧摊开做出分享欢迎的手势，随后轻轻合拢于身前；眉眼舒展放亮，嘴角明显上扬露出温暖笑容，眼神直视镜头，情绪由恳切转为惊喜喜悦；台词配音：\"你们看到这个视频真的是太幸运了\"语气惊喜肯定，情绪热情亲切，语速正常，\"太幸运\"加重，尾音微微上扬；笑容逐层放开，说到\"太幸运\"时眉毛轻抬并轻轻点头，双手摊开的动作松弛大方，像向朋友分享好消息，情绪真诚饱满。\n\n镜头4（6.5-7.7秒）：人物保持画面中央正对镜头，右手抬起、手掌摊开做出邀请招呼的手势，左手自然收于身前；笑容扩大露齿，眉眼弯起，眼神明亮锁定镜头，整体状态轻快热情；台词配音：\"点赞收藏起来\"语气轻快号召，情绪热情友好，语速较快，尾音上扬；节奏明快，笑容与抬手动作同步到位，语气带着友好的号召感，说完后手势自然回收。\n\n镜头5（7.7-9.6秒）：人物位于画面中央，正对镜头，双手先向外摊开，随后右手做出向前指点递送的手势，左手自然收于胸前；微笑温和自然，眼神坚定注视镜头，动作完成后自然停住，表情稳定温暖；台词配音：\"等孩子以后有空的时候转发\"语气真诚建议，情绪温和肯定，语速正常，\"转发\"加重；说到\"转发\"时右手向前送出并轻轻点头，句末保持微笑与注视，情绪真诚温暖，收尾平稳，结束画面保持自然稳定。",
+          "workflowInputs": [
+            {
+              "nodeId": "talking-head-product-demo-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "talking-head-product-demo-node-003",
+              "kind": "video",
+              "slot": "input_video"
+            }
+          ]
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-005",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 2519.1180329999997,
+          "y": 326.0
+        },
+        "width": 616.0,
+        "height": 648.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442053",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "全局指令：电商卖货口播短视频，总时长约9.6秒，共5个镜头，镜头之间均为硬切，全程固定机位中景，画面中不生成任何字幕、字幕条、标题字、贴片文字或其他可读文字。人物主体严格参考图片1：年轻女性，黑色长卷发散落肩头，佩戴银色坠饰耳环，身穿白色V领短袖衬衫与蓝色高腰牛仔裤，领口夹黑色小麦克风；场景沿用图片1的室内家居环境：背景为米色窗帘与白色纱帘，右侧绿色植物，左侧木质书架摆放书籍与插着橙红色果实的枝条；室内柔和明亮光线均匀落在面部，暖调写实口播短视频质感，人物腰部以上完整入镜，面部与双手清晰，避免手指和五官变形。\n\n镜号1｜中景｜0-1.4秒\n画面：人物主体使用@图片1，人物位于画面中央，正对镜头，身体微微前倾，右手抬至胸前做出短促下切的强调手势，随后双手自然交叠于身前；眉头轻蹙，眼神直视镜头，口型清晰张开，表情严肃恳切；固定机位中景，室内柔和明亮的光线均匀落在面部，暖调写实的口播短视频质感\n台词：\"1234\"（语气：严肃提醒；情绪：恳切略带担忧；语速：正常；\"4\"加重）\n表演要点：开场即进入提醒状态，眉头保持轻微皱起，眼神始终锁定镜头，手势短促有力并与台词落点同步，说完后双手收回身前，情绪克制而认真\n拍摄注意：人物腰部以上完整入镜，面部与右手手势清晰，固定机位保持稳定，避免手指和五官变形，与下一镜头硬切衔接\n\n镜号2｜中景｜1.4-3.9秒\n画面：人物主体使用@图片1，人物保持画面中央正对镜头，右手向前依次做出小幅度的列举招呼手势，左手护于身前；眉梢随呼唤轻微抬起，眼神真诚注视镜头，头部随每一个数字轻轻点动，口型开合清楚，表情从严肃逐渐转向亲切；固定机位中景，光线柔和，暖调写实质感\n台词：\"5678\"（语气：亲切呼唤；情绪：真诚恳切；语速：正常；数字之间有轻微停顿）\n表演要点：四个数字逐一点送，每个之间留半拍停顿，眼神像对着家人说话一样真诚，手势幅度小而节奏清楚，点头轻而自然，句末表情开始回暖\n拍摄注意：固定机位，人物面部清晰不被手部遮挡，手势完整入镜，动作连贯不僵硬，硬切衔接\n\n镜号3｜中景｜3.9-6.5秒\n画面：人物主体使用@图片1，人物位于画面中央，正对镜头，双手自然向身体两侧摊开做出分享欢迎的手势，随后轻轻合拢于身前；眉眼舒展放亮，嘴角明显上扬露出温暖笑容，眼神直视镜头，情绪由恳切转为惊喜喜悦；固定机位中景，柔和明亮光线突出面部笑容，氛围温暖亲切\n台词：\"ASDFGHJKL\"（语气：惊喜肯定；情绪：热情亲切；语速：正常；\"JKL\"加重，尾音微微上扬）\n表演要点：笑容逐层放开，说到\"JKL\"时眉毛轻抬并轻轻点头，双手摊开的动作松弛大方，像向朋友分享好消息，情绪真诚饱满\n拍摄注意：面部受光均匀，笑容自然不僵硬，手势完整清晰，固定机位稳定，硬切衔接\n\n镜号4｜中景｜6.5-7.7秒\n画面：人物主体使用@图片1，人物保持画面中央正对镜头，右手抬起、手掌摊开做出邀请招呼的手势，左手自然收于身前；笑容扩大露齿，眉眼弯起，眼神明亮锁定镜头，整体状态轻快热情；固定机位中景，光线柔和，暖调写实短视频质感\n台词：\"1234\"（语气：轻快号召；情绪：热情友好；语速：较快；尾音上扬）\n表演要点：节奏明快，笑容与抬手动作同步到位，语气带着友好的号召感，说完后手势自然回收\n拍摄注意：手掌与面部同时清晰入镜，避免手指变形，固定机位稳定，硬切衔接\n\n镜号5｜中景｜7.7-9.6秒\n画面：人物主体使用@图片1，人物位于画面中央，正对镜头，双手先向外摊开，随后右手做出向前指点递送的手势，左手自然收于胸前；微笑温和自然，眼神坚定注视镜头，动作完成后自然停住，表情稳定温暖；固定机位中景，柔和明亮光线，温暖写实的生活化口播质感\n台词：\"5678\"（语气：真诚建议；情绪：温和肯定；语速：正常；\"8\"加重）\n表演要点：台词与手势配合，说到\"8\"时右手向前送出并轻轻点头，句末保持微笑与注视，情绪真诚温暖，收尾平稳\n拍摄注意：固定机位稳定收尾，人物面部与双手清晰，动作平稳停住不变形，结束画面保持自然稳定",
+          "workflowInputs": [
+            {
+              "nodeId": "talking-head-product-demo-node-004",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "talking-head-product-demo-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "talking-head-product-demo-node-018",
+              "kind": "text",
+              "slot": "prompt_text"
+            }
+          ]
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-006",
+        "type": "video",
+        "title": "视频生成",
+        "position": {
+          "x": 3404.909679,
+          "y": 391.878169
+        },
+        "width": 292.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442054",
+            "type": "video",
+            "taskType": "VIDEO_TASK",
+            "modelCode": "SEEDANCE_2_5",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021322.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 480.0,
+          "naturalHeight": 854.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/talking-head-product-demo/-09021322.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "@图片1 人物。@音频1 人物声音。",
+          "composerContent": "@图片1 人物。@音频1 人物声音。",
+          "workflowOriginalPrompt": "@图1 人物。@音频1 人物声音。",
+          "generationMode": "video",
+          "model": "seedance-2.5",
+          "size": "9:16",
+          "quality": "480p",
+          "count": "1",
+          "seconds": "9",
+          "workflowInputs": [
+            {
+              "nodeId": "talking-head-product-demo-node-005",
+              "kind": "text",
+              "slot": "prompt_text"
+            },
+            {
+              "nodeId": "talking-head-product-demo-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "talking-head-product-demo-node-007",
+              "kind": "audio",
+              "slot": "reference_audio"
+            }
+          ]
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-007",
+        "type": "audio",
+        "title": "客户音频.mp3",
+        "position": {
+          "x": 3059.9462479999997,
+          "y": 183.762045
+        },
+        "width": 320.0,
+        "height": 120.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442055",
+            "type": "audio",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "workflowGenerationWarning": "素材包中没有可用的该媒体类型样例。",
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "audio",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-008",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 80.0,
+          "y": 244.0
+        },
+        "width": 226.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442056",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "参考视频"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-009",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 900.6589299999996,
+          "y": 141.15414900000002
+        },
+        "width": 514.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442057",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "分镜图【提取场景用】"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-010",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 997.5140190000002,
+          "y": 624.229414
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442058",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "人物形象图"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-011",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1573.1645399999998,
+          "y": 365.211438
+        },
+        "width": 370.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442059",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "人物场景融合图"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-012",
+        "type": "video",
+        "title": "视频高清放大",
+        "position": {
+          "x": 4026.779517,
+          "y": 391.878169
+        },
+        "width": 292.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442060",
+            "type": "video",
+            "taskType": "VIDEO_UPSCALE",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021322.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 960.0,
+          "naturalHeight": 1708.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/talking-head-product-demo/-09021322.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "上传待放大视频，生成高清版本。",
+          "composerContent": "上传待放大视频，生成高清版本。",
+          "workflowOriginalPrompt": "上传待放大视频，生成高清版本。",
+          "generationMode": "video",
+          "workflowGenerationWarning": "本地当前未提供与参考站同名的视频高清放大协议；该节点保留为参考节点，不能降级为普通文生视频。",
+          "workflowInputs": [
+            {
+              "nodeId": "talking-head-product-demo-node-006",
+              "kind": "video",
+              "slot": "input_video"
+            }
+          ]
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-013",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3437.909679,
+          "y": 269.90725000000003
+        },
+        "width": 226.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442061",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "成品视频"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-014",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3949.470098,
+          "y": 269.90725000000003
+        },
+        "width": 418.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442062",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "成品视频高清处理"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-015",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3106.9462479999997,
+          "y": 80.0
+        },
+        "width": 226.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442063",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "人物声音"
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-016",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 1044.5140190000002,
+          "y": 246.21143800000002
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442064",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021435.png",
+          "mimeType": "image/png",
+          "naturalWidth": 941.0,
+          "naturalHeight": 1672.0,
+          "prompt": "把shot3单独提取出来",
+          "composerContent": "把shot3单独提取出来",
+          "workflowOriginalPrompt": "把shot3单独提取出来",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "talking-head-product-demo-node-017",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-017",
+        "type": "image",
+        "title": "分镜·逐秒拆分",
+        "position": {
+          "x": 457.0,
+          "y": 270.779258
+        },
+        "width": 320.0,
+        "height": 243.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442065",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/talking-head-product-demo/-09021435-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1845.0,
+          "naturalHeight": 1402.0
+        }
+      },
+      {
+        "id": "talking-head-product-demo-node-018",
+        "type": "text",
+        "title": "文本节点",
+        "position": {
+          "x": 2090.10079,
+          "y": 1028.6048190000001
+        },
+        "width": 240.0,
+        "height": 280.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "iRovlV8nfA3cYZpX2A4wYr-W",
+            "nodeId": "node-2114968903773442066",
+            "type": "text",
+            "taskType": "TEXT_REVERSE_PROMPT",
+            "modelCode": "qwen3.8-max",
+            "promptMasked": true
+          },
+          "prompt": "修改后要保持和原脚本的总时长一致。不用解释直接给我全局指令。根据这个将原口播文案修改成我的：",
+          "composerContent": "修改后要保持和原脚本的总时长一致。不用解释直接给我全局指令。根据这个将原口播文案修改成我的：",
+          "workflowOriginalPrompt": "修改后要保持和原脚本的总时长一致。不用解释直接给我全局指令。根据这个将原口播文案修改成我的：",
+          "generationMode": "text",
+          "model": "gpt-6.1-sol",
+          "count": "1",
+          "content": "修改后要保持和原脚本的总时长一致。不用解释直接给我全局指令。根据这个将原口播文案修改成我的：",
+          "workflowInputs": []
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "talking-head-product-demo-edge-001",
+        "fromNodeId": "talking-head-product-demo-node-001",
+        "toNodeId": "talking-head-product-demo-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-002",
+        "fromNodeId": "talking-head-product-demo-node-002",
+        "toNodeId": "talking-head-product-demo-node-004",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-003",
+        "fromNodeId": "talking-head-product-demo-node-004",
+        "toNodeId": "talking-head-product-demo-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-004",
+        "fromNodeId": "talking-head-product-demo-node-002",
+        "toNodeId": "talking-head-product-demo-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-005",
+        "fromNodeId": "talking-head-product-demo-node-005",
+        "toNodeId": "talking-head-product-demo-node-006",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-006",
+        "fromNodeId": "talking-head-product-demo-node-002",
+        "toNodeId": "talking-head-product-demo-node-006",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-007",
+        "fromNodeId": "talking-head-product-demo-node-007",
+        "toNodeId": "talking-head-product-demo-node-006",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-008",
+        "fromNodeId": "talking-head-product-demo-node-006",
+        "toNodeId": "talking-head-product-demo-node-012",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-009",
+        "fromNodeId": "talking-head-product-demo-node-003",
+        "toNodeId": "talking-head-product-demo-node-004",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-010",
+        "fromNodeId": "talking-head-product-demo-node-016",
+        "toNodeId": "talking-head-product-demo-node-002",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-011",
+        "fromNodeId": "talking-head-product-demo-node-017",
+        "toNodeId": "talking-head-product-demo-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "talking-head-product-demo-edge-012",
+        "fromNodeId": "talking-head-product-demo-node-018",
+        "toNodeId": "talking-head-product-demo-node-005",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}

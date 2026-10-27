@@ -53,6 +53,8 @@ func RegisterCanvasAPI(api *gin.RouterGroup, svc *service.Service) {
 	projectAPI.Use(RequireFeature(svc, service.FeatureShortDrama))
 	RegisterProjectRoutes(projectAPI, svc)
 	RegisterCanvasShareRoutes(api, svc)
+	RegisterCanvasWorkflowRoutes(api, svc)
+	RegisterCanvasWorkflowAdminRoutes(api, svc)
 }
 
 func RegisterOpenAPIRoutes(api *gin.RouterGroup) {

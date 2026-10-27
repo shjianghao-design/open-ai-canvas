@@ -1,0 +1,937 @@
+{
+  "id": "builtin-outfit-change-video",
+  "slug": "outfit-change-video",
+  "name": "换装视频",
+  "description": "按参考画布复刻：21 个节点、19 条连线，保留素材、提示词、模型参数和可编辑输入。",
+  "category": "参考工作流",
+  "version": 1,
+  "builtin": true,
+  "published": true,
+  "enabled": true,
+  "revision": 1,
+  "project": {
+    "id": "outfit-change-video",
+    "title": "换装视频",
+    "nodes": [
+      {
+        "id": "outfit-change-video-node-001",
+        "type": "image",
+        "title": "_1_江不佳_来自小红书网页版.jpg",
+        "position": {
+          "x": 1053.971457,
+          "y": 186.16701699999976
+        },
+        "width": 191.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491201",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1809.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-002",
+        "type": "image",
+        "title": "模特80080.png",
+        "position": {
+          "x": 705.520231,
+          "y": 186.16701699999976
+        },
+        "width": 179.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491202",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1536.0,
+          "naturalHeight": 2752.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-003",
+        "type": "image",
+        "title": "168 92 模特拍版日常_6_柒-_来自小红书网页版.jpg",
+        "position": {
+          "x": 1407.7233580000002,
+          "y": 186.16701699999976
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491203",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1440.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-004",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 80.0,
+          "y": 289.507971
+        },
+        "width": 322.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491204",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传参考视频"
+        }
+      },
+      {
+        "id": "outfit-change-video-node-005",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 663.020231,
+          "y": 80.0
+        },
+        "width": 264.0,
+        "height": 80.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491205",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传模特图"
+        }
+      },
+      {
+        "id": "outfit-change-video-node-006",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 1183.6767300000001,
+          "y": 86.16701699999976
+        },
+        "width": 274.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491206",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "上传服装图"
+        }
+      },
+      {
+        "id": "outfit-change-video-node-007",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 2811.2538810000005,
+          "y": 116.0
+        },
+        "width": 370.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491207",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "模特服装上身图"
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-008",
+        "type": "text",
+        "title": "文案",
+        "position": {
+          "x": 3980.686254,
+          "y": 296.3118709999999
+        },
+        "width": 322.0,
+        "height": 82.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491208",
+            "type": "caption",
+            "taskType": "CAPTION",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "视频生成结果"
+        }
+      },
+      {
+        "id": "outfit-change-video-node-009",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 2719.0586519999997,
+          "y": 222.16701699999976
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491209",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647-3.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1152.0,
+          "naturalHeight": 2048.0,
+          "prompt": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "composerContent": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "workflowOriginalPrompt": "@图1 的人物换上@图2 身上的整套服装配饰。保持@图1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-002",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-001",
+              "kind": "image",
+              "slot": "image"
+            }
+          ]
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-010",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3131.81055,
+          "y": 222.16701699999976
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491210",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2304.0,
+          "naturalHeight": 4096.0,
+          "prompt": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "composerContent": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "workflowOriginalPrompt": "@图1 的人物换上@图2 身上的整套服装配饰。保持@图1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-003",
+              "kind": "image",
+              "slot": "image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-002",
+              "kind": "image",
+              "slot": "image"
+            }
+          ]
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-011",
+        "type": "image",
+        "title": "开春第一波穿搭合集_1_一粒丸_来自小红书网页版.jpg",
+        "position": {
+          "x": 1029.471457,
+          "y": 548.3813839999998
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491211",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647-3.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1440.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-012",
+        "type": "image",
+        "title": "开春第一波穿搭合集_3_一粒丸_来自小红书网页版.jpg",
+        "position": {
+          "x": 1407.7233580000002,
+          "y": 548.3813839999998
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491212",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647-4.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1440.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-013",
+        "type": "image",
+        "title": "开春第一波穿搭合集_6_一粒丸_来自小红书网页版.jpg",
+        "position": {
+          "x": 1029.471457,
+          "y": 939.8742509999997
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491213",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111652.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1440.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-014",
+        "type": "image",
+        "title": "姐姐感！！_6_小兔子可爱死了_来自小红书网页版.jpg",
+        "position": {
+          "x": 1407.7233580000002,
+          "y": 939.8742509999997
+        },
+        "width": 240.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491214",
+            "type": "image",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111652-2.png",
+          "mimeType": "image/png",
+          "naturalWidth": 1080.0,
+          "naturalHeight": 1440.0
+        }
+      },
+      {
+        "id": "outfit-change-video-node-015",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 2726.1548730000004,
+          "y": 975.8742509999997
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491215",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111652-3.png",
+          "mimeType": "image/png",
+          "naturalWidth": 941.0,
+          "naturalHeight": 1672.0,
+          "prompt": "生成@图片1  的人物换上@图片2 身上的整套服装配饰。全身图。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，纯白背景。",
+          "composerContent": "生成@图片1  的人物换上@图片2 身上的整套服装配饰。全身图。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，纯白背景。",
+          "workflowOriginalPrompt": "生成@图1  的人物换上@图2 身上的整套服装配饰。全身图。保持@图1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，纯白背景。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-013",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-016",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 2726.1548730000004,
+          "y": 636.0
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491216",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111652-4.png",
+          "mimeType": "image/png",
+          "naturalWidth": 2304.0,
+          "naturalHeight": 4096.0,
+          "prompt": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "composerContent": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "workflowOriginalPrompt": "@图1 的人物换上@图2 身上的整套服装配饰。保持@图1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-011",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-017",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3131.81055,
+          "y": 636.0
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491217",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647-5.png",
+          "mimeType": "image/png",
+          "naturalWidth": 941.0,
+          "naturalHeight": 1672.0,
+          "prompt": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "composerContent": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "workflowOriginalPrompt": "@图1 的人物换上@图2 身上的整套服装配饰。保持@图1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-012",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-018",
+        "type": "image",
+        "title": "对话生图",
+        "position": {
+          "x": 3131.81055,
+          "y": 975.8742509999997
+        },
+        "width": 180.0,
+        "height": 320.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491218",
+            "type": "result",
+            "taskType": "IMAGE_CHAT",
+            "modelCode": "GPT_IMAGE_2",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09111647.png",
+          "mimeType": "image/png",
+          "naturalWidth": 941.0,
+          "naturalHeight": 1672.0,
+          "prompt": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "composerContent": "@图片1 的人物换上@图片2 身上的整套服装配饰。保持@图片1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "workflowOriginalPrompt": "@图1 的人物换上@图2 身上的整套服装配饰。保持@图1 人物身材和脸型，样貌不变。真实光影，实拍真实照片质感。iPhone照片色调质感。随意松弛模特姿势，生成全身图，纯白背景。",
+          "generationMode": "image",
+          "model": "gpt-image-2",
+          "size": "9:16",
+          "count": "1",
+          "generationType": "edit",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-002",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-014",
+              "kind": "image",
+              "slot": "reference_image"
+            }
+          ]
+        },
+        "parentId": "outfit-change-video-node-021"
+      },
+      {
+        "id": "outfit-change-video-node-019",
+        "type": "video",
+        "title": "换装原.mp4",
+        "position": {
+          "x": 116.53474000000006,
+          "y": 400.0
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491219",
+            "type": "video",
+            "taskType": "",
+            "modelCode": "",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09121704.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/outfit-change-video/-09121704.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "",
+          "composerContent": "",
+          "workflowOriginalPrompt": "",
+          "generationMode": "video",
+          "workflowInputs": []
+        }
+      },
+      {
+        "id": "outfit-change-video-node-020",
+        "type": "video",
+        "title": "视频生成",
+        "position": {
+          "x": 3995.186254,
+          "y": 431.26325099999985
+        },
+        "width": 293.0,
+        "height": 520.0,
+        "metadata": {
+          "status": "success",
+          "workflowSample": true,
+          "workflowLayoutLocked": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491220",
+            "type": "video",
+            "taskType": "VIDEO_TASK",
+            "modelCode": "SEEDANCE_2_0_MINI",
+            "promptMasked": true
+          },
+          "content": "/workflow-samples-reference/outfit-change-video/-09121704.mp4",
+          "mimeType": "video/mp4",
+          "naturalWidth": 720.0,
+          "naturalHeight": 1280.0,
+          "videoPreview": {
+            "content": "/workflow-samples-reference/outfit-change-video/-09121704.mp4",
+            "mimeType": "video/mp4"
+          },
+          "prompt": "保持@图片1 @图片2 @图片3 @图片4 @图片5 @图片6 中的人物、服装、发型不变。去复刻@视频1  参考视频中的人物动作、表情、姿态、运动轨迹、镜头运动，时间轴，景别变化、拍摄角度和节奏。",
+          "composerContent": "保持@图片1 @图片2 @图片3 @图片4 @图片5 @图片6 中的人物、服装、发型不变。去复刻@视频1  参考视频中的人物动作、表情、姿态、运动轨迹、镜头运动，时间轴，景别变化、拍摄角度和节奏。",
+          "workflowOriginalPrompt": "保持@图1 @图2 @图3 @图4 @图5 @图6 中的人物、服装、发型不变。去复刻@视频1  参考视频中的人物动作、表情、姿态、运动轨迹、镜头运动，时间轴，景别变化、拍摄角度和节奏。",
+          "generationMode": "video",
+          "model": "seedance-2.0-mini",
+          "size": "9:16",
+          "quality": "480p",
+          "count": "1",
+          "seconds": "12",
+          "workflowInputs": [
+            {
+              "nodeId": "outfit-change-video-node-009",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-010",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-015",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-016",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-017",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-018",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "outfit-change-video-node-019",
+              "kind": "video",
+              "slot": "reference_video"
+            }
+          ]
+        }
+      },
+      {
+        "id": "outfit-change-video-node-021",
+        "type": "frame",
+        "title": "分组 7 个节点",
+        "position": {
+          "x": 2695.0586519999997,
+          "y": 80.0
+        },
+        "width": 640.751898,
+        "height": 1239.874251,
+        "metadata": {
+          "status": "idle",
+          "frame": {
+            "collapsed": false,
+            "expandedWidth": 640.751898,
+            "expandedHeight": 1239.874251
+          },
+          "workflowSample": true,
+          "workflowSource": {
+            "provider": "aiqianjue",
+            "shareToken": "HW5THP4FIVxfSYssYlwogBjE",
+            "nodeId": "node-2114968532317491221",
+            "type": "group",
+            "taskType": "GROUP",
+            "modelCode": "",
+            "promptMasked": true
+          }
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": "outfit-change-video-edge-001",
+        "fromNodeId": "outfit-change-video-node-002",
+        "toNodeId": "outfit-change-video-node-009",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-002",
+        "fromNodeId": "outfit-change-video-node-001",
+        "toNodeId": "outfit-change-video-node-009",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-003",
+        "fromNodeId": "outfit-change-video-node-003",
+        "toNodeId": "outfit-change-video-node-010",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-004",
+        "fromNodeId": "outfit-change-video-node-002",
+        "toNodeId": "outfit-change-video-node-010",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-005",
+        "fromNodeId": "outfit-change-video-node-002",
+        "toNodeId": "outfit-change-video-node-015",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-006",
+        "fromNodeId": "outfit-change-video-node-013",
+        "toNodeId": "outfit-change-video-node-015",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-007",
+        "fromNodeId": "outfit-change-video-node-002",
+        "toNodeId": "outfit-change-video-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-008",
+        "fromNodeId": "outfit-change-video-node-002",
+        "toNodeId": "outfit-change-video-node-017",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-009",
+        "fromNodeId": "outfit-change-video-node-002",
+        "toNodeId": "outfit-change-video-node-018",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-010",
+        "fromNodeId": "outfit-change-video-node-014",
+        "toNodeId": "outfit-change-video-node-018",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-011",
+        "fromNodeId": "outfit-change-video-node-011",
+        "toNodeId": "outfit-change-video-node-016",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-012",
+        "fromNodeId": "outfit-change-video-node-012",
+        "toNodeId": "outfit-change-video-node-017",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-013",
+        "fromNodeId": "outfit-change-video-node-009",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-014",
+        "fromNodeId": "outfit-change-video-node-010",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-015",
+        "fromNodeId": "outfit-change-video-node-015",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-016",
+        "fromNodeId": "outfit-change-video-node-016",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-017",
+        "fromNodeId": "outfit-change-video-node-017",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-018",
+        "fromNodeId": "outfit-change-video-node-018",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      },
+      {
+        "id": "outfit-change-video-edge-019",
+        "fromNodeId": "outfit-change-video-node-019",
+        "toNodeId": "outfit-change-video-node-020",
+        "fromHandleId": "right",
+        "toHandleId": "left"
+      }
+    ],
+    "chatSessions": [],
+    "activeChatId": null,
+    "backgroundMode": "light",
+    "showImageInfo": false,
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "k": 0.6
+    }
+  }
+}
