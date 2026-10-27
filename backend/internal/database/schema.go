@@ -104,6 +104,8 @@ func Models() []any {
 		&model.ProductionTaskLink{},
 		&model.CanvasProject{},
 		&model.CanvasWorkflowTemplate{},
+		&model.CanvasWorkflowVersion{},
+		&model.CanvasWorkflowImport{},
 		&model.CanvasSnapshot{},
 		&model.CanvasSnapshotResource{},
 		&model.CanvasMutationReceipt{},
