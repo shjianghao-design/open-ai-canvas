@@ -61,7 +61,9 @@ export function CanvasWorkflowUpdateHint({ canvasId }: Props) {
                 if (!cancelled) setHint(null);
             }
         })();
-        return () => { cancelled = true; };
+        return () => {
+            cancelled = true;
+        };
     }, [canvasId]);
 
     const dismiss = useCallback(() => {
@@ -75,29 +77,15 @@ export function CanvasWorkflowUpdateHint({ canvasId }: Props) {
     if (!hint) return null;
 
     return (
-        <div
-            role="status"
-            className="pointer-events-auto mx-4 mb-2 flex flex-wrap items-center gap-2 rounded-xl border border-[#dbe4f5] bg-[#f2f6ff] px-3 py-2 text-[12.5px] text-[#3a5a96] shadow-[0_2px_10px_rgba(15,23,42,0.06)]"
-        >
+        <div role="status" className="pointer-events-auto mx-4 mb-2 flex flex-wrap items-center gap-2 rounded-xl border border-[#dbe4f5] bg-[#f2f6ff] px-3 py-2 text-[12.5px] text-[#3a5a96] shadow-[0_2px_10px_rgba(15,23,42,0.06)]">
             <ArrowUpCircle className="size-4 shrink-0" />
             <span className="min-w-0">
-                模板「{hint.templateName}」已更新到 v{hint.latestVersion}，你当前画布基于 v{hint.importedVersion}。
-                你的修改不受影响，可继续使用。
+                模板「{hint.templateName}」已更新到 v{hint.latestVersion}，你当前画布基于 v{hint.importedVersion}。 你的修改不受影响，可继续使用。
             </span>
-            <Button
-                size="small"
-                type="link"
-                className="!px-1"
-                onClick={() => navigate(`/workflows/${encodeURIComponent(hint.templateSlug)}`)}
-            >
+            <Button size="small" type="link" className="!px-1" onClick={() => navigate(`/workflows/${encodeURIComponent(hint.templateSlug)}`)}>
                 查看新版
             </Button>
-            <button
-                type="button"
-                onClick={dismiss}
-                aria-label="关闭提示"
-                className="ml-auto grid size-6 place-items-center rounded-md text-[#7b8aa5] transition hover:bg-[#e3ebfa]"
-            >
+            <button type="button" onClick={dismiss} aria-label="关闭提示" className="ml-auto grid size-6 place-items-center rounded-md text-[#7b8aa5] transition hover:bg-[#e3ebfa]">
                 <X className="size-3.5" />
             </button>
         </div>

@@ -42,29 +42,13 @@ export function CanvasTemplateEditBar({ projectId, onSaved }: Props) {
     }, [message, navigate, onSaved, projectId, revisionText, saving, templateId]);
 
     return (
-        <div
-            role="status"
-            className="pointer-events-auto mx-4 mb-2 flex flex-wrap items-center gap-2 rounded-xl border border-[#e6d7b8] bg-[#fdf8ee] px-3 py-2 text-[12.5px] text-[#8a6d3b] shadow-[0_2px_10px_rgba(15,23,42,0.06)]"
-        >
+        <div role="status" className="pointer-events-auto mx-4 mb-2 flex flex-wrap items-center gap-2 rounded-xl border border-[#e6d7b8] bg-[#fdf8ee] px-3 py-2 text-[12.5px] text-[#8a6d3b] shadow-[0_2px_10px_rgba(15,23,42,0.06)]">
             <FilePenLine className="size-4 shrink-0" />
-            <span className="min-w-0">
-                正在编辑工作流模板草稿。修改提示词、布局、节点后点「保存到模板」；发布仍需回到后台完成。
-            </span>
-            <Button
-                size="small"
-                type="primary"
-                className="ml-auto"
-                icon={<Check className="size-3.5" />}
-                loading={saving}
-                onClick={() => void saveBack()}
-            >
+            <span className="min-w-0">正在编辑工作流模板草稿。修改提示词、布局、节点后点「保存到模板」；发布仍需回到后台完成。</span>
+            <Button size="small" type="primary" className="ml-auto" icon={<Check className="size-3.5" />} loading={saving} onClick={() => void saveBack()}>
                 保存到模板
             </Button>
-            <Button
-                size="small"
-                icon={<X className="size-3.5" />}
-                onClick={() => navigate("/admin/workflows")}
-            >
+            <Button size="small" icon={<X className="size-3.5" />} onClick={() => navigate("/admin/workflows")}>
                 返回后台
             </Button>
         </div>

@@ -47,7 +47,12 @@ export function CanvasSaveAsTemplateModal({ projectId, projectTitle, open, onClo
 
     return (
         <Modal
-            title={<span className="flex items-center gap-2"><LayoutTemplate className="size-4" />另存为工作流模板</span>}
+            title={
+                <span className="flex items-center gap-2">
+                    <LayoutTemplate className="size-4" />
+                    另存为工作流模板
+                </span>
+            }
             open={open}
             onCancel={onClose}
             onOk={() => void submit()}
@@ -56,9 +61,7 @@ export function CanvasSaveAsTemplateModal({ projectId, projectTitle, open, onClo
             width={520}
             destroyOnHidden
         >
-            <p className="mb-4 text-xs leading-5 text-gray-500">
-                把当前画布保存成平台模板。保存后进入草稿状态，需要在「管理后台 → 工作流模板」发布后，前台用户才能看到。
-            </p>
+            <p className="mb-4 text-xs leading-5 text-gray-500">把当前画布保存成平台模板。保存后进入草稿状态，需要在「管理后台 → 工作流模板」发布后，前台用户才能看到。</p>
             <Form
                 form={form}
                 layout="vertical"

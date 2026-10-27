@@ -12,8 +12,8 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/request"
-	awss3 "github.com/aws/aws-sdk-go/service/s3"
 	awsv4 "github.com/aws/aws-sdk-go/aws/signer/v4"
+	awss3 "github.com/aws/aws-sdk-go/service/s3"
 )
 
 // presignUnsignedPayload 定制 v4 签名器：预签名 PUT 使用 UNSIGNED-PAYLOAD。

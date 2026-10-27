@@ -2698,13 +2698,7 @@ function CanvasViewportPage() {
 
                             {batchReferencePickerModal}
                             <CanvasShareModal projectId={projectId} open={shareModalOpen} onClose={() => setShareModalOpen(false)} beforeCreate={saveCanvasProject} />
-                            <CanvasSaveAsTemplateModal
-                                projectId={projectId}
-                                projectTitle={currentProject?.title || "未命名画布"}
-                                open={saveAsTemplateOpen}
-                                onClose={() => setSaveAsTemplateOpen(false)}
-                                beforeSave={saveCanvasProject}
-                            />
+                            <CanvasSaveAsTemplateModal projectId={projectId} projectTitle={currentProject?.title || "未命名画布"} open={saveAsTemplateOpen} onClose={() => setSaveAsTemplateOpen(false)} beforeSave={saveCanvasProject} />
                             <LibTVImportDialog open={libTVImportOpen} projectId={projectId} viewport={viewport} viewportSize={size} onClose={() => setLibTVImportOpen(false)} onApply={applyLibTVImport} />
                             <TapNowImportDialog open={tapNowImportOpen} projectId={projectId} viewport={viewport} viewportSize={size} onClose={() => setTapNowImportOpen(false)} onApply={applyTapNowImport} />
 

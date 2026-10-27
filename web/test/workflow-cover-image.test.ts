@@ -10,5 +10,5 @@ test("workflow cover crops to the fixed 1200 by 675 landscape format", () => {
 });
 
 test("workflow cover crop rejects an incompatible aspect selection", () => {
-	expect(() => planWorkflowCoverCrop({ width: 1000, height: 1000 }, { x: 0, y: 0, width: 1, height: 1 })).toThrow("16:9");
+    expect(() => planWorkflowCoverCrop({ width: 1000, height: 1000 }, { x: 0, y: 0, width: 1, height: 1 })).toThrow("16:9");
 });

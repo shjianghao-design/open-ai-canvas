@@ -47,7 +47,9 @@
     margin-bottom: 16px;
 }
 
-.workflow-catalog-media { max-width: 100%; }
+.workflow-catalog-media {
+    max-width: 100%;
+}
 
 .workflow-catalog-search.ant-input-affix-wrapper {
     width: clamp(240px, 28%, 380px);
@@ -104,7 +106,10 @@
     border: 1px solid var(--user-border, var(--border));
     border-radius: var(--user-radius-card, 8px);
     background: var(--user-surface, var(--card));
-    transition: border-color var(--user-motion, 160ms), background-color var(--user-motion, 160ms), transform var(--user-motion, 160ms);
+    transition:
+        border-color var(--user-motion, 160ms),
+        background-color var(--user-motion, 160ms),
+        transform var(--user-motion, 160ms);
 }
 
 .workflow-catalog-card:hover,
@@ -158,9 +163,13 @@
     line-height: 1.45;
 }
 
-.workflow-usage-guide p { margin-block: 0.5em; }
+.workflow-usage-guide p {
+    margin-block: 0.5em;
+}
 .workflow-usage-guide ul,
-.workflow-usage-guide ol { padding-left: 1.35rem; }
+.workflow-usage-guide ol {
+    padding-left: 1.35rem;
+}
 .workflow-usage-guide code {
     border-radius: 4px;
     background: var(--muted);
@@ -187,8 +196,13 @@
     font-size: 11px;
 }
 
-.workflow-catalog-category { left: 10px; }
-.workflow-catalog-node-count { right: 10px; padding: 4px 8px; }
+.workflow-catalog-category {
+    left: 10px;
+}
+.workflow-catalog-node-count {
+    right: 10px;
+    padding: 4px 8px;
+}
 
 .workflow-catalog-card-body {
     display: flex;
@@ -224,7 +238,9 @@
     transition: transform var(--user-motion, 160ms);
 }
 
-.workflow-catalog-card:hover .workflow-catalog-arrow { transform: translateX(2px); }
+.workflow-catalog-card:hover .workflow-catalog-arrow {
+    transform: translateX(2px);
+}
 
 .workflow-catalog-description {
     display: -webkit-box;
@@ -255,10 +271,17 @@
     font-size: 10px;
 }
 
-.workflow-catalog-card-meta > span { gap: 4px; }
-.workflow-catalog-imports { margin-left: auto; }
+.workflow-catalog-card-meta > span {
+    gap: 4px;
+}
+.workflow-catalog-imports {
+    margin-left: auto;
+}
 
-.workflow-catalog-media-tags { flex-wrap: wrap; gap: 6px; }
+.workflow-catalog-media-tags {
+    flex-wrap: wrap;
+    gap: 6px;
+}
 .workflow-catalog-media-tags > span {
     gap: 4px;
     padding: 3px 7px;
@@ -269,30 +292,54 @@
 }
 
 @media (min-width: 640px) {
-    .workflow-catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .workflow-catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (min-width: 900px) {
-    .workflow-catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .workflow-catalog-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 @media (min-width: 1200px) {
-    .workflow-catalog-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .workflow-catalog-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
 
 @media (min-width: 1480px) {
-    .workflow-catalog-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .workflow-catalog-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 720px) {
-    .workflow-catalog-inner { padding: 18px 16px; }
-    .workflow-catalog-header { align-items: start; flex-direction: column; gap: 16px; }
-    .workflow-catalog-header h1 { font-size: 24px; }
-    .workflow-catalog-search.ant-input-affix-wrapper { width: 100%; order: 2; margin-left: 0; }
-    .workflow-catalog-count { margin-left: auto; }
+    .workflow-catalog-inner {
+        padding: 18px 16px;
+    }
+    .workflow-catalog-header {
+        align-items: start;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .workflow-catalog-header h1 {
+        font-size: 24px;
+    }
+    .workflow-catalog-search.ant-input-affix-wrapper {
+        width: 100%;
+        order: 2;
+        margin-left: 0;
+    }
+    .workflow-catalog-count {
+        margin-left: auto;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .workflow-catalog-card,
-    .workflow-catalog-arrow { transition: none; }
+    .workflow-catalog-arrow {
+        transition: none;
+    }
 }

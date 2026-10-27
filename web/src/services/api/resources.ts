@@ -284,20 +284,31 @@ async function compressImageIfLarge(file: File): Promise<File> {
         canvas.width = width;
         canvas.height = height;
         const ctx2d = canvas.getContext("2d");
-        if (!ctx2d) { bitmap.close(); return file; }
+        if (!ctx2d) {
+            bitmap.close();
+            return file;
+        }
         // 透明通道检测：PNG/WebP 缩到画布后检查 alpha，有透明则放弃压缩（保透明度）
         if (file.type !== "image/jpeg") {
             ctx2d.drawImage(bitmap, 0, 0, width, height);
             const data = ctx2d.getImageData(0, 0, Math.min(width, 64), Math.min(height, 64)).data;
             let hasAlpha = false;
-            for (let i = 3; i < data.length; i += 4) { if (data[i] < 255) { hasAlpha = true; break; } }
-            if (hasAlpha) { bitmap.close(); return file; }
+            for (let i = 3; i < data.length; i += 4) {
+                if (data[i] < 255) {
+                    hasAlpha = true;
+                    break;
+                }
+            }
+            if (hasAlpha) {
+                bitmap.close();
+                return file;
+            }
         } else {
             ctx2d.drawImage(bitmap, 0, 0, width, height);
         }
         let quality = IMAGE_COMPRESS.initialQuality;
         for (let i = 0; i < IMAGE_COMPRESS.maxIterations; i++) {
-            const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, "image/jpeg", quality));
+            const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/jpeg", quality));
             if (blob && blob.size <= IMAGE_COMPRESS.targetBytes) {
                 bitmap.close();
                 const name = file.name.replace(/\.[^.]+$/, "") + ".jpg";
@@ -307,7 +318,7 @@ async function compressImageIfLarge(file: File): Promise<File> {
             quality = Math.max(IMAGE_COMPRESS.minQuality, quality - 0.1);
         }
         // 迭代到底仍未达标：用最后一次（最低质量）结果，仍显著小于原图
-        const finalBlob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, "image/jpeg", IMAGE_COMPRESS.minQuality));
+        const finalBlob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/jpeg", IMAGE_COMPRESS.minQuality));
         bitmap.close();
         if (finalBlob && finalBlob.size < file.size) {
             const name = file.name.replace(/\.[^.]+$/, "") + ".jpg";

@@ -75,12 +75,16 @@ export default function CanvasWorkflowsPage() {
         return result;
     }, [fallbackItems, fallbackQueries]);
 
-    const visible = useMemo(() => filterCanvasWorkflowCatalog(workflows, {
-        query: debouncedSearch,
-        category,
-        mediaType,
-        sort,
-    }), [workflows, debouncedSearch, category, mediaType, sort]);
+    const visible = useMemo(
+        () =>
+            filterCanvasWorkflowCatalog(workflows, {
+                query: debouncedSearch,
+                category,
+                mediaType,
+                sort,
+            }),
+        [workflows, debouncedSearch, category, mediaType, sort],
+    );
     const paged = useMemo(() => paginateCanvasWorkflowCatalog(visible, page), [visible, page]);
     const categories = useMemo(() => ["全部", ...new Set(workflows.map((item) => item.category).filter(Boolean))], [workflows]);
     const activeFilters = Number(category !== "全部") + Number(mediaType !== "all") + Number(sort !== "recent") + Number(Boolean(search.trim()));
@@ -111,11 +115,16 @@ export default function CanvasWorkflowsPage() {
             <div className="workflow-catalog-inner">
                 <header className="workflow-catalog-header">
                     <div>
-                        <div className="workflow-catalog-eyebrow"><GitBranch className="size-3.5" />可复用的画布工作流</div>
+                        <div className="workflow-catalog-eyebrow">
+                            <GitBranch className="size-3.5" />
+                            可复用的画布工作流
+                        </div>
                         <h1>从成熟流程开始创作</h1>
                         <p>查看节点、连线与提示词，把模板导入为自己的画布，再替换素材并继续生成。</p>
                     </div>
-                    <Link to="/canvas"><Button icon={<Images className="size-4" />}>我的画布</Button></Link>
+                    <Link to="/canvas">
+                        <Button icon={<Images className="size-4" />}>我的画布</Button>
+                    </Link>
                 </header>
 
                 <div className="workflow-catalog-toolbar">
@@ -141,38 +150,37 @@ export default function CanvasWorkflowsPage() {
                         onChange={(event) => changeFilter(() => setSearch(event.target.value))}
                         className="workflow-catalog-search"
                     />
-                    <Button
-                        type="text"
-                        aria-expanded={filtersOpen}
-                        icon={filtersOpen ? <X className="size-4" /> : <SlidersHorizontal className="size-4" />}
-                        onClick={() => setFiltersOpen((value) => !value)}
-                    >
+                    <Button type="text" aria-expanded={filtersOpen} icon={filtersOpen ? <X className="size-4" /> : <SlidersHorizontal className="size-4" />} onClick={() => setFiltersOpen((value) => !value)}>
                         更多筛选{activeFilters ? " · " + activeFilters : ""}
                     </Button>
-                    <span className="workflow-catalog-count" role="status">共 {visible.length.toLocaleString("zh-CN")} 条</span>
+                    <span className="workflow-catalog-count" role="status">
+                        共 {visible.length.toLocaleString("zh-CN")} 条
+                    </span>
                 </div>
 
                 {filtersOpen ? (
                     <section className="workflow-catalog-filters" aria-label="工作流筛选条件">
                         <label>
                             <span>分类</span>
-                            <Select
-                                value={category}
-                                onChange={(value) => changeFilter(() => setCategory(value))}
-                                options={categories.map((value) => ({ value, label: value === "全部" ? "全部分类" : value }))}
-                                ariaLabel="工作流分类"
-                            />
+                            <Select value={category} onChange={(value) => changeFilter(() => setCategory(value))} options={categories.map((value) => ({ value, label: value === "全部" ? "全部分类" : value }))} ariaLabel="工作流分类" />
                         </label>
                         <label>
                             <span>排序</span>
                             <Select
                                 value={sort}
                                 onChange={(value) => changeFilter(() => setSort(value as CanvasWorkflowSort))}
-                                options={[{ value: "recent", label: "最近更新" }, { value: "popular", label: "导入最多" }]}
+                                options={[
+                                    { value: "recent", label: "最近更新" },
+                                    { value: "popular", label: "导入最多" },
+                                ]}
                                 ariaLabel="工作流排序"
                             />
                         </label>
-                        {activeFilters ? <Button type="text" icon={<RotateCcw className="size-4" />} onClick={resetFilters}>重置筛选</Button> : null}
+                        {activeFilters ? (
+                            <Button type="text" icon={<RotateCcw className="size-4" />} onClick={resetFilters}>
+                                重置筛选
+                            </Button>
+                        ) : null}
                     </section>
                 ) : null}
 
@@ -193,7 +201,10 @@ export default function CanvasWorkflowsPage() {
                                                 ) : fallback?.kind === "video" ? (
                                                     <video src={fallback.src} poster={fallback.poster} muted playsInline preload="metadata" aria-label={workflow.name + " 工作流视频预览"} />
                                                 ) : (
-                                                    <div className="workflow-catalog-cover-empty"><GitBranch className="size-8" /><span>工作流预览</span></div>
+                                                    <div className="workflow-catalog-cover-empty">
+                                                        <GitBranch className="size-8" />
+                                                        <span>工作流预览</span>
+                                                    </div>
                                                 )}
                                                 <Tag className="workflow-catalog-category">{workflow.category || "未分类"}</Tag>
                                                 <span className="workflow-catalog-node-count">{workflow.nodeCount} 节点</span>
@@ -205,12 +216,22 @@ export default function CanvasWorkflowsPage() {
                                                 </div>
                                                 <p className="workflow-catalog-description">{workflow.description || "查看工作流节点与生成配置。"}</p>
                                                 <div className="workflow-catalog-card-meta">
-                                                    <span><ShieldCheck className="size-3.5" />独立副本</span>
-                                                    <span><Sparkles className="size-3.5" />v{workflow.version}</span>
+                                                    <span>
+                                                        <ShieldCheck className="size-3.5" />
+                                                        独立副本
+                                                    </span>
+                                                    <span>
+                                                        <Sparkles className="size-3.5" />v{workflow.version}
+                                                    </span>
                                                     {(workflow.importTotal || 0) > 0 ? <span className="workflow-catalog-imports">{(workflow.importTotal || 0).toLocaleString("zh-CN")} 次复用</span> : null}
                                                 </div>
                                                 <div className="workflow-catalog-media-tags">
-                                                    {(workflow.mediaTypes || []).map((type) => <span key={type}>{mediaIcon(type)}{MEDIA_LABEL[type]}</span>)}
+                                                    {(workflow.mediaTypes || []).map((type) => (
+                                                        <span key={type}>
+                                                            {mediaIcon(type)}
+                                                            {MEDIA_LABEL[type]}
+                                                        </span>
+                                                    ))}
                                                 </div>
                                             </div>
                                         </button>

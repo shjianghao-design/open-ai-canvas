@@ -237,7 +237,14 @@ export function CanvasTopBar({
                     ) : null}
                     {onSaveAsTemplate ? (
                         <CanvasTopBarTooltip label="另存为工作流模板">
-                            <Button type="text" className="canvas-topbar-action !h-10 !w-10 !min-w-10 !rounded-xl !p-0" style={{ color: theme.node.text }} icon={<LayoutTemplate className="size-4" />} onClick={onSaveAsTemplate} aria-label="另存为工作流模板" />
+                            <Button
+                                type="text"
+                                className="canvas-topbar-action !h-10 !w-10 !min-w-10 !rounded-xl !p-0"
+                                style={{ color: theme.node.text }}
+                                icon={<LayoutTemplate className="size-4" />}
+                                onClick={onSaveAsTemplate}
+                                aria-label="另存为工作流模板"
+                            />
                         </CanvasTopBarTooltip>
                     ) : null}
                     <CanvasTopBarTooltip label="分享画布">

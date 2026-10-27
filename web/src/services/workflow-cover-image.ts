@@ -26,7 +26,7 @@ export async function cropWorkflowCover(source: string, selection: ImageCropRect
         context.imageSmoothingQuality = "high";
         context.drawImage(image, plan.source.x, plan.source.y, plan.source.width, plan.source.height, 0, 0, canvas.width, canvas.height);
         const blob = await new Promise<Blob>((resolve, reject) => {
-            canvas.toBlob((result) => result && result.size ? resolve(result) : reject(new Error("封面导出失败")), "image/jpeg", 0.9);
+            canvas.toBlob((result) => (result && result.size ? resolve(result) : reject(new Error("封面导出失败"))), "image/jpeg", 0.9);
         });
         return new File([blob], "workflow-cover.jpg", { type: "image/jpeg" });
     } finally {

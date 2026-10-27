@@ -22,7 +22,7 @@ import (
 // 整体文件仍遵守资源单文件上限；收片前在数据库预留日额度和存储容量。
 // 分片路由需要粘性路由，内存会话失效后重传；配额预留跨实例共享并按时间到期。
 // ⚠️ 2026-10-24：单片从 8MB 降到 2MB——CF 隧道对大 body PUT 不稳定
-//（cloudflared 日志持续 "Incoming request ended abruptly: context canceled"，
+// （cloudflared 日志持续 "Incoming request ended abruptly: context canceled"，
 // 用户 8MB 分片必挂；2MB 直传实测稳定通过）。配合前端并发可补回吞吐。
 const (
 	chunkUploadChunkSize   = 2 << 20

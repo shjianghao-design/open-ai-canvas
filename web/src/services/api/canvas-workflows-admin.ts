@@ -53,16 +53,7 @@ export function getAdminCanvasWorkflow(id: string) {
     return http.get<{ workflow: AdminCanvasWorkflowDetail }>(`/admin/canvas-workflows/${encodeURIComponent(id)}`);
 }
 
-export function createCanvasWorkflowFromCanvas(params: {
-    canvasId: string;
-    slug: string;
-    name: string;
-    description?: string;
-    category?: string;
-    icon?: string;
-    sortOrder?: number;
-    enabled?: boolean;
-}) {
+export function createCanvasWorkflowFromCanvas(params: { canvasId: string; slug: string; name: string; description?: string; category?: string; icon?: string; sortOrder?: number; enabled?: boolean }) {
     return http.post<{ workflow: AdminCanvasWorkflowDetail }>("/admin/canvas-workflows/from-canvas", params);
 }
 
@@ -85,9 +76,9 @@ export function discardAdminCanvasWorkflowCover(resourceId: string) {
 }
 
 export function adminCanvasWorkflowDraftCoverURL(id: string) {
-	const path = `/api/admin/canvas-workflows/${encodeURIComponent(id)}/draft-cover`;
-	const base = String(apiBaseURL).replace(/\/+$/, "");
-	return base === "/api" ? path : `${base}${path.slice(4)}`;
+    const path = `/api/admin/canvas-workflows/${encodeURIComponent(id)}/draft-cover`;
+    const base = String(apiBaseURL).replace(/\/+$/, "");
+    return base === "/api" ? path : `${base}${path.slice(4)}`;
 }
 
 export function publishCanvasWorkflow(id: string, expectedRevision: number, name?: string, notes?: string) {
