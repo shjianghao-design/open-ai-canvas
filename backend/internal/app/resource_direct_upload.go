@@ -11,8 +11,26 @@ import (
 	"yingce/backend/internal/storage"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/request"
 	awss3 "github.com/aws/aws-sdk-go/service/s3"
+	awsv4 "github.com/aws/aws-sdk-go/aws/signer/v4"
 )
+
+// presignUnsignedPayload 定制 v4 签名器：预签名 PUT 使用 UNSIGNED-PAYLOAD。
+// 背景（2026-10-24 实测）：SDK 默认对 query 签名省略 X-Amz-Content-Sha256 参数，
+// MinIO 收到「无 sha256 的 query 签名 + 大 body（>64KB）」时会进入流式 SHA256
+// 等待状态导致请求挂死（小 body 因内存缓冲侥幸成功）。显式 UNSIGNED-PAYLOAD 后
+// MinIO 跳过 payload 校验，5MB 分片 0.1s 完成（此前挂死 30s+）。
+func presignUnsignedPayload(req *request.Request) {
+	req.Handlers.Sign.Swap(awsv4.SignRequestHandler.Name, request.NamedHandler{
+		Name: awsv4.SignRequestHandler.Name,
+		Fn: func(r *request.Request) {
+			awsv4.SignSDKRequestWithCurrentTime(r, func() time.Time { return time.Now() }, func(s *awsv4.Signer) {
+				s.UnsignedPayload = true
+			})
+		},
+	})
+}
 
 // 直传（presigned PUT）链路：浏览器先要签名 URL，再直传对象存储，最后回执确认。
 // 全程文件字节不经过应用服务器，绕开反向代理的体积/超时限制。
@@ -25,7 +43,11 @@ const (
 	// 动机：Cloudflare 隧道下单条 TCP 连接的吞吐被拥塞窗口卡死（实测单流 166KB/s），
 	// 而并发两条能到 0.42MB/s（约 2.5 倍）。多分片并发是当前架构下唯一不依赖
 	// 公网 IP / 证书 / 换存储就能拿到的提速路径。
-	directMultipartThreshold = 6 << 20 // 6MB 以下分片反而多几次往返，收益不抵开销
+	// ⚠️ 2026-10-24 禁用：MinIO（RELEASE.2025-07-23）对「query 预签名 UploadPart +
+	// 大 body（>64KB）」存在挂死 bug（头签名正常，实测 5MB 分片挂 30s+，头签名 0.1s）。
+	// MinIO 社区版已归档无法升级，故暂时禁用 multipart，全走简单 PUT（已实测可用）。
+	// 恢复条件：换存储（R2/S3）或 MinIO 修复后调回 6<<20。
+	directMultipartThreshold = 1 << 62 // 实际禁用
 	directMultipartPartSize  = 5 << 20 // S3 规定除最后一段外每段不得小于 5MB，取最小值换最多并发度
 	directMultipartMaxParts  = 10000   // S3 协议硬上限
 )
@@ -91,6 +113,7 @@ func buildDirectUploadMultipart(client *awss3.S3, setting storage.Settings, obje
 			UploadId:   aws.String(uploadID),
 			PartNumber: aws.Int64(int64(i + 1)),
 		})
+		presignUnsignedPayload(partReq)
 		signedURL, signErr := partReq.Presign(ttl)
 		if signErr != nil {
 			_, _ = client.AbortMultipartUpload(&awss3.AbortMultipartUploadInput{

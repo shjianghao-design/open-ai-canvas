@@ -225,3 +225,26 @@ func TestCustomRelayHTTPClientDoesNotFollowRedirects(t *testing.T) {
 		t.Fatal("redirect destination should not receive the request")
 	}
 }
+
+func TestChannelProxySkipsPrivateTargets(t *testing.T) {
+	// 渠道 baseURL 是内网（如 http://10.10.10.12:18086）时，即使渠道配了
+	// SOCKS5 代理，私网目标也必须直连——公网代理无法回连部署内网。
+	transport := newOutboundTransportWithProxy("socks5://user:pass@64.112.43.185:17890")
+	if transport == nil {
+		t.Fatal("transport nil")
+	}
+	// 私网 IP：DialContext 应绕过 SOCKS5（直连）。这里只验证判定函数。
+	if !isPrivateOrLoopbackHost("10.10.10.12") {
+		t.Fatal("10.10.10.12 should be private")
+	}
+	if !isPrivateOrLoopbackHost("192.168.1.1") {
+		t.Fatal("192.168.1.1 should be private")
+	}
+	if !isPrivateOrLoopbackHost("localhost") || !isPrivateOrLoopbackHost("nas.local") {
+		t.Fatal("localhost/.local should be private")
+	}
+	// 公网目标应走代理
+	if isPrivateOrLoopbackHost("c2a6.bilinkai.com") || isPrivateOrLoopbackHost("64.112.43.185") {
+		t.Fatal("public hosts should NOT be private")
+	}
+}
