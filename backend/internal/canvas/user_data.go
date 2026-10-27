@@ -363,7 +363,7 @@ func (s *Service) ApplyUserCanvasOperations(userID, canvasID string, req CanvasO
 				return err
 			}
 			if !req.TrustedServerMutation {
-				if err := New(tx, nil).ValidateCanvasMediaAssets(userID, raw); err != nil {
+				if err := New(tx, nil).ValidateCanvasMediaAssetsWithPrevious(userID, raw, canvasPreviousPayload(existing)); err != nil {
 					return err
 				}
 			}
@@ -445,12 +445,12 @@ func (s *Service) upsertUserCanvasProjectWithHistory(userID string, raw json.Raw
 	}
 	var audit CanvasSaveAudit
 	err = s.host.WithStorageLock(func() error {
-		if err := s.ValidateCanvasMediaAssets(userID, raw); err != nil {
-			return err
-		}
 		existing, existingErr := s.repo.CanvasProjectForUser(userID, project.ID)
 		if existingErr != nil && !errors.Is(existingErr, gorm.ErrRecordNotFound) {
 			return existingErr
+		}
+		if err := s.ValidateCanvasMediaAssetsWithPrevious(userID, raw, canvasPreviousPayload(existing)); err != nil {
+			return err
 		}
 		existingBytes := int64(0)
 		project.Revision = *version.Revision

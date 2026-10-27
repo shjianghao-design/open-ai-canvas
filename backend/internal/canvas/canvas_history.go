@@ -6,6 +6,7 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"slices"
 	"strings"
 	"time"
 
@@ -30,7 +31,59 @@ func SaveDocumentWithHistory(repo *repository.Repository, before *model.CanvasPr
 	if err := assets.CollectOwnedDocumentReferences(after.PayloadJSON, refs); err != nil {
 		return err
 	}
-	return repo.SaveCanvasWithSnapshot(after, snapshot, resourceIDs, assets.SortedIDs(refs), after.UpdatedAt.Add(-canvasHistoryInterval), canvasHistoryLimit, reason == "before_restore" || reason == "before_resource_repair")
+	currentResourceIDs := assets.SortedIDs(refs)
+	if before != nil {
+		// 与素材守卫同一口径：预镜像里已经失效的资源属于历史遗留损坏。素材被硬删除后客户端
+		// 没有入口摘掉节点上的旧引用，若继续要求它存在，画布在提交阶段会再次被拦下，等于把
+		// 画布永久锁死；指向空资源的快照行也没有任何用途。只放行「预镜像已引用」的 ID，
+		// 本次变更新引入的缺失引用仍然会在这里被拒绝。
+		previous := map[string]struct{}{}
+		if err := assets.CollectOwnedDocumentReferences(before.PayloadJSON, previous); err != nil {
+			return err
+		}
+		damaged, err := missingCanvasResourceIDs(repo, before.UserID, assets.SortedIDs(previous))
+		if err != nil {
+			return err
+		}
+		if len(damaged) > 0 {
+			damagedSet := make(map[string]struct{}, len(damaged))
+			for _, id := range damaged {
+				damagedSet[id] = struct{}{}
+			}
+			currentResourceIDs = slices.DeleteFunc(currentResourceIDs, func(id string) bool {
+				_, missing := damagedSet[id]
+				return missing
+			})
+			resourceIDs = slices.DeleteFunc(resourceIDs, func(id string) bool {
+				_, missing := damagedSet[id]
+				return missing
+			})
+		}
+	}
+	return repo.SaveCanvasWithSnapshot(after, snapshot, resourceIDs, currentResourceIDs, after.UpdatedAt.Add(-canvasHistoryInterval), canvasHistoryLimit, reason == "before_restore" || reason == "before_resource_repair")
+}
+
+func missingCanvasResourceIDs(repo *repository.Repository, userID string, resourceIDs []string) ([]string, error) {
+	if len(resourceIDs) == 0 {
+		return nil, nil
+	}
+	resources, err := repo.ResourcesForUserIDs(userID, resourceIDs)
+	if err != nil {
+		return nil, err
+	}
+	ready := make(map[string]struct{}, len(resources))
+	for _, resource := range resources {
+		if resource.Status == model.ResourceStatusReady {
+			ready[resource.ID] = struct{}{}
+		}
+	}
+	missing := make([]string, 0, len(resourceIDs))
+	for _, id := range resourceIDs {
+		if _, exists := ready[id]; !exists {
+			missing = append(missing, id)
+		}
+	}
+	return missing, nil
 }
 
 // Explicit repair keeps the damaged preimage for audit/undo, but only protects
@@ -166,6 +219,15 @@ func buildCanvasSnapshot(before *model.CanvasProject, after model.CanvasProject,
 		PayloadJSON: string(raw), PayloadBytes: len(raw), Reason: reason,
 		ContentUpdatedAt: before.UpdatedAt, CreatedAt: after.UpdatedAt,
 	}, assets.SortedIDs(resources), nil
+}
+
+// canvasPreviousPayload 返回库内既有画布文档，供素材守卫区分「历史遗留的失效引用」和
+// 「本次变更新引入的失效引用」。
+func canvasPreviousPayload(project *model.CanvasProject) json.RawMessage {
+	if project == nil || project.PayloadJSON == "" {
+		return nil
+	}
+	return json.RawMessage(project.PayloadJSON)
 }
 
 // Row metadata is authoritative, including changes made by project association operations.

@@ -24,6 +24,15 @@ type MediaAssetReference struct {
 // owned by the same user. The client writes Assets before canvases, so rejecting
 // an incomplete pair prevents a durable Resource-only (ghost capacity) state.
 func (s *Service) ValidateCanvasMediaAssets(userID string, raw json.RawMessage) error {
+	return s.ValidateCanvasMediaAssetsWithPrevious(userID, raw, nil)
+}
+
+// ValidateCanvasMediaAssetsWithPrevious 以库内既有文档为基线执行同一套守卫，只拦截本次
+// 变更新引入的失效引用。资源被硬删除后客户端没有任何入口摘掉节点上的旧引用，严格校验
+// 无法阻止已经发生的损坏，只会让整张画布在之后每一次编辑都 409（节点新建、连线、改标题
+// 全部失败）。previous 为空时等同于严格模式，新建画布和显式修复仍按严格规则处理。
+func (s *Service) ValidateCanvasMediaAssetsWithPrevious(userID string, raw, previous json.RawMessage) error {
+	grandfatheredResources, grandfatheredBindings := canvasGrandfatheredReferences(previous)
 	references, err := MediaAssetReferences(raw)
 	if err != nil {
 		return kernel.BadAuthRequest("画布媒体数据格式错误")
@@ -39,11 +48,16 @@ func (s *Service) ValidateCanvasMediaAssets(userID string, raw json.RawMessage) 
 	assetIDSet := make(map[string]struct{}, len(references))
 	resourceIDSet := make(map[string]struct{}, len(references)+len(allResourceReferences))
 	for _, reference := range references {
+		if reference.ResourceID != "" {
+			resourceIDSet[reference.ResourceID] = struct{}{}
+		}
 		if reference.AssetID == "" {
-			return canvasMediaAssetsPendingError()
+			if _, grandfathered := grandfatheredBindings[canvasBindingKey(reference)]; !grandfathered {
+				return canvasMediaAssetsPendingError()
+			}
+			continue
 		}
 		assetIDSet[reference.AssetID] = struct{}{}
-		resourceIDSet[reference.ResourceID] = struct{}{}
 	}
 	for _, reference := range allResourceReferences {
 		resourceIDSet[reference.ResourceID] = struct{}{}
@@ -80,6 +94,10 @@ func (s *Service) ValidateCanvasMediaAssets(userID string, raw json.RawMessage) 
 	missing := make([]assets.DocumentResourceReference, 0)
 	for _, reference := range allResourceReferences {
 		if _, exists := readyResources[reference.ResourceID]; !exists {
+			// 预镜像已经引用过同一资源：损坏发生在这次写入之前，放行以免画布被永久锁死。
+			if _, grandfathered := grandfatheredResources[reference.ResourceID]; grandfathered {
+				continue
+			}
 			reference.Source = "current"
 			missing = append(missing, reference)
 		}
@@ -89,6 +107,9 @@ func (s *Service) ValidateCanvasMediaAssets(userID string, raw json.RawMessage) 
 	}
 
 	for _, reference := range references {
+		if _, grandfathered := grandfatheredBindings[canvasBindingKey(reference)]; grandfathered {
+			continue
+		}
 		resourceIDs, assetExists := assetResources[reference.AssetID]
 		if !assetExists {
 			return canvasMediaAssetsPendingError()
@@ -98,6 +119,32 @@ func (s *Service) ValidateCanvasMediaAssets(userID string, raw json.RawMessage) 
 		}
 	}
 	return nil
+}
+
+// canvasGrandfatheredReferences 取出库内既有文档里已经存在的失效线索：按资源 ID 记录，
+// 以及按「素材 + 资源」绑定记录。media 节点上的 assetId 可能同样指向已被删除的素材行，
+// 只放行资源而不放行绑定会让这类画布继续卡在「尚未进入素材库」上。
+func canvasGrandfatheredReferences(previous json.RawMessage) (map[string]struct{}, map[string]struct{}) {
+	resources := map[string]struct{}{}
+	bindings := map[string]struct{}{}
+	if len(previous) == 0 {
+		return resources, bindings
+	}
+	if references, err := assets.CollectDocumentResourceReferences(string(previous)); err == nil {
+		for _, reference := range references {
+			resources[reference.ResourceID] = struct{}{}
+		}
+	}
+	if references, err := MediaAssetReferences(previous); err == nil {
+		for _, reference := range references {
+			bindings[canvasBindingKey(reference)] = struct{}{}
+		}
+	}
+	return resources, bindings
+}
+
+func canvasBindingKey(reference MediaAssetReference) string {
+	return reference.AssetID + "\x00" + reference.ResourceID
 }
 
 func canvasMediaAssetsPendingError() *kernel.AppError {
