@@ -25,12 +25,14 @@ import (
 )
 
 const (
-	// 画布/列表展示够用的长边上限。再大也不会提升观感，只会白占带宽。
-	thumbnailMaxEdge = 512
+	// 画布/列表展示够用的长边上限。4K 生图普及后 512px 在高分屏（2x DPR）
+	// 上被放大 2-3 倍显示会明显模糊（2026-10-24 实测 3840x2160 原图缩到
+	// 512x288 观感差），提到 1024 覆盖 2x 屏的节点展示，体积仍远小于原图。
+	thumbnailMaxEdge = 1024
 	// 原图长边已小于该值时不再生成缩略图（省一次编解码，直接用原图更快）。
-	thumbnailSkipBelowEdge = 640
-	// 缩略图 JPEG 质量。512px 下 q80 观感足够，体积通常 20–60KB。
-	thumbnailQuality = 80
+	thumbnailSkipBelowEdge = 1280
+	// 缩略图 JPEG 质量。1024px 下 q85 兼顾观感与体积（通常 100–250KB）。
+	thumbnailQuality = 85
 )
 
 // thumbnailObjectKey 由原对象键派生缩略图键。

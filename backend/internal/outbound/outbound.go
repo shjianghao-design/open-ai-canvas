@@ -345,6 +345,11 @@ func outboundProxyFromEnvironment(req *http.Request) (*url.URL, error) {
 // 目标主机名不做本地解析，直接交给代理服务器远端解析（socks5 与 socks5h 同义）。
 // 本地 DNS 在 TUN/VPN 模式下会返回 fake-ip，若先本地解析再经代
 // 理连接会导致远端拿到不可达的假 IP；交给远端解析可避免此问题。
+//
+// 2026-10-24：渠道 baseURL 可能是内网地址（如 http://10.10.10.12:18086），
+// 而渠道代理是公网出口（境外 VPS）——代理服务器无法回连部署内网。因此
+// 私网目标一律直连，只有公网目标才走渠道代理；否则配了代理的渠道连自己
+// 的内网上游都会失败（socks connect: network unreachable）。
 func newOutboundTransportWithProxy(proxyURL string) *http.Transport {
 	parsed, err := ValidateProxyURL(proxyURL)
 	if err != nil || parsed == nil {
@@ -373,15 +378,51 @@ func newOutboundTransportWithProxy(proxyURL string) *http.Transport {
 		if !ok {
 			return nil
 		}
-		transport.DialContext = contextDialer.DialContext
+		transport.DialContext = func(ctx context.Context, network string, address string) (net.Conn, error) {
+			if host, _, splitErr := net.SplitHostPort(address); splitErr == nil && isPrivateOrLoopbackHost(host) {
+				// 私网/环回目标直连：渠道代理（公网出口）无法回连部署内网。
+				return forwardDialer.DialContext(ctx, network, address)
+			}
+			return contextDialer.DialContext(ctx, network, address)
+		}
 	case "http", "https":
-		transport.Proxy = http.ProxyURL(parsed)
+		transport.Proxy = func(req *http.Request) (*url.URL, error) {
+			if isPrivateOrLoopbackHost(req.URL.Hostname()) {
+				return nil, nil
+			}
+			return parsed, nil
+		}
 		transport.DialContext = forwardDialer.DialContext
 	default:
 		return nil
 	}
 
 	return transport
+}
+
+// isPrivateOrLoopbackHost 判断目标主机是否为私网/环回地址（含内网 hostname 的
+// 字面 IP 形态）。域名形态不做 DNS 解析——私网域名通常直接配 IP，公网域名
+// 交给代理远端解析。
+func isPrivateOrLoopbackHost(host string) bool {
+	host = strings.TrimSuffix(strings.ToLower(strings.TrimSpace(host)), ".")
+	if host == "localhost" || strings.HasSuffix(host, ".localhost") || endsWithLocalSuffix(host) {
+		return true
+	}
+	ip := net.ParseIP(host)
+	if ip == nil {
+		return false
+	}
+	return ip.IsLoopback() || ip.IsPrivate() || ip.IsLinkLocalUnicast() || ip.IsUnspecified()
+}
+
+// endsWithLocalSuffix 防御：.local / .internal / .lan 等本地域后缀视为内网。
+func endsWithLocalSuffix(host string) bool {
+	for _, suffix := range []string{".local", ".internal", ".lan", ".localdomain"} {
+		if strings.HasSuffix(host, suffix) {
+			return true
+		}
+	}
+	return false
 }
 
 func configuredProxyHost(host string) bool {

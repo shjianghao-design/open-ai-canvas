@@ -70,6 +70,26 @@
 - 画布 Agent 步骤卡新增逐步撤销，使用服务端快照回执并拒绝覆盖后续画布编辑；已提交生成任务不可撤销。
 - 后端数据库 Schema 升至 58，新增 Agent 记忆压缩提案及修订记录。升级前备份数据库，并按部署流程执行 `migrate-schema up` / `verify`；不支持通过旧二进制直接回退新 schema。
 - 升级注意：需同时更新 Web 与 Backend；真实模型质量、浏览器端操作及 PostgreSQL 生产迁移未在本次自动化验证中确认。
+## v1.6.8.15-topapis-r1
+
+- 新增「工作流」资源库：前台 `/workflows` 列表与 `/workflows/:slug` 详情。列表支持关键词、分类、媒体类型（图片/视频/音频/文本）筛选，以及「最近更新」「使用最多」排序，每页 30 条；卡片展示封面、节点数、媒体类型与导入次数。
+- 详情页为只读画布预览：节点坐标与连线按模板快照渲染，不允许拖动或改参数；点击「导入我的画布」调用 `POST /api/canvas-workflows/:slug/import`，把模板实例化成一份新的普通画布（新 ID、清空对话会话），用户随后在自己的画布里自由修改。
+- 导入来源被记录到 `canvas_workflow_imports`（模板、版本、用户、画布）：既用于列表页的导入次数排序，也用于后续「模板已更新」的定向提示。
+- 后台新增「工作流模板」管理（`/admin/workflows`）：从现有画布创建模板、编辑草稿、发布、回滚到历史版本、删除，以及草稿封面图上传（`POST /api/admin/canvas-workflow-covers`）与草稿封面读取。
+- 模板改为「草稿 / 发布」双态 + 版本快照：所有写操作只落在 `draft_json`，发布时生成一条 `canvas_workflow_versions` 快照并把线上指针指向该版本；回滚即把指针切回历史快照，线上内容与历史快照都不被覆盖。
+- 已导入过某模板的画布会收到「模板已更新」提示条（`POST /api/canvas-workflows/update-hints` 按导入记录比对版本），可选择把新版本布局应用到自己的画布，或忽略该提示（忽略状态存本地，不打扰同一版本）。
+- 从后台「编辑」进入画布时出现独立操作条：只允许「保存回模板草稿」与「返回后台」，发布动作仍留在后台完成，避免半成品被误上线。
+- 数据库 Schema 58 → 61，新增三个迁移：
+  - v59 `canvas_workflow_templates`：独立建表。不能依赖 v1 的 AutoMigrate —— 已上线库的 v1 早已记录为完成，新增模型不会在那里补建，工作流接口会直接报 relation does not exist。
+  - v60 `canvas_workflow_versioning`：建 `canvas_workflow_versions` 与 `canvas_workflow_imports`，并把旧表 `payload_json` 回填到 `draft_json`、为已发布模板补一条 v1 快照；`enabled` 默认 true，避免升级后模板整批消失。
+  - v61 `canvas_workflow_catalog_metadata`：补 `draft_description` 等目录字段，并回填草稿描述与历史版本描述。
+- 内置 12 套参考工作流模板（电商主图＋详情页套装、服饰场景拍摄、换装视频、数字人带货、商品三视图、TVC 一键出片等），随服务启动幂等导入，分类统一为「参考工作流」。
+- 封面草稿接入资源回收：上传但未发布的封面由资源删除 worker 周期清理（`cleanupStaleCanvasWorkflowCoverDrafts`），避免草稿附件长期占用对象存储。
+- 同时收录两项 2026-10-24 已在生产手工验证、但此前未进仓库的修复，避免本次镜像替换后线上回退：
+  - 大文件分片直传暂时关闭：MinIO RELEASE.2025-07-23 对「query 预签名 UploadPart + 大 body（>64KB）」会挂死 30s 以上，社区版已归档无法升级，`directMultipartThreshold` 抬到 `1<<62` 全走简单 PUT；同时为分片预签名补 `UNSIGNED-PAYLOAD`，将来换回 R2/S3 时可直接恢复。
+  - 渠道代理不再劫持私网目标：渠道 `baseURL` 为内网地址（如 `http://10.10.10.12:18086`）时直连，仅公网目标走渠道代理，修复「配了代理的渠道连自己内网上游报 socks connect: network unreachable」。
+- 升级注意：Schema v58 → v61，升级过程自动回填旧模板内容，无需手工迁移；仍建议按常规在升级前备份数据库。
+
 ## v1.6.8.14-topapis-r2
 
 - 大文件上传提速 2.62 倍：超过 6MB 的素材直传改走 S3 分片并发上传。此前浏览器对单个预签名 PUT 只能开一条 TCP 连接，实测长期稳定在约 0.5MB/s（单连接被拥塞窗口卡住，与总带宽无关）；现改为 5MB 分段、4 段并发，每段独立建连。同一份 14.8MB 素材前后连测：单流 26.21s（0.54MB/s）→ 分片 10.01s（1.41MB/s）。
