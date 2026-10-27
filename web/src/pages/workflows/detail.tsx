@@ -278,7 +278,9 @@ export default function CanvasWorkflowDetailPage() {
                     {workflow.usageGuide?.trim() ? (
                         <section className="rounded-lg border border-border bg-card p-5 text-card-foreground">
                             <h2 className="text-sm font-semibold">使用指南</h2>
-                            <div className="workflow-usage-guide mt-3 text-xs leading-6 text-muted-foreground"><ReactMarkdown>{workflow.usageGuide}</ReactMarkdown></div>
+                            <div className="workflow-usage-guide mt-3 text-xs leading-6 text-muted-foreground">
+                                <ReactMarkdown>{workflow.usageGuide}</ReactMarkdown>
+                            </div>
                         </section>
                     ) : null}
                     <section className="rounded-lg border border-border bg-card p-5 text-card-foreground">

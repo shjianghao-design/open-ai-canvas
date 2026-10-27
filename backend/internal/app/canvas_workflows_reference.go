@@ -117,7 +117,7 @@ var canvasWorkflowSensitiveKeys = map[string]bool{
 	// 跨用户导入后 ID 一律失效，而画布同步守卫会以 409「素材已变化」永久拒绝保存，
 	// 所以必须与 storageKey 一样剔除，不能只留定位字段不留 ID。
 	"resourceid": true, "resourceids": true,
-	"sampleresourceid": true,
+	"sampleresourceid":    true,
 	"referenceresourceid": true, "referenceresourceids": true,
 	"taskid": true, "generationtaskid": true, "planningtaskid": true,
 	"extractiontaskid": true, "rejectedtaskid": true, "stagetaskids": true,
