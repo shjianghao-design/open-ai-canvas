@@ -57,14 +57,19 @@ func TestImportCanvasWorkflowProjectRemapsLocalReferencesAndSanitizes(t *testing
 					"references":        []any{"child", "external-ref"},
 					"assetBindings":     []any{map[string]any{"nodeId": "child", "role": "style"}},
 					"workflowParameters": map[string]any{
-						"field:child:prompt": "keep",
+						"field:child:prompt":    "keep",
 						"source:referenceImage": "keep-source-key",
 					},
-					"prompt":            "保持这段 prompt 原文，不做替换",
-					"model":             "image-model",
-					"taskId":            "task-old",
-					"modelKey":          "model-secret",
-					"apiKey":            "api-secret",
+					"prompt":   "保持这段 prompt 原文，不做替换",
+					"model":    "image-model",
+					"taskId":   "task-old",
+					"modelKey": "model-secret",
+					"apiKey":   "api-secret",
+					// 资源库裸 ID 指向创建者的 resources 行，导入他人模板后必定失效，
+					// 残留会让画布同步守卫以 409「素材已变化」永久拒绝保存。
+					"resourceId":           "res-owner-only",
+					"sampleResourceId":     "res-sample-owner",
+					"referenceResourceIds": []any{"res-ref-owner", "res-ref-owner-b"},
 				},
 			},
 			map[string]any{"id": "child", "parentId": "group", "templateTag": "child", "metadata": nil},
@@ -134,7 +139,10 @@ func TestImportCanvasWorkflowProjectRemapsLocalReferencesAndSanitizes(t *testing
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, forbidden := range []string{"task-old", "model-secret", "api-secret", "providerSecret"} {
+	for _, forbidden := range []string{
+		"task-old", "model-secret", "api-secret", "providerSecret",
+		"res-owner-only", "res-sample-owner", "res-ref-owner",
+	} {
 		if strings.Contains(string(encoded), forbidden) {
 			t.Errorf("sensitive/runtime value %q remained in import", forbidden)
 		}

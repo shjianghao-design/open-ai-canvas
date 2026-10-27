@@ -113,6 +113,12 @@ var canvasWorkflowLocalReferenceKeys = map[string]bool{
 
 var canvasWorkflowSensitiveKeys = map[string]bool{
 	"apikey": true, "modelkey": true, "storagekey": true,
+	// 资源库引用：这些是裸记录 ID，指向创建者自己的 resources 行。
+	// 跨用户导入后 ID 一律失效，而画布同步守卫会以 409「素材已变化」永久拒绝保存，
+	// 所以必须与 storageKey 一样剔除，不能只留定位字段不留 ID。
+	"resourceid": true, "resourceids": true,
+	"sampleresourceid": true,
+	"referenceresourceid": true, "referenceresourceids": true,
 	"taskid": true, "generationtaskid": true, "planningtaskid": true,
 	"extractiontaskid": true, "rejectedtaskid": true, "stagetaskids": true,
 	"taskstatus": true, "taskprogress": true, "taskstage": true,
