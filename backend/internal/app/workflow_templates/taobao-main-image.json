@@ -36,7 +36,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06201153.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241405.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1684.0,
           "naturalHeight": 3738.0
@@ -94,7 +94,8 @@
               "kind": "image",
               "slot": "reference_image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-040"
       },
@@ -121,7 +122,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231608.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/src-99bd17f38c.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1086.0,
           "naturalHeight": 1448.0
@@ -151,7 +152,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231602.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06231602-2.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1254.0,
           "naturalHeight": 1254.0
@@ -181,7 +182,7 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231616.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06231602.webp",
           "mimeType": "image/webp",
           "naturalWidth": 3072.0,
           "naturalHeight": 4096.0,
@@ -195,12 +196,7 @@
           "generationType": "edit",
           "workflowInputs": [
             {
-              "nodeId": "taobao-main-image-node-007",
-              "kind": "image",
-              "slot": "reference_image"
-            },
-            {
-              "nodeId": "taobao-main-image-node-006",
+              "nodeId": "taobao-main-image-node-021",
               "kind": "image",
               "slot": "reference_image"
             },
@@ -210,7 +206,12 @@
               "slot": "reference_image"
             },
             {
-              "nodeId": "taobao-main-image-node-021",
+              "nodeId": "taobao-main-image-node-006",
+              "kind": "image",
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-007",
               "kind": "image",
               "slot": "reference_image"
             },
@@ -219,7 +220,8 @@
               "kind": "image",
               "slot": "reference_image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-041"
       },
@@ -246,7 +248,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231616-2.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06231603.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1448.0,
           "naturalHeight": 1086.0
@@ -276,7 +278,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231617.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06231608-2.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1448.0,
           "naturalHeight": 1086.0
@@ -306,7 +308,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241358.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06231608.webp",
           "mimeType": "image/webp",
           "naturalWidth": 828.0,
           "naturalHeight": 1104.0
@@ -492,7 +494,7 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241403.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241358.webp",
           "mimeType": "image/webp",
           "naturalWidth": 2172.0,
           "naturalHeight": 2896.0,
@@ -520,7 +522,8 @@
               "kind": "image",
               "slot": "reference_image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-040"
       },
@@ -575,7 +578,8 @@
               "kind": "image",
               "slot": "reference_image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-040"
       },
@@ -602,7 +606,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241404.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241403.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1448.0,
           "naturalHeight": 1086.0
@@ -658,7 +662,7 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241405.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/src-dee6fc8651.webp",
           "mimeType": "image/webp",
           "naturalWidth": 3072.0,
           "naturalHeight": 4096.0,
@@ -686,7 +690,8 @@
               "kind": "image",
               "slot": "image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-040"
       },
@@ -713,7 +718,7 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241445.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/src-22b588e3ef.webp",
           "mimeType": "image/webp",
           "naturalWidth": 3072.0,
           "naturalHeight": 4096.0,
@@ -746,7 +751,8 @@
               "kind": "image",
               "slot": "image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-041"
       },
@@ -773,7 +779,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241445-2.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241405.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1684.0,
           "naturalHeight": 3738.0
@@ -803,7 +809,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241446.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06231608.webp",
           "mimeType": "image/webp",
           "naturalWidth": 828.0,
           "naturalHeight": 1104.0
@@ -833,7 +839,7 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06241446-2.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241406.webp",
           "mimeType": "image/webp",
           "naturalWidth": 3072.0,
           "naturalHeight": 4096.0,
@@ -866,7 +872,8 @@
               "kind": "image",
               "slot": "reference_image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-041"
       },
@@ -893,7 +900,7 @@
             "modelCode": "GPT_IMAGE_2",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-08311351.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241406-2.webp",
           "mimeType": "image/webp",
           "naturalWidth": 3072.0,
           "naturalHeight": 4096.0,
@@ -909,24 +916,25 @@
             {
               "nodeId": "taobao-main-image-node-021",
               "kind": "image",
-              "slot": "image"
-            },
-            {
-              "nodeId": "taobao-main-image-node-022",
-              "kind": "image",
-              "slot": "image"
+              "slot": "reference_image"
             },
             {
               "nodeId": "taobao-main-image-node-035",
               "kind": "image",
-              "slot": "image"
+              "slot": "reference_image"
             },
             {
               "nodeId": "taobao-main-image-node-036",
               "kind": "image",
-              "slot": "image"
+              "slot": "reference_image"
+            },
+            {
+              "nodeId": "taobao-main-image-node-022",
+              "kind": "image",
+              "slot": "reference_image"
             }
-          ]
+          ],
+          "outputResolution": "4k"
         },
         "parentId": "taobao-main-image-node-041"
       },
@@ -1213,7 +1221,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231602-2.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241519.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1448.0,
           "naturalHeight": 1086.0
@@ -1243,7 +1251,7 @@
             "modelCode": "",
             "promptMasked": true
           },
-          "content": "/workflow-samples-reference/taobao-main-image/-06231603.webp",
+          "content": "/workflow-samples-reference/taobao-main-image/-06241519-2.webp",
           "mimeType": "image/webp",
           "naturalWidth": 1448.0,
           "naturalHeight": 1086.0
