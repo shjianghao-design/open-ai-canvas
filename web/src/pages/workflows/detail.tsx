@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { App, Button, Tag } from "antd";
 import { ArrowLeft, AudioLines, Check, Copy, Eye, FileText, GitBranch, Image as ImageIcon, LoaderCircle, Minus, MousePointer2, Plus, Video } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
@@ -33,6 +33,7 @@ function WorkflowGraph({ nodes, connections }: { nodes: CanvasNodeData[]; connec
     const [selected, setSelected] = useState<string | null>(null);
     const [viewport, setViewport] = useState({ x: 24, y: 24, scale: 1 });
     const drag = useRef<{ x: number; y: number; originX: number; originY: number } | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const byId = useMemo(() => new Map(nodes.map((node) => [node.id, node])), [nodes]);
     const selectedNode = selected ? byId.get(selected) : undefined;
     const width = Math.max(1560, ...nodes.map((node) => node.position.x + node.width + 120));
@@ -42,12 +43,49 @@ function WorkflowGraph({ nodes, connections }: { nodes: CanvasNodeData[]; connec
 
     const zoomAt = (nextScale: number) => setViewport((current) => ({ ...current, scale: Math.min(2, Math.max(0.35, nextScale)) }));
 
+    // fitView：按容器实际尺寸计算缩放与偏移，让所有节点在首屏内完整可见并居中。
+    const fitView = () => {
+        const container = containerRef.current;
+        if (!container) return;
+        const pad = 24;
+        const availableWidth = Math.max(1, container.clientWidth - pad * 2);
+        const availableHeight = Math.max(1, container.clientHeight - pad * 2);
+        const scale = Math.min(1, availableWidth / width, availableHeight / height);
+        setViewport({
+            x: (container.clientWidth - width * scale) / 2,
+            y: (container.clientHeight - height * scale) / 2,
+            scale: Math.max(0.35, scale),
+        });
+    };
+
+    // 节点数据就绪后（或容器尺寸变化时）自动适配一次；用户手动操作后不再打扰。
+    const userAdjusted = useRef(false);
+    useLayoutEffect(() => {
+        if (!nodes.length) return;
+        fitView();
+        const container = containerRef.current;
+        if (!container || typeof ResizeObserver === "undefined") return;
+        const observer = new ResizeObserver(() => {
+            if (!userAdjusted.current) fitView();
+        });
+        observer.observe(container);
+        return () => observer.disconnect();
+        // width/height 由 nodes 派生，nodes 变化即重算
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [nodes, width, height]);
+
+    const markUserAdjusted = () => {
+        userAdjusted.current = true;
+    };
+
     return (
         <div
+            ref={containerRef}
             className="relative min-h-[560px] flex-1 touch-none overflow-hidden rounded-2xl border border-[#e4e7ec] bg-[#f6f7f9]"
             aria-label="只读工作流画布"
             onPointerDown={(event) => {
                 if ((event.target as HTMLElement).closest("button, video, audio")) return;
+                markUserAdjusted();
                 drag.current = { x: event.clientX, y: event.clientY, originX: viewport.x, originY: viewport.y };
                 event.currentTarget.setPointerCapture(event.pointerId);
             }}
@@ -69,9 +107,11 @@ function WorkflowGraph({ nodes, connections }: { nodes: CanvasNodeData[]; connec
             onWheel={(event) => {
                 if (event.ctrlKey || event.metaKey) {
                     event.preventDefault();
+                    markUserAdjusted();
                     zoomAt(viewport.scale * (event.deltaY < 0 ? 1.08 : 0.92));
                 } else if (event.shiftKey) {
                     event.preventDefault();
+                    markUserAdjusted();
                     setViewport((current) => ({ ...current, x: current.x - event.deltaY }));
                 }
             }}
@@ -80,8 +120,8 @@ function WorkflowGraph({ nodes, connections }: { nodes: CanvasNodeData[]; connec
                 <Button aria-label="缩小" title="缩小" type="text" size="small" icon={<Minus className="size-4" />} onClick={() => zoomAt(viewport.scale - 0.15)} />
                 <span className="min-w-12 text-center text-xs tabular-nums text-[#69717e]">{Math.round(viewport.scale * 100)}%</span>
                 <Button aria-label="放大" title="放大" type="text" size="small" icon={<Plus className="size-4" />} onClick={() => zoomAt(viewport.scale + 0.15)} />
-                <Button aria-label="重置视图" title="重置视图" type="text" size="small" onClick={() => setViewport({ x: 24, y: 24, scale: 1 })}>
-                    重置
+                <Button aria-label="适配全部节点" title="适配全部节点" type="text" size="small" onClick={() => { markUserAdjusted(); fitView(); }}>
+                    适配
                 </Button>
             </div>
             <div
