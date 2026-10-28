@@ -162,8 +162,8 @@ function WorkflowGraph({ nodes, connections }: { nodes: CanvasNodeData[]; connec
                             onKeyDown={(event) => {
                                 if (event.key === "Enter" || event.key === " ") setSelected(node.id);
                             }}
-                            className={`absolute rounded-[10px] transition ${isFrame ? "border-2 border-dashed border-[#8b95a5] bg-[#e9edf2]/55" : ""} ${active ? "ring-2 ring-[#3a7afe]/45" : ""}`}
-                            style={{ left: node.position.x, top: node.position.y, width: node.width, height: node.height }}
+                            className={`absolute rounded-[10px] transition ${isFrame ? "pointer-events-none border-2 border-dashed border-[#aab3c0]" : ""} ${active ? "ring-2 ring-[#3a7afe]/45" : ""}`}
+                            style={{ left: node.position.x, top: node.position.y, width: node.width, height: node.height, zIndex: isFrame ? 0 : 1 }}
                         >
                             <div className="absolute -top-[22px] left-0 flex w-full items-center gap-2 text-[12px] font-medium leading-[1.35] text-[#68717d]">
                                 <span className="truncate">{node.title}</span>
