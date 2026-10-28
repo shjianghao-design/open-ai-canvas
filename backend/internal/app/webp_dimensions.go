@@ -27,8 +27,8 @@ func webpDimensions(path string) (int, int, error) {
 
 	switch string(head[12:16]) {
 	case "VP8X":
-		w := int(uint32(head[24]) | uint32(head[25])<<8 | uint32(head[26])<<16) + 1
-		h := int(uint32(head[27]) | uint32(head[28])<<8 | uint32(head[29])<<16) + 1
+		w := int(uint32(head[24])|uint32(head[25])<<8|uint32(head[26])<<16) + 1
+		h := int(uint32(head[27])|uint32(head[28])<<8|uint32(head[29])<<16) + 1
 		return w, h, nil
 	case "VP8 ":
 		// 帧头：3 字节 tag + 3 字节同步码 0x9d 0x01 0x2a，随后 2 字节宽、2 字节高
